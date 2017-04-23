@@ -17,7 +17,7 @@ namespace voice_to_text_prototype
 
         public Recorder(int inputDeviceIndex, String filePath, String fileName)
         {
-           // InitializeComponent();
+            //InitializeComponent();
             this.InputDeviceIndex = inputDeviceIndex;
             this.FileName = fileName;
             this.FilePath = filePath;

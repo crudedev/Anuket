@@ -33,13 +33,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
+            this.txtSend = new System.Windows.Forms.TextBox();
+            this.button9 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -89,16 +88,6 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(26, 190);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(76, 28);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "Convert";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_ClickAsync);
-            // 
             // button5
             // 
             this.button5.Location = new System.Drawing.Point(26, 232);
@@ -118,37 +107,19 @@
             this.label2.TabIndex = 8;
             this.label2.Text = "label2";
             // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(422, 50);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(297, 123);
-            this.textBox2.TabIndex = 7;
-            // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(453, 308);
+            this.button6.Location = new System.Drawing.Point(562, 191);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 27);
+            this.button6.Size = new System.Drawing.Size(91, 27);
             this.button6.TabIndex = 9;
-            this.button6.Text = "decode";
+            this.button6.Text = "decode + play";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(550, 308);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 27);
-            this.button7.TabIndex = 10;
-            this.button7.Text = "play";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(453, 252);
+            this.button8.Location = new System.Drawing.Point(27, 177);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(75, 27);
             this.button8.TabIndex = 11;
@@ -156,18 +127,36 @@
             this.button8.UseVisualStyleBackColor = true;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
+            // txtSend
+            // 
+            this.txtSend.Location = new System.Drawing.Point(422, 50);
+            this.txtSend.Multiline = true;
+            this.txtSend.Name = "txtSend";
+            this.txtSend.Size = new System.Drawing.Size(327, 131);
+            this.txtSend.TabIndex = 12;
+            this.txtSend.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(454, 191);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(75, 27);
+            this.button9.TabIndex = 13;
+            this.button9.Text = "Send";
+            this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(817, 443);
+            this.Controls.Add(this.button9);
+            this.Controls.Add(this.txtSend);
             this.Controls.Add(this.button8);
-            this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label1);
@@ -187,13 +176,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.TextBox txtSend;
+        private System.Windows.Forms.Button button9;
     }
 }
 

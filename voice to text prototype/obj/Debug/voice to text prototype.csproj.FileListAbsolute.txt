@@ -25,3 +25,4 @@ C:\Users\Derp\Source\Repos\Anuket\voice to text prototype\bin\Debug\NAudio.xml
 C:\Users\Derp\Source\Repos\Anuket\voice to text prototype\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Derp\Source\Repos\Anuket\voice to text prototype\obj\Debug\voice to text prototype.exe
 C:\Users\Derp\Source\Repos\Anuket\voice to text prototype\obj\Debug\voice to text prototype.pdb
+C:\Users\Derp\Source\Repos\Anuket\voice to text prototype\obj\Debug\voice to text prototype.csprojResolveAssemblyReference.cache
