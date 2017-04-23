@@ -13,8 +13,7 @@ namespace voice_to_text_prototype
         readonly String FilePath;
         readonly String FileName;
         readonly int InputDeviceIndex;
-
-        FileStream lolstream;
+        
 
         public Recorder(int inputDeviceIndex, String filePath, String fileName)
         {

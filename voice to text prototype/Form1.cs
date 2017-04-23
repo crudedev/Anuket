@@ -17,7 +17,7 @@ namespace voice_to_text_prototype
         {
             InitializeComponent();
 
-            r = new Recorder(0, @"C:\", "test.wav");
+            r = new Recorder(0, @"C:\", Guid.NewGuid() + "test.wav");
 
             credentials = File.ReadAllText(@"C:\credentials.txt");
 
@@ -43,7 +43,7 @@ namespace voice_to_text_prototype
         {
             using (PowerShell PowerShellInstance = PowerShell.Create())
             {
-                PowerShellInstance.AddScript(@"$flac='C:\flac'" + Environment.NewLine + @" & $flac C:\test.wav");
+                PowerShellInstance.AddScript(@"$ffmpeg='C:\ffmpeg'" + Environment.NewLine + @" & $ffmpeg -i C:\lol.wav -acodec libopus -b:a 64k -vbr on -compression_level 10 C:\output.ogg");
 
                 try
                 {
@@ -63,6 +63,7 @@ namespace voice_to_text_prototype
                 }
             }
         }
+    
 
         private string sendSound()
         {
@@ -73,7 +74,7 @@ namespace voice_to_text_prototype
 
                 using (PowerShell PowerShellInstance = PowerShell.Create())
                 {
-                    string curlstring = @"$curl='C:\curl'" + Environment.NewLine + @"& $curl -X POST -u  " + credentials + @" --header 'Content-Type: audio/flac' --header 'Transfer-Encoding: chunked' --data-binary @C:\test.flac 'https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?continuous=true' --insecure";
+                    string curlstring = @"$curl='C:\curl'" + Environment.NewLine + @"& $curl -X POST -u  " + credentials + @" --header 'Content-Type: audio/ogg;codecs=opus' --header 'Transfer-Encoding: chunked' --data-binary @C:\output.ogg 'https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?continuous=true' --insecure";
 
                     PowerShellInstance.AddScript(curlstring);
 
@@ -117,6 +118,64 @@ namespace voice_to_text_prototype
         {
             SoundPlayer simpleSound = new SoundPlayer(@"C:\test.wav");
             simpleSound.Play();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            using (PowerShell PowerShellInstance = PowerShell.Create())
+            {
+                PowerShellInstance.AddScript(@"$opusdec='C:\opusdec'" + Environment.NewLine + @" & $opusdec C:\lol.wav.opus C:\lol5.wav ");
+                //opusenc --bitrate 64 What_A_Feeling.wav What_A_Feeling_64.opus
+                try
+                {
+
+                    Collection<PSObject> PSOutput = PowerShellInstance.Invoke();
+
+                    foreach (PSObject outputItem in PSOutput)
+                    {
+                        if (outputItem != null)
+                        {
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            //encode
+
+            using (PowerShell PowerShellInstance = PowerShell.Create())
+            {
+                PowerShellInstance.AddScript(@"$opusenc='C:\opusenc'" + Environment.NewLine + @" & $opusenc --bitrate 64 C:\lol.wav C:\lol.wav.opus");
+                //opusenc --bitrate 64 What_A_Feeling.wav What_A_Feeling_64.opus
+                try
+                {
+
+                    Collection<PSObject> PSOutput = PowerShellInstance.Invoke();
+
+                    foreach (PSObject outputItem in PSOutput)
+                    {
+                        if (outputItem != null)
+                        {
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
         }
     }
 }
