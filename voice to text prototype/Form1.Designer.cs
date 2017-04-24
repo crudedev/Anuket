@@ -39,6 +39,7 @@
             this.button8 = new System.Windows.Forms.Button();
             this.txtSend = new System.Windows.Forms.TextBox();
             this.button9 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -146,11 +147,22 @@
             this.button9.UseVisualStyleBackColor = true;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(454, 329);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(99, 23);
+            this.button4.TabIndex = 14;
+            this.button4.Text = "WatchFolder";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(817, 443);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.txtSend);
             this.Controls.Add(this.button8);
@@ -182,6 +194,7 @@
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.TextBox txtSend;
         private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button4;
     }
 }
 

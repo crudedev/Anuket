@@ -120,7 +120,7 @@ namespace voice_to_text_prototype
             using (PowerShell PowerShellInstance = PowerShell.Create())
             {
                 PowerShellInstance.AddScript(@"$opusdec='C:\opusdec'" + Environment.NewLine + " & $opusdec " + filename +  " " + outputName);
-                //opusenc --bitrate 64 What_A_Feeling.wav What_A_Feeling_64.opus
+
                 try
                 {
 
@@ -154,7 +154,7 @@ namespace voice_to_text_prototype
             using (PowerShell PowerShellInstance = PowerShell.Create())
             {
                 PowerShellInstance.AddScript(@"$opusenc='C:\opusenc'" + Environment.NewLine + @" & $opusenc --bitrate 64 C:\lol.wav C:\lol.wav.opus");
-                //opusenc --bitrate 64 What_A_Feeling.wav What_A_Feeling_64.opus
+
                 try
                 {
 
@@ -178,6 +178,25 @@ namespace voice_to_text_prototype
         {
 
         }
+
+
+        private void watch()
+        {
+            FileSystemWatcher watcher = new FileSystemWatcher();
+            watcher.Path = @"C:\watch";
+            watcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite
+                                   | NotifyFilters.FileName | NotifyFilters.DirectoryName;
+            watcher.Filter = "*.cs";
+            watcher.Changed += new FileSystemEventHandler(OnChanged);
+            watcher.EnableRaisingEvents = true;
+        }
+
+        private void OnChanged(object source, FileSystemEventArgs e)
+        {
+
+        }
+
+
 
         private void button9_Click(object sender, EventArgs e)
         {
@@ -231,6 +250,11 @@ namespace voice_to_text_prototype
             }
 
             
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            watch();
         }
     }
 }
