@@ -14,14 +14,19 @@ namespace voice_to_text_prototype
         readonly string stCredentials;
         readonly string tsCredentials;
 
+        readonly string pathToEXE;
+
         public Form1()
         {
             InitializeComponent();
+            pathToEXE = Directory.GetCurrentDirectory();
 
-            r = new Recorder(0, @"C:\", Guid.NewGuid() + "test.wav");
+            r = new Recorder(0, pathToEXE + @"\WavStore\", Guid.NewGuid() + "test.wav");
 
-            stCredentials = File.ReadAllText(@"C:\stcredentials.txt");
-            tsCredentials = File.ReadAllText(@"C:\tscredentials.txt");
+            stCredentials = File.ReadAllText(pathToEXE + @"\stcredentials.txt");
+            tsCredentials = File.ReadAllText(pathToEXE + @"\tscredentials.txt");
+
+
 
         }
 
@@ -35,9 +40,7 @@ namespace voice_to_text_prototype
             r.RecordEnd();
         }
 
-  
-
-        private string sendSound()
+        private string sendSound(string fileName)
         {
 
             string ret = "";
@@ -46,7 +49,7 @@ namespace voice_to_text_prototype
 
                 using (PowerShell PowerShellInstance = PowerShell.Create())
                 {
-                    string curlstring = @"$curl='C:\curl'" + Environment.NewLine + @"& $curl -X POST -u  " + stCredentials + @" --header 'Content-Type: audio/ogg;codecs=opus' --header 'Transfer-Encoding: chunked' --data-binary @C:\lol.wav.opus 'https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?continuous=true' --insecure";
+                    string curlstring = @"$curl='" + pathToEXE + @"\curl'" + Environment.NewLine + @"& $curl -X POST -u  " + stCredentials + @" --header 'Content-Type: audio/ogg;codecs=opus' --header 'Transfer-Encoding: chunked' --data-binary '" + pathToEXE + @"OpusStore\" + fileName + @"' 'https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?continuous=true' --insecure";
 
                     PowerShellInstance.AddScript(curlstring);
 
@@ -81,6 +84,8 @@ namespace voice_to_text_prototype
         }
 
 
+
+
         private void playsound(string filepath)
         {
             SoundPlayer simpleSound = new SoundPlayer(filepath);
@@ -90,13 +95,13 @@ namespace voice_to_text_prototype
 
         private void button5_Click(object sender, EventArgs e)
         {
-            textBox1.Text = sendSound();
+            textBox1.Text = sendSound("lol.opus");
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            playsound(@"C:\test.wav");
-            
+            playsound(pathToEXE + @"\WavStore\test.wav");
+
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -107,7 +112,7 @@ namespace voice_to_text_prototype
 
         private void button6_Click(object sender, EventArgs e)
         {
-            string lol = decopus(@"C:\Hello_World.opus");
+            string lol = decopus("'" + pathToEXE + @"\Hello_World.opus'");
             playsound(lol);
         }
 
@@ -115,11 +120,11 @@ namespace voice_to_text_prototype
         {
             //decdoe
 
-            string outputName = filename + ".wav";
+            string outputName = filename.Substring(0, filename.Length - 1) + ".wav'";
 
             using (PowerShell PowerShellInstance = PowerShell.Create())
             {
-                PowerShellInstance.AddScript(@"$opusdec='C:\opusdec'" + Environment.NewLine + " & $opusdec " + filename +  " " + outputName);
+                PowerShellInstance.AddScript(@"$opusdec=' " + pathToEXE + @" \opusdec'" + Environment.NewLine + " & $opusdec " + filename + " " + outputName);
 
                 try
                 {
@@ -148,12 +153,12 @@ namespace voice_to_text_prototype
         }
 
         private void encopus()
-        { 
+        {
             //encode
 
             using (PowerShell PowerShellInstance = PowerShell.Create())
             {
-                PowerShellInstance.AddScript(@"$opusenc='C:\opusenc'" + Environment.NewLine + @" & $opusenc --bitrate 64 C:\lol.wav C:\lol.wav.opus");
+                PowerShellInstance.AddScript(@"$opusenc='" + pathToEXE + @"\opusenc'" + Environment.NewLine + @" & $opusenc --bitrate 64 '" + pathToEXE + @"\WavStore\lol.wav' '" + pathToEXE + @"\OpusStore\lol.opus'");
 
                 try
                 {
@@ -183,7 +188,7 @@ namespace voice_to_text_prototype
         private void watch()
         {
             FileSystemWatcher watcher = new FileSystemWatcher();
-            watcher.Path = @"C:\watch";
+            watcher.Path = pathToEXE + @"\watch";
             watcher.NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite
                                    | NotifyFilters.FileName | NotifyFilters.DirectoryName;
             watcher.Filter = "*.cs";
@@ -211,15 +216,15 @@ namespace voice_to_text_prototype
                 using (PowerShell PowerShellInstance = PowerShell.Create())
                 {
 
-                    string data = 
+                    string data =
 @"$data = @{
     text = "" " + txtSend.Text + @" ""
 }";
 
-                    string curlstring = @"$curl='C:\curl'" + Environment.NewLine + data + Environment.NewLine +
+                    string curlstring = @"$curl='" + pathToEXE + @"\curl'" + Environment.NewLine + data + Environment.NewLine +
 
-                        @"& ConvertTo-Json $data  -Compress | &$curl -X POST -u " + tsCredentials + @" --header 'Content-Type: application/json' --header 'Accept: audio/ogg;codecs=opus' --data '@-'  --output C:\hello_world.opus 'https://stream.watsonplatform.net/text-to-speech/api/v1/synthesize?voice=en-GB_KateVoice' --insecure";
-             
+                        @"& ConvertTo-Json $data  -Compress | &$curl -X POST -u " + tsCredentials + @" --header 'Content-Type: application/json' --header 'Accept: audio/ogg;codecs=opus' --data '@-'  --output '" + pathToEXE + @"\hello_world.opus' 'https://stream.watsonplatform.net/text-to-speech/api/v1/synthesize?voice=en-GB_KateVoice' --insecure";
+
 
                     PowerShellInstance.AddScript(curlstring);
 
@@ -249,7 +254,7 @@ namespace voice_to_text_prototype
                 throw;
             }
 
-            
+
         }
 
         private void button4_Click(object sender, EventArgs e)
