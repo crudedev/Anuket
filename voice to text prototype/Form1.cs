@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using System.Management.Automation;
 using System.Collections.ObjectModel;
 using System.Media;
+using System.Collections.Generic;
 
 namespace voice_to_text_prototype
 {
@@ -16,6 +17,11 @@ namespace voice_to_text_prototype
 
         readonly string pathToEXE;
 
+        List<string> foldersToWatch;
+        List<string> fileExtensionsToWatch;
+        List<string> exclusionList;
+        private FolderBrowserDialog folderBrowserDialog1;
+
         public Form1()
         {
             InitializeComponent();
@@ -26,8 +32,56 @@ namespace voice_to_text_prototype
             stCredentials = File.ReadAllText(pathToEXE + @"\stcredentials.txt");
             tsCredentials = File.ReadAllText(pathToEXE + @"\tscredentials.txt");
 
+            try
+            {
+                string[] folderarray = File.ReadAllText(pathToEXE + @"\foldersToWatch.txt").Split(',');
+
+                foreach (var item in folderarray)
+                {
+                    foldersToWatch.Add(item);
+                }
+
+                if (foldersToWatch == null)
+                {
+                    throw new Exception();
+                }
+            }
+
+            catch (Exception ex)
+            {
+
+                DialogResult dialogResult = MessageBox.Show("No folders to watch detected would you like to add one", "No refernce found", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    addFoldersToWatch();
+                }
+                else if (dialogResult == DialogResult.No)
+                {
+                    
+                }
 
 
+
+
+            }
+
+        }
+
+        private void addFoldersToWatch()
+        {
+
+            folderBrowserDialog1 = new FolderBrowserDialog();
+            //folderBrowserDialog1.ShowDialog();
+
+            if(foldersToWatch == null)
+            {
+                foldersToWatch = new List<string>();
+            }
+
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            {
+                foldersToWatch.Add(folderBrowserDialog1.SelectedPath);
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
