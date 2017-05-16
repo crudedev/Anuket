@@ -32,6 +32,8 @@ namespace voice_to_text_prototype
             stCredentials = File.ReadAllText(pathToEXE + @"\stcredentials.txt");
             tsCredentials = File.ReadAllText(pathToEXE + @"\tscredentials.txt");
 
+
+
             try
             {
                 string[] folderarray = File.ReadAllText(pathToEXE + @"\foldersToWatch.txt").Split(',');
@@ -39,6 +41,8 @@ namespace voice_to_text_prototype
                 foreach (var item in folderarray)
                 {
                     foldersToWatch.Add(item);
+                    saveFolderWatch();
+
                 }
 
                 if (foldersToWatch == null)
@@ -57,11 +61,49 @@ namespace voice_to_text_prototype
                 }
                 else if (dialogResult == DialogResult.No)
                 {
-                    
+
                 }
 
 
 
+
+            }
+
+        }
+
+        private void saveFolderWatch()
+        {
+            string writeToFile = "";
+
+            foreach (var item in foldersToWatch)
+            {
+                writeToFile += item + ",";
+            }
+
+            File.WriteAllText(pathToEXE + @"\foldersToWatch.txt", writeToFile);
+
+            UpdateFolderWatch();
+        }
+
+        private void UpdateFolderWatch()
+        {
+
+            foreach (var path in foldersToWatch)
+            {
+                if (fileExtensionsToWatch.Count > 0)
+                {
+                    fileExtensionsToWatch.Add("*");
+                }
+                foreach (var extension in fileExtensionsToWatch)
+                {
+
+                    FileSystemWatcher watcher = new FileSystemWatcher();
+                    watcher.Path = path;
+                    watcher.NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName | NotifyFilters.DirectoryName;
+                    watcher.Filter = "*." + extension;
+                    watcher.Changed += new FileSystemEventHandler(OnChanged);
+                    watcher.EnableRaisingEvents = true;
+                }
 
             }
 
@@ -73,7 +115,7 @@ namespace voice_to_text_prototype
             folderBrowserDialog1 = new FolderBrowserDialog();
             //folderBrowserDialog1.ShowDialog();
 
-            if(foldersToWatch == null)
+            if (foldersToWatch == null)
             {
                 foldersToWatch = new List<string>();
             }
@@ -82,6 +124,8 @@ namespace voice_to_text_prototype
             {
                 foldersToWatch.Add(folderBrowserDialog1.SelectedPath);
             }
+
+            saveFolderWatch();
         }
 
         private void button1_Click(object sender, EventArgs e)
