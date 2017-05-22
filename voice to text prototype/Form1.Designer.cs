@@ -41,8 +41,9 @@
             this.button9 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.lstWatchExtension = new System.Windows.Forms.ListBox();
+            this.lstWatchPath = new System.Windows.Forms.ListBox();
+            this.txtWatchExtension = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // button1
@@ -152,7 +153,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(467, 232);
+            this.button4.Location = new System.Drawing.Point(467, 240);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(119, 23);
             this.button4.TabIndex = 14;
@@ -162,36 +163,45 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(335, 232);
+            this.button7.Location = new System.Drawing.Point(335, 214);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(119, 23);
             this.button7.TabIndex = 15;
             this.button7.Text = "AddWatchExtension";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click_1);
             // 
-            // listBox1
+            // lstWatchExtension
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(335, 269);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(119, 160);
-            this.listBox1.TabIndex = 16;
+            this.lstWatchExtension.FormattingEnabled = true;
+            this.lstWatchExtension.Location = new System.Drawing.Point(335, 269);
+            this.lstWatchExtension.Name = "lstWatchExtension";
+            this.lstWatchExtension.Size = new System.Drawing.Size(119, 160);
+            this.lstWatchExtension.TabIndex = 16;
             // 
-            // listBox2
+            // lstWatchPath
             // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(467, 269);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(444, 160);
-            this.listBox2.TabIndex = 17;
+            this.lstWatchPath.FormattingEnabled = true;
+            this.lstWatchPath.Location = new System.Drawing.Point(467, 269);
+            this.lstWatchPath.Name = "lstWatchPath";
+            this.lstWatchPath.Size = new System.Drawing.Size(444, 160);
+            this.lstWatchPath.TabIndex = 17;
+            // 
+            // txtWatchExtension
+            // 
+            this.txtWatchExtension.Location = new System.Drawing.Point(335, 243);
+            this.txtWatchExtension.Name = "txtWatchExtension";
+            this.txtWatchExtension.Size = new System.Drawing.Size(119, 20);
+            this.txtWatchExtension.TabIndex = 18;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(923, 443);
-            this.Controls.Add(this.listBox2);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.txtWatchExtension);
+            this.Controls.Add(this.lstWatchPath);
+            this.Controls.Add(this.lstWatchExtension);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button9);
@@ -227,8 +237,9 @@
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.ListBox lstWatchExtension;
+        private System.Windows.Forms.ListBox lstWatchPath;
+        private System.Windows.Forms.TextBox txtWatchExtension;
     }
 }
 
