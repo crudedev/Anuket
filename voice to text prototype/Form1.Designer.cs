@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -44,6 +45,7 @@
             this.lstWatchExtension = new System.Windows.Forms.ListBox();
             this.lstWatchPath = new System.Windows.Forms.ListBox();
             this.txtWatchExtension = new System.Windows.Forms.TextBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // button1
@@ -169,6 +171,7 @@
             this.button7.TabIndex = 15;
             this.button7.Text = "AddWatchExtension";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Visible = false;
             this.button7.Click += new System.EventHandler(this.button7_Click_1);
             // 
             // lstWatchExtension
@@ -178,6 +181,7 @@
             this.lstWatchExtension.Name = "lstWatchExtension";
             this.lstWatchExtension.Size = new System.Drawing.Size(119, 160);
             this.lstWatchExtension.TabIndex = 16;
+            this.lstWatchExtension.Visible = false;
             // 
             // lstWatchPath
             // 
@@ -193,6 +197,12 @@
             this.txtWatchExtension.Name = "txtWatchExtension";
             this.txtWatchExtension.Size = new System.Drawing.Size(119, 20);
             this.txtWatchExtension.TabIndex = 18;
+            this.txtWatchExtension.Visible = false;
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Form1
             // 
@@ -217,6 +227,7 @@
             this.Controls.Add(this.button1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -240,6 +251,7 @@
         private System.Windows.Forms.ListBox lstWatchExtension;
         private System.Windows.Forms.ListBox lstWatchPath;
         private System.Windows.Forms.TextBox txtWatchExtension;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
