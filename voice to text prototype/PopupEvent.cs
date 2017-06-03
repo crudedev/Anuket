@@ -73,5 +73,10 @@ namespace voice_to_text_prototype
 
             recordingInProgress = false;
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

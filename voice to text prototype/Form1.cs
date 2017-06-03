@@ -195,7 +195,7 @@ namespace voice_to_text_prototype
 
                 using (PowerShell PowerShellInstance = PowerShell.Create())
                 {
-                    string curlstring = @"$curl='" + pathToEXE + @"\curl'" + Environment.NewLine + @"& $curl -X POST -u  " + stCredentials + @" --header 'Content-Type: audio/ogg;codecs=opus' --header 'Transfer-Encoding: chunked' --data-binary '" + pathToEXE + @"OpusStore\" + fileName + @"' 'https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?continuous=true' --insecure";
+                    string curlstring = @"$curl='" + pathToEXE + @"\curl'" + Environment.NewLine + @"& $curl -X POST -u  " + stCredentials + @" --header 'Content-Type: audio/ogg;codecs=opus' --header 'Transfer-Encoding: chunked' --data-binary '@" + pathToEXE + @"\OpusStore\" + fileName + @"' 'https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?continuous=true' --insecure";
 
                     PowerShellInstance.AddScript(curlstring);
 
@@ -242,7 +242,7 @@ namespace voice_to_text_prototype
 
         private void button3_Click(object sender, EventArgs e)
         {
-            playsound(pathToEXE + @"\WavStore\test.wav");
+            playsound(pathToEXE + @"\WavStore\lol.wav");
 
         }
 
