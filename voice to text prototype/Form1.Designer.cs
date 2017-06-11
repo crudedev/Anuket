@@ -46,6 +46,8 @@
             this.lstWatchPath = new System.Windows.Forms.ListBox();
             this.txtWatchExtension = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.button10 = new System.Windows.Forms.Button();
+            this.button11 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -204,11 +206,32 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // button10
+            // 
+            this.button10.Location = new System.Drawing.Point(785, 57);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(91, 27);
+            this.button10.TabIndex = 19;
+            this.button10.Text = "show event list";
+            this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(792, 114);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(92, 19);
+            this.button11.TabIndex = 20;
+            this.button11.Text = "button11";
+            this.button11.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(923, 443);
+            this.Controls.Add(this.button11);
+            this.Controls.Add(this.button10);
             this.Controls.Add(this.txtWatchExtension);
             this.Controls.Add(this.lstWatchPath);
             this.Controls.Add(this.lstWatchExtension);
@@ -252,6 +275,8 @@
         private System.Windows.Forms.ListBox lstWatchPath;
         private System.Windows.Forms.TextBox txtWatchExtension;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button button10;
+        private System.Windows.Forms.Button button11;
     }
 }
 

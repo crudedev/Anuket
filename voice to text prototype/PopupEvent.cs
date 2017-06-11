@@ -40,7 +40,6 @@ namespace voice_to_text_prototype
                 r = new Recorder(0, pathToEXE + @"\WavStore\", guid + @".wav");
                 r.StartRecording();
 
-
             }
         }
 

@@ -28,101 +28,47 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblEventDescription = new System.Windows.Forms.Label();
+            this.lblDescription = new System.Windows.Forms.Label();
+            this.BtnCreateDescription = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox1
+            // lblEventDescription
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(12, 60);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(521, 79);
-            this.textBox1.TabIndex = 0;
+            this.lblEventDescription.AutoSize = true;
+            this.lblEventDescription.Location = new System.Drawing.Point(15, 17);
+            this.lblEventDescription.Name = "lblEventDescription";
+            this.lblEventDescription.Size = new System.Drawing.Size(35, 13);
+            this.lblEventDescription.TabIndex = 0;
+            this.lblEventDescription.Text = "label1";
             // 
-            // button1
+            // lblDescription
             // 
-            this.button1.Location = new System.Drawing.Point(539, 233);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Save Text";
-            this.button1.UseVisualStyleBackColor = true;
+            this.lblDescription.AutoSize = true;
+            this.lblDescription.Location = new System.Drawing.Point(15, 51);
+            this.lblDescription.Name = "lblDescription";
+            this.lblDescription.Size = new System.Drawing.Size(35, 13);
+            this.lblDescription.TabIndex = 1;
+            this.lblDescription.Text = "label2";
             // 
-            // button2
+            // BtnCreateDescription
             // 
-            this.button2.Location = new System.Drawing.Point(12, 31);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Start Audio";
-            this.button2.UseVisualStyleBackColor = true;
+            this.BtnCreateDescription.Location = new System.Drawing.Point(254, 133);
+            this.BtnCreateDescription.Name = "BtnCreateDescription";
+            this.BtnCreateDescription.Size = new System.Drawing.Size(106, 39);
+            this.BtnCreateDescription.TabIndex = 2;
+            this.BtnCreateDescription.Text = "CreateDescription";
+            this.BtnCreateDescription.UseVisualStyleBackColor = true;
             // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(111, 31);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Stop Audio";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(19, 8);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "label1";
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(292, 31);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "Transcribe";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(12, 172);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(521, 84);
-            this.textBox2.TabIndex = 6;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(19, 156);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 13);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "textComment";
-            // 
-            // Popup
+            // PopupDescription
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(624, 268);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
-            this.Name = "Popup";
+            this.ClientSize = new System.Drawing.Size(372, 184);
+            this.Controls.Add(this.BtnCreateDescription);
+            this.Controls.Add(this.lblDescription);
+            this.Controls.Add(this.lblEventDescription);
+            this.Name = "PopupDescription";
             this.Text = "Popup";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -131,13 +77,8 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblEventDescription;
+        private System.Windows.Forms.Label lblDescription;
+        private System.Windows.Forms.Button BtnCreateDescription;
     }
 }

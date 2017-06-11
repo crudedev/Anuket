@@ -9,23 +9,26 @@ namespace voice_to_text_prototype
 {
 
     [Serializable()]
-    public class Serialisee : ISerializable
+    public class CoreData : ISerializable
     {
         public List<Description> descriptions;
+        public List<Event> events;
 
-        public Serialisee()
+        public CoreData()
         {
 
         }
 
-        public Serialisee(SerializationInfo info, StreamingContext ctxt)
+        public CoreData(SerializationInfo info, StreamingContext ctxt)
         {
             descriptions = (List<Description>)info.GetValue("descriptions", typeof(List<Description>));
+            events = (List<Event>)info.GetValue("event", typeof(List<Event>));
         }
 
         public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
         {
             info.AddValue("descriptions", descriptions);
+            info.AddValue("event", events);
         }
     }
 }

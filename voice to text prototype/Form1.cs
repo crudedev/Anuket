@@ -17,14 +17,12 @@ namespace voice_to_text_prototype
 
         readonly string pathToEXE;
 
-        List<string> foldersToWatch;
-        List<string> fileExtensionsToWatch;
-        List<string> exclusionList;
+
         private FolderBrowserDialog folderBrowserDialog1;
 
         List<PopupEvent> popupEvents;
 
-        List<Event> events;
+        CoreData c = new CoreData();
 
 
         public Form1()
@@ -37,23 +35,32 @@ namespace voice_to_text_prototype
             stCredentials = File.ReadAllText(pathToEXE + @"\stcredentials.txt");
             tsCredentials = File.ReadAllText(pathToEXE + @"\tscredentials.txt");
 
+            loadCoreData();
+
             popupEvents = new List<PopupEvent>();
+            c.events = new List<Event>();
+            c.nodes = new List<Node>();
 
             try
             {
                 string[] folderarray = File.ReadAllText(pathToEXE + @"\foldersToWatch.txt").Split(',');
 
-                foldersToWatch = new List<string>();
+                if (c.foldersToWatch == null)
+                {
+                    c.foldersToWatch = new List<string>();
+                }
+
 
                 foreach (var item in folderarray)
                 {
                     if (item != "")
                     {
-                        foldersToWatch.Add(item);
+                        if(!c.foldersToWatch.Contains(item))
+                        c.foldersToWatch.Add(item);
                     }
 
                 }
-                if (foldersToWatch == null)
+                if (c.foldersToWatch == null)
                 {
                     throw new Exception();
                 }
@@ -63,28 +70,31 @@ namespace voice_to_text_prototype
 
                     string[] extensionArray = File.ReadAllText(pathToEXE + @"\extensionsToWatch.txt").Split(',');
 
-                    fileExtensionsToWatch = new List<string>();
+                    if (c.fileExtensionsToWatch == null)
+                    {
+                        c.fileExtensionsToWatch = new List<string>();
+                    }
 
                     foreach (var item in extensionArray)
                     {
-                        fileExtensionsToWatch.Add(item);
+                        if (!c.fileExtensionsToWatch.Contains(item))
+                            c.fileExtensionsToWatch.Add(item);
                     }
 
-                    if (fileExtensionsToWatch.Count == 0)
+                    if (c.fileExtensionsToWatch.Count == 0)
                     {
-                        fileExtensionsToWatch.Add("*");
+                        c.fileExtensionsToWatch.Add("*");
                     }
 
                 }
                 catch (Exception ex)
                 {
-                    fileExtensionsToWatch = new List<string>();
+                    c.fileExtensionsToWatch = new List<string>();
 
-                    fileExtensionsToWatch.Add("*");
+                    c.fileExtensionsToWatch.Add("*");
                 }
 
                 UpdateFolderWatch();
-
             }
 
             catch (Exception ex)
@@ -100,26 +110,35 @@ namespace voice_to_text_prototype
 
                 }
 
-
-
             }
 
             timer1.Enabled = true;
 
         }
 
-        private void saveFolderWatch()
+        private void saveCoreData()
         {
-            string writeToFile = "";
 
-            foreach (var item in foldersToWatch)
-            {
-                writeToFile += item + ",";
-            }
-
-            File.WriteAllText(pathToEXE + @"\foldersToWatch.txt", writeToFile);
+            Serialiser s = new Serialiser();
+            s.SerializeData(pathToEXE + @"\DataStore\test.store", c);
 
             UpdateFolderWatch();
+        }
+
+        private CoreData loadCoreData()
+        {
+            CoreData loaded = new CoreData();
+            Serialiser loader = new Serialiser();
+            try
+            {
+                loaded = loader.DeSerializeData(pathToEXE + @"\DataStore\test.store");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Data Not Loaded");
+            }
+
+            return loaded;
         }
 
         private void UpdateFolderWatch()
@@ -128,17 +147,17 @@ namespace voice_to_text_prototype
             lstWatchPath.Items.Clear();
             lstWatchExtension.Items.Clear();
 
-            if (fileExtensionsToWatch == null)
+            if (c.fileExtensionsToWatch == null)
             {
-                fileExtensionsToWatch = new List<string>();
-                fileExtensionsToWatch.Add("*");
+                c.fileExtensionsToWatch = new List<string>();
+                c.fileExtensionsToWatch.Add("*");
             }
 
-            foreach (var path in foldersToWatch)
+            foreach (var path in c.foldersToWatch)
             {
                 if (path != "")
                 {
-                    foreach (var extension in fileExtensionsToWatch)
+                    foreach (var extension in c.fileExtensionsToWatch)
                     {
 
                         FileSystemWatcher watcher = new FileSystemWatcher();
@@ -146,12 +165,13 @@ namespace voice_to_text_prototype
                         watcher.NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName | NotifyFilters.DirectoryName | NotifyFilters.CreationTime;
                         watcher.Changed += new FileSystemEventHandler(OnChanged);
                         watcher.EnableRaisingEvents = true;
+
                     }
                 }
                 lstWatchPath.Items.Add(path);
             }
 
-            foreach (var extension in fileExtensionsToWatch)
+            foreach (var extension in c.fileExtensionsToWatch)
             {
                 lstWatchExtension.Items.Add(extension);
             }
@@ -163,17 +183,17 @@ namespace voice_to_text_prototype
             folderBrowserDialog1 = new FolderBrowserDialog();
             //folderBrowserDialog1.ShowDialog();
 
-            if (foldersToWatch == null)
+            if (c.foldersToWatch == null)
             {
-                foldersToWatch = new List<string>();
+                c.foldersToWatch = new List<string>();
             }
 
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
-                foldersToWatch.Add(folderBrowserDialog1.SelectedPath);
+                c.foldersToWatch.Add(folderBrowserDialog1.SelectedPath);
             }
 
-            saveFolderWatch();
+            saveCoreData();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -394,12 +414,12 @@ namespace voice_to_text_prototype
         {
             folderBrowserDialog1 = new FolderBrowserDialog();
 
-            if (fileExtensionsToWatch == null)
+            if (c.fileExtensionsToWatch == null)
             {
-                fileExtensionsToWatch = new List<string>();
+                c.fileExtensionsToWatch = new List<string>();
             }
 
-            fileExtensionsToWatch.Add(txtWatchExtension.Text);
+            c.fileExtensionsToWatch.Add(txtWatchExtension.Text);
 
             saveExtensionWatch();
         }
@@ -409,7 +429,7 @@ namespace voice_to_text_prototype
 
             string writeToFile = "";
 
-            foreach (var item in fileExtensionsToWatch)
+            foreach (var item in c.fileExtensionsToWatch)
             {
                 writeToFile += item + ",";
             }
@@ -422,11 +442,11 @@ namespace voice_to_text_prototype
         private void CreateEvent(string filename, string Location, Dictionary<string, string> asd)
         {
             Event e = new Event(filename, Location, asd);
-            if (events == null)
+            if (c.events == null)
             {
-                events = new List<Event>();
+                c.events = new List<Event>();
             }
-            events.Add(e);
+            c.events.Add(e);
 
 
         }
@@ -438,9 +458,9 @@ namespace voice_to_text_prototype
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (events != null)
+            if (c.events != null)
             {
-                foreach (var ev in events)
+                foreach (var ev in c.events)
                 {
                     if (!ev.popupDisplayed)
                     {
@@ -451,5 +471,36 @@ namespace voice_to_text_prototype
                 }
             }
         }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            EventList ex = new EventList(c.events);
+            ex.Show();
+        }
+
+        //private void button11_Click(object sender, EventArgs e)
+        //{
+        //    c.events = new List<Event>();
+
+        //    for (int i = 0; i < 10; i++)
+        //    {
+
+        //        Event ev = new Event();
+        //        ev.datetimeOfEvent = DateTime.Now;
+        //        ev.fileName = Guid.NewGuid().ToString();
+        //        ev.popupDisplayed = true;
+        //        ev.descriptions = new List<Description>();
+
+        //        Description d = new Description();
+        //        d.AudioPaths = new List<string>();
+        //        d.AudioPaths.Add(pathToEXE + Guid.NewGuid().ToString());
+        //        d.notes = new List<string>();
+        //        d.notes.Add("this is a note + " + Guid.NewGuid().ToString());
+
+        //        c.events.Add(ev);
+        //    }
+
+
+        //}
     }
 }
