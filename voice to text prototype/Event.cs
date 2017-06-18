@@ -21,6 +21,9 @@ namespace voice_to_text_prototype
 
         public bool popupDisplayed = false;
 
+        public Guid ID;
+        
+
         public Event(string FileName, string Location, Dictionary<string,String> FilesEffected)
         {
             fileName = FileName;
@@ -29,12 +32,14 @@ namespace voice_to_text_prototype
             datetimeOfEvent = DateTime.Now;
 
             descriptions = new List<Description>();
+
+            ID = new Guid();
                         
         }
 
         public Event()
         {
-
+            ID = new Guid();
         }
 
         public void AddDescription(Description d)

@@ -55,8 +55,8 @@ namespace voice_to_text_prototype
                 {
                     if (item != "")
                     {
-                        if(!c.foldersToWatch.Contains(item))
-                        c.foldersToWatch.Add(item);
+                        if (!c.foldersToWatch.Contains(item))
+                            c.foldersToWatch.Add(item);
                     }
 
                 }
@@ -478,29 +478,31 @@ namespace voice_to_text_prototype
             ex.Show();
         }
 
-        //private void button11_Click(object sender, EventArgs e)
-        //{
-        //    c.events = new List<Event>();
+        private void button11_Click(object sender, EventArgs e)
+        {
 
-        //    for (int i = 0; i < 10; i++)
-        //    {
+            c.events = new List<Event>();
+            Random r = new Random();
+            for (int i = 0; i < 10; i++)
+            {
 
-        //        Event ev = new Event();
-        //        ev.datetimeOfEvent = DateTime.Now;
-        //        ev.fileName = Guid.NewGuid().ToString();
-        //        ev.popupDisplayed = true;
-        //        ev.descriptions = new List<Description>();
+                Event ev = new Event();
+                ev.datetimeOfEvent = DateTime.Now.AddMinutes(r.Next(10));
+                ev.datetimeOfEvent = ev.datetimeOfEvent.AddSeconds(r.Next(50));
+                ev.fileName = Guid.NewGuid().ToString();
+                ev.popupDisplayed = true;
+                ev.descriptions = new List<Description>();
 
-        //        Description d = new Description();
-        //        d.AudioPaths = new List<string>();
-        //        d.AudioPaths.Add(pathToEXE + Guid.NewGuid().ToString());
-        //        d.notes = new List<string>();
-        //        d.notes.Add("this is a note + " + Guid.NewGuid().ToString());
+                Description d = new Description();
+                d.AudioPaths = new List<string>();
+                d.AudioPaths.Add(pathToEXE + Guid.NewGuid().ToString());
+                d.notes = new List<string>();
+                d.notes.Add("this is a note + " + Guid.NewGuid().ToString());
 
-        //        c.events.Add(ev);
-        //    }
+                c.events.Add(ev);
+            }
 
 
-        //}
+        }
     }
 }

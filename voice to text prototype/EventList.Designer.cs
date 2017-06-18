@@ -45,7 +45,7 @@
             // lblstart
             // 
             this.lblstart.AutoSize = true;
-            this.lblstart.Location = new System.Drawing.Point(20, 80);
+            this.lblstart.Location = new System.Drawing.Point(12, 42);
             this.lblstart.Name = "lblstart";
             this.lblstart.Size = new System.Drawing.Size(27, 13);
             this.lblstart.TabIndex = 1;
@@ -54,7 +54,7 @@
             // lblnow
             // 
             this.lblnow.AutoSize = true;
-            this.lblnow.Location = new System.Drawing.Point(800, 80);
+            this.lblnow.Location = new System.Drawing.Point(802, 42);
             this.lblnow.Name = "lblnow";
             this.lblnow.Size = new System.Drawing.Size(27, 13);
             this.lblnow.TabIndex = 2;
