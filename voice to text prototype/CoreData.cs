@@ -14,6 +14,7 @@ namespace voice_to_text_prototype
         public List<Description> descriptions;
         public List<Event> events;
         public List<Node> nodes;
+        public List<Task> tasks;
 
         public List<string> foldersToWatch;
         public List<string> fileExtensionsToWatch;
@@ -32,6 +33,7 @@ namespace voice_to_text_prototype
             foldersToWatch = (List<string>)info.GetValue("folderstowatch", typeof(List<string>));
             fileExtensionsToWatch = (List<string>)info.GetValue("fileExtensionsToWatch", typeof(List<string>));
             exclusionList = (List<string>)info.GetValue("exclusionList", typeof(List<string>));
+            task = (List<Task>)info.GetValue("task", typeof(List<Task>)));
 
         }
 
@@ -43,6 +45,7 @@ namespace voice_to_text_prototype
             info.AddValue("folderstowatch", foldersToWatch);
             info.AddValue("fileExtensionsToWatch", fileExtensionsToWatch);
             info.AddValue("exclusionList", exclusionList);
+            info.AddValue("tasks", tasks);
         }
     }
 }

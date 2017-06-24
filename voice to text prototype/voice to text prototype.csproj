@@ -87,6 +87,7 @@
     <Compile Include="Recorder.cs" />
     <Compile Include="CoreData.cs" />
     <Compile Include="Serialiser.cs" />
+    <Compile Include="Task.cs" />
     <EmbeddedResource Include="EventList.resx">
       <DependentUpon>EventList.cs</DependentUpon>
     </EmbeddedResource>

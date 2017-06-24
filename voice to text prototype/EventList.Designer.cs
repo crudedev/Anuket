@@ -37,7 +37,7 @@
             // lstEvents
             // 
             this.lstEvents.FormattingEnabled = true;
-            this.lstEvents.Location = new System.Drawing.Point(12, 199);
+            this.lstEvents.Location = new System.Drawing.Point(420, 152);
             this.lstEvents.Name = "lstEvents";
             this.lstEvents.Size = new System.Drawing.Size(290, 433);
             this.lstEvents.TabIndex = 0;
@@ -63,7 +63,7 @@
             // lstNodes
             // 
             this.lstNodes.FormattingEnabled = true;
-            this.lstNodes.Location = new System.Drawing.Point(386, 199);
+            this.lstNodes.Location = new System.Drawing.Point(12, 152);
             this.lstNodes.Name = "lstNodes";
             this.lstNodes.Size = new System.Drawing.Size(290, 433);
             this.lstNodes.TabIndex = 3;

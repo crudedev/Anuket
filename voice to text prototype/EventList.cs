@@ -13,20 +13,25 @@ namespace voice_to_text_prototype
     public partial class EventList : Form
     {
         List<Event> _events;
-        public EventList(List<Event> events)
+        List<Node> _nodes;
+        public EventList(List<Event> events,List<Node> nodes)
         {
             InitializeComponent();
             _events = events;
+            _nodes = nodes;
         }
 
         private void EventList_Load(object sender, EventArgs e)
         {
+            foreach (Event item in _events)
+            {
+                lstEvents.Items.Add(item.datetimeOfEvent.ToString() + item.fileName);
+            }
 
-            // load the event list into the box 
-
-            // load the nodes into the list box 
-
-
+            foreach (Node item in _nodes)
+            {
+                lstNodes.Items.Add(item.name);
+            }
         }
 
         private void EventList_Paint(object sender, PaintEventArgs e)

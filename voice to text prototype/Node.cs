@@ -11,20 +11,25 @@ namespace voice_to_text_prototype
    public class  Node : ISerializable
     {
 
-        List<Event> events;
-        List<Description> descriptions;
+        public List<Event> events;
+        public List<Description> descriptions;
+        public string name;
+        public DateTime createdDate;
 
         public Node(SerializationInfo info, StreamingContext ctxt)
         {
             events = (List<Event>)info.GetValue("events", typeof(List<Event>));
             descriptions = (List<Description>)info.GetValue("descriptions", typeof(List<Description>));
-
+            name = (string)info.GetValue("name", typeof(string));
+            createdDate = (DateTime)info.GetValue("createdDate", typeof(DateTime));
         }
 
         public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
         {
             info.AddValue("events", events);
             info.AddValue("descriptions", descriptions);
+            info.AddValue("name", name);
+            info.AddValue("createdDAte", createdDate);
 
 
         }
