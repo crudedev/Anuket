@@ -17,6 +17,18 @@ namespace voice_to_text_prototype
         public DateTime finsihed;
         public DateTime target;
 
+        public int priority;
+        public List<string> tags;
+        public int percentComplete;
+
+        public int typeOfTask;
+
+        enum tasktype
+        {
+            Goal=0,
+            Action=1,
+            Plan=2
+        };
 
 
         public Task(SerializationInfo info, StreamingContext ctxt)
@@ -26,6 +38,10 @@ namespace voice_to_text_prototype
             created = (DateTime)info.GetValue("filesEffected", typeof(DateTime));
             finsihed = (DateTime)info.GetValue("finsihed", typeof(DateTime));
             target = (DateTime)info.GetValue("target", typeof(DateTime));
+            priority = (int)info.GetValue("priority", typeof(int));
+            tags = (List<string>)info.GetValue("tags", typeof(List<string>));
+            percentComplete = (int)info.GetValue("percentcomplete", typeof(int));
+            typeOfTask = (int)info.GetValue("typeOfTask", typeof(int));
         }
 
         public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
@@ -35,7 +51,10 @@ namespace voice_to_text_prototype
             info.AddValue("created", created);
             info.AddValue("finsihed", finsihed);
             info.AddValue("target", target);
-
+            info.AddValue("priority", priority);
+            info.AddValue("tagas", tags);
+            info.AddValue("percantagecomplete",percentComplete);
+            info.AddValue("typeOfTask", typeOfTask);
         }
 
     }

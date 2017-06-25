@@ -43,3 +43,5 @@ C:\Users\Derp\ownCloud\Anuket\voice to text prototype\obj\Debug\voice_to_text_pr
 C:\Users\Derp\ownCloud\Anuket\voice to text prototype\obj\Debug\voice to text prototype.csproj.GenerateResource.Cache
 C:\Users\Derp\ownCloud\Anuket\voice to text prototype\obj\Debug\voice to text prototype.exe
 C:\Users\Derp\ownCloud\Anuket\voice to text prototype\obj\Debug\voice to text prototype.pdb
+C:\Users\Derp\ownCloud\Anuket\voice to text prototype\obj\Debug\voice_to_text_prototype.CreateTask.resources
+C:\Users\Derp\ownCloud\Anuket\voice to text prototype\obj\Debug\voice_to_text_prototype.ManageTasks.resources

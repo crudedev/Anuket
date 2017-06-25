@@ -20,6 +20,8 @@ namespace voice_to_text_prototype
         public List<string> fileExtensionsToWatch;
         public List<string> exclusionList;
 
+        public Dictionary<string, string> tags;
+
         public CoreData()
         {
 
@@ -33,7 +35,8 @@ namespace voice_to_text_prototype
             foldersToWatch = (List<string>)info.GetValue("folderstowatch", typeof(List<string>));
             fileExtensionsToWatch = (List<string>)info.GetValue("fileExtensionsToWatch", typeof(List<string>));
             exclusionList = (List<string>)info.GetValue("exclusionList", typeof(List<string>));
-            task = (List<Task>)info.GetValue("task", typeof(List<Task>)));
+            tasks = (List<Task>)info.GetValue("tasks", typeof(List<Task>));
+            tags = (Dictionary<string, string>)info.GetValue("tags", typeof(Dictionary<string, string>));
 
         }
 
@@ -46,6 +49,7 @@ namespace voice_to_text_prototype
             info.AddValue("fileExtensionsToWatch", fileExtensionsToWatch);
             info.AddValue("exclusionList", exclusionList);
             info.AddValue("tasks", tasks);
+            info.AddValue("tags", tags);
         }
     }
 }

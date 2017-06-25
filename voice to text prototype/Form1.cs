@@ -504,5 +504,11 @@ namespace voice_to_text_prototype
 
 
         }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            ManageTasks mt = new ManageTasks();
+            mt.Show();
+        }
     }
 }

@@ -50,6 +50,8 @@
             this.button11 = new System.Windows.Forms.Button();
             this.button12 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
+            this.lstTask = new System.Windows.Forms.ListBox();
+            this.button14 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -210,7 +212,7 @@
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(785, 57);
+            this.button10.Location = new System.Drawing.Point(758, 123);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(91, 27);
             this.button10.TabIndex = 19;
@@ -220,11 +222,11 @@
             // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(792, 114);
+            this.button11.Location = new System.Drawing.Point(765, 180);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(92, 19);
+            this.button11.Size = new System.Drawing.Size(92, 36);
             this.button11.TabIndex = 20;
-            this.button11.Text = "button11";
+            this.button11.Text = "create dummy events";
             this.button11.UseVisualStyleBackColor = true;
             this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
@@ -246,11 +248,31 @@
             this.button13.Text = "New Goal";
             this.button13.UseVisualStyleBackColor = true;
             // 
+            // lstTask
+            // 
+            this.lstTask.FormattingEnabled = true;
+            this.lstTask.Location = new System.Drawing.Point(924, 29);
+            this.lstTask.Name = "lstTask";
+            this.lstTask.Size = new System.Drawing.Size(205, 316);
+            this.lstTask.TabIndex = 23;
+            // 
+            // button14
+            // 
+            this.button14.Location = new System.Drawing.Point(978, 351);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(92, 36);
+            this.button14.TabIndex = 24;
+            this.button14.Text = "manage tasks";
+            this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.button14_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(923, 443);
+            this.ClientSize = new System.Drawing.Size(1141, 443);
+            this.Controls.Add(this.button14);
+            this.Controls.Add(this.lstTask);
             this.Controls.Add(this.button13);
             this.Controls.Add(this.button12);
             this.Controls.Add(this.button11);
@@ -302,6 +324,8 @@
         private System.Windows.Forms.Button button11;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.ListBox lstTask;
+        private System.Windows.Forms.Button button14;
     }
 }
 
