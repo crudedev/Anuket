@@ -4,7 +4,7 @@ using System.IO;
 
 namespace voice_to_text_prototype
 {
-    public class Recorder
+    public class cRecorder
     {
 
         WaveIn sourceStream;
@@ -15,7 +15,7 @@ namespace voice_to_text_prototype
         readonly int InputDeviceIndex;
         
 
-        public Recorder(int inputDeviceIndex, String filePath, String fileName)
+        public cRecorder(int inputDeviceIndex, String filePath, String fileName)
         {
             //InitializeComponent();
             this.InputDeviceIndex = inputDeviceIndex;

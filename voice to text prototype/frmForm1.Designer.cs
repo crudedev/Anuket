@@ -1,6 +1,6 @@
 ﻿namespace voice_to_text_prototype
 {
-    partial class Form1
+    partial class frmForm1
     {
         /// <summary>
         /// Required designer variable.
@@ -52,6 +52,7 @@
             this.button13 = new System.Windows.Forms.Button();
             this.lstTask = new System.Windows.Forms.ListBox();
             this.button14 = new System.Windows.Forms.Button();
+            this.cmbPriority = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // button1
@@ -238,6 +239,7 @@
             this.button12.TabIndex = 21;
             this.button12.Text = "New Task";
             this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // button13
             // 
@@ -266,11 +268,20 @@
             this.button14.UseVisualStyleBackColor = true;
             this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
+            // cmbPriority
+            // 
+            this.cmbPriority.FormattingEnabled = true;
+            this.cmbPriority.Location = new System.Drawing.Point(510, 211);
+            this.cmbPriority.Name = "cmbPriority";
+            this.cmbPriority.Size = new System.Drawing.Size(121, 21);
+            this.cmbPriority.TabIndex = 25;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1141, 443);
+            this.Controls.Add(this.cmbPriority);
             this.Controls.Add(this.button14);
             this.Controls.Add(this.lstTask);
             this.Controls.Add(this.button13);
@@ -326,6 +337,7 @@
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.ListBox lstTask;
         private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.ComboBox cmbPriority;
     }
 }
 

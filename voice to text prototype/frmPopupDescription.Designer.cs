@@ -1,6 +1,6 @@
 ﻿namespace voice_to_text_prototype
 {
-    partial class PopupDescription
+    partial class frmPopupDescription
     {
         /// <summary>
         /// Required designer variable.

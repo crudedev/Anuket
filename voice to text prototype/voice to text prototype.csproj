@@ -55,68 +55,68 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CreateTask.cs">
+    <Compile Include="frmCreateTask.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateTask.Designer.cs">
-      <DependentUpon>CreateTask.cs</DependentUpon>
+    <Compile Include="frmCreateTask.Designer.cs">
+      <DependentUpon>frmCreateTask.cs</DependentUpon>
     </Compile>
-    <Compile Include="Description.cs" />
-    <Compile Include="Event.cs" />
-    <Compile Include="EventList.cs">
+    <Compile Include="cDescription.cs" />
+    <Compile Include="cEvent.cs" />
+    <Compile Include="frmEventList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EventList.Designer.cs">
-      <DependentUpon>EventList.cs</DependentUpon>
+    <Compile Include="frmEventList.Designer.cs">
+      <DependentUpon>frmEventList.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="frmForm1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="frmForm1.Designer.cs">
+      <DependentUpon>frmForm1.cs</DependentUpon>
     </Compile>
-    <Compile Include="ManageTasks.cs">
+    <Compile Include="frmManageTasks.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ManageTasks.Designer.cs">
-      <DependentUpon>ManageTasks.cs</DependentUpon>
+    <Compile Include="frmManageTasks.Designer.cs">
+      <DependentUpon>frmManageTasks.cs</DependentUpon>
     </Compile>
-    <Compile Include="Node.cs" />
-    <Compile Include="PopupEvent.cs">
+    <Compile Include="cNode.cs" />
+    <Compile Include="frmPopupEvent.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PopupEvent.Designer.cs">
-      <DependentUpon>PopupEvent.cs</DependentUpon>
+    <Compile Include="frmPopupEvent.Designer.cs">
+      <DependentUpon>frmPopupEvent.cs</DependentUpon>
     </Compile>
-    <Compile Include="PopupDescription.cs">
+    <Compile Include="frmPopupDescription.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PopupDescription.Designer.cs">
-      <DependentUpon>PopupDescription.cs</DependentUpon>
+    <Compile Include="frmPopupDescription.Designer.cs">
+      <DependentUpon>frmPopupDescription.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Recorder.cs" />
-    <Compile Include="CoreData.cs" />
-    <Compile Include="Serialiser.cs" />
-    <Compile Include="Task.cs" />
-    <EmbeddedResource Include="CreateTask.resx">
-      <DependentUpon>CreateTask.cs</DependentUpon>
+    <Compile Include="cRecorder.cs" />
+    <Compile Include="cCoreData.cs" />
+    <Compile Include="cSerialiser.cs" />
+    <Compile Include="cTask.cs" />
+    <EmbeddedResource Include="frmCreateTask.resx">
+      <DependentUpon>frmCreateTask.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EventList.resx">
-      <DependentUpon>EventList.cs</DependentUpon>
+    <EmbeddedResource Include="frmEventList.resx">
+      <DependentUpon>frmEventList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="frmForm1.resx">
+      <DependentUpon>frmForm1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ManageTasks.resx">
-      <DependentUpon>ManageTasks.cs</DependentUpon>
+    <EmbeddedResource Include="frmManageTasks.resx">
+      <DependentUpon>frmManageTasks.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PopupEvent.resx">
-      <DependentUpon>PopupEvent.cs</DependentUpon>
+    <EmbeddedResource Include="frmPopupEvent.resx">
+      <DependentUpon>frmPopupEvent.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PopupDescription.resx">
-      <DependentUpon>PopupDescription.cs</DependentUpon>
+    <EmbeddedResource Include="frmPopupDescription.resx">
+      <DependentUpon>frmPopupDescription.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -6,22 +6,22 @@ using System.Windows.Forms;
 
 namespace voice_to_text_prototype
 {
-    public partial class PopupEvent : Form
+    public partial class frmPopupEvent : Form
     {
-        Event eve = new Event();
-        Recorder r;
+        cEvent eve = new cEvent();
+        cRecorder r;
         string pathToEXE;
-        Description d;
+        cDescription d;
 
         string guid;
 
         bool recordingInProgress = false;
 
-        public PopupEvent(Event e)
+        public frmPopupEvent(cEvent e)
         {
             InitializeComponent();
             pathToEXE = Directory.GetCurrentDirectory();
-            d = new Description();
+            d = new cDescription();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -37,7 +37,7 @@ namespace voice_to_text_prototype
                 guid = Guid.NewGuid().ToString();
 
                 d.AudioPaths.Add(guid);
-                r = new Recorder(0, pathToEXE + @"\WavStore\", guid + @".wav");
+                r = new cRecorder(0, pathToEXE + @"\WavStore\", guid + @".wav");
                 r.StartRecording();
 
             }

@@ -8,9 +8,9 @@ using System.Collections.Generic;
 
 namespace voice_to_text_prototype
 {
-    public partial class Form1 : Form
+    public partial class frmForm1 : Form
     {
-        Recorder r;
+        cRecorder r;
 
         readonly string stCredentials;
         readonly string tsCredentials;
@@ -20,26 +20,26 @@ namespace voice_to_text_prototype
 
         private FolderBrowserDialog folderBrowserDialog1;
 
-        List<PopupEvent> popupEvents;
+        List<frnPopupEvent> popupEvents;
 
-        CoreData c = new CoreData();
+        public cCoreData c = new cCoreData();
 
 
-        public Form1()
+        public frmForm1()
         {
             InitializeComponent();
             pathToEXE = Directory.GetCurrentDirectory();
 
-            r = new Recorder(0, pathToEXE + @"\WavStore\", Guid.NewGuid() + "test.wav");
+            r = new cRecorder(0, pathToEXE + @"\WavStore\", Guid.NewGuid() + "test.wav");
 
             stCredentials = File.ReadAllText(pathToEXE + @"\stcredentials.txt");
             tsCredentials = File.ReadAllText(pathToEXE + @"\tscredentials.txt");
 
             loadCoreData();
 
-            popupEvents = new List<PopupEvent>();
-            c.events = new List<Event>();
-            c.nodes = new List<Node>();
+            popupEvents = new List<frnPopupEvent>();
+            c.events = new List<cEvent>();
+            c.nodes = new List<cNode>();
 
             try
             {
@@ -119,16 +119,16 @@ namespace voice_to_text_prototype
         private void saveCoreData()
         {
 
-            Serialiser s = new Serialiser();
+            cSerialiser s = new cSerialiser();
             s.SerializeData(pathToEXE + @"\DataStore\test.store", c);
 
             UpdateFolderWatch();
         }
 
-        private CoreData loadCoreData()
+        private cCoreData loadCoreData()
         {
-            CoreData loaded = new CoreData();
-            Serialiser loader = new Serialiser();
+            cCoreData loaded = new cCoreData();
+            cSerialiser loader = new cSerialiser();
             try
             {
                 loaded = loader.DeSerializeData(pathToEXE + @"\DataStore\test.store");
@@ -441,10 +441,10 @@ namespace voice_to_text_prototype
 
         private void CreateEvent(string filename, string Location, Dictionary<string, string> asd)
         {
-            Event e = new Event(filename, Location, asd);
+            cEvent e = new cEvent(filename, Location, asd);
             if (c.events == null)
             {
-                c.events = new List<Event>();
+                c.events = new List<cEvent>();
             }
             c.events.Add(e);
 
@@ -464,7 +464,7 @@ namespace voice_to_text_prototype
                 {
                     if (!ev.popupDisplayed)
                     {
-                        PopupEvent pe = new PopupEvent(ev);
+                        frnPopupEvent pe = new frnPopupEvent(ev);
                         pe.Show();
                         ev.popupDisplayed = true;
                     }
@@ -474,26 +474,26 @@ namespace voice_to_text_prototype
 
         private void button10_Click(object sender, EventArgs e)
         {
-            EventList ex = new EventList(c.events, c.nodes);
+            frmEventList ex = new frmEventList(c.events, c.nodes);
             ex.Show();
         }
 
         private void button11_Click(object sender, EventArgs e)
         {
 
-            c.events = new List<Event>();
+            c.events = new List<cEvent>();
             Random r = new Random();
             for (int i = 0; i < 10; i++)
             {
 
-                Event ev = new Event();
+                cEvent ev = new cEvent();
                 ev.datetimeOfEvent = DateTime.Now.AddMinutes(r.Next(10));
                 ev.datetimeOfEvent = ev.datetimeOfEvent.AddSeconds(r.Next(50));
                 ev.fileName = Guid.NewGuid().ToString();
                 ev.popupDisplayed = true;
-                ev.descriptions = new List<Description>();
+                ev.descriptions = new List<cDescription>();
 
-                Description d = new Description();
+                cDescription d = new cDescription();
                 d.AudioPaths = new List<string>();
                 d.AudioPaths.Add(pathToEXE + Guid.NewGuid().ToString());
                 d.notes = new List<string>();
@@ -507,8 +507,14 @@ namespace voice_to_text_prototype
 
         private void button14_Click(object sender, EventArgs e)
         {
-            ManageTasks mt = new ManageTasks();
+            frmManageTasks mt = new frmManageTasks();
             mt.Show();
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            frmCreateTask ct = new frmCreateTask(this);
+            ct.Show();
         }
     }
 }

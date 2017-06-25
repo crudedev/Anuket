@@ -1,6 +1,6 @@
 ﻿namespace voice_to_text_prototype
 {
-    partial class CreateTask
+    partial class frmCreateTask
     {
         /// <summary>
         /// Required designer variable.
@@ -35,10 +35,14 @@
             this.cmbPriority = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lstTags = new System.Windows.Forms.ListBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.cmbAddTags = new System.Windows.Forms.ComboBox();
+            this.txtNewTag = new System.Windows.Forms.TextBox();
+            this.btnCreateTag = new System.Windows.Forms.Button();
+            this.btnAddTag = new System.Windows.Forms.Button();
+            this.cmbTypeTask = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtName
@@ -76,7 +80,7 @@
             // cmbPriority
             // 
             this.cmbPriority.FormattingEnabled = true;
-            this.cmbPriority.Location = new System.Drawing.Point(276, 76);
+            this.cmbPriority.Location = new System.Drawing.Point(276, 78);
             this.cmbPriority.Name = "cmbPriority";
             this.cmbPriority.Size = new System.Drawing.Size(121, 21);
             this.cmbPriority.TabIndex = 4;
@@ -84,7 +88,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(424, 78);
+            this.label1.Location = new System.Drawing.Point(437, 78);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(97, 13);
             this.label1.TabIndex = 5;
@@ -98,49 +102,90 @@
             this.lstTags.Size = new System.Drawing.Size(233, 186);
             this.lstTags.TabIndex = 6;
             // 
-            // comboBox1
+            // cmbAddTags
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(276, 387);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(150, 21);
-            this.comboBox1.TabIndex = 7;
+            this.cmbAddTags.FormattingEnabled = true;
+            this.cmbAddTags.Location = new System.Drawing.Point(270, 311);
+            this.cmbAddTags.Name = "cmbAddTags";
+            this.cmbAddTags.Size = new System.Drawing.Size(150, 21);
+            this.cmbAddTags.TabIndex = 7;
             // 
-            // textBox1
+            // txtNewTag
             // 
-            this.textBox1.Location = new System.Drawing.Point(490, 387);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(174, 20);
-            this.textBox1.TabIndex = 8;
-            this.textBox1.Text = "Task Name:";
+            this.txtNewTag.Location = new System.Drawing.Point(484, 311);
+            this.txtNewTag.Name = "txtNewTag";
+            this.txtNewTag.Size = new System.Drawing.Size(174, 20);
+            this.txtNewTag.TabIndex = 8;
+            this.txtNewTag.Text = "New Tag";
             // 
-            // button1
+            // btnCreateTag
             // 
-            this.button1.Location = new System.Drawing.Point(554, 415);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(77, 32);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Create Tag";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnCreateTag.Location = new System.Drawing.Point(548, 339);
+            this.btnCreateTag.Name = "btnCreateTag";
+            this.btnCreateTag.Size = new System.Drawing.Size(77, 32);
+            this.btnCreateTag.TabIndex = 9;
+            this.btnCreateTag.Text = "Create Tag";
+            this.btnCreateTag.UseVisualStyleBackColor = true;
+            this.btnCreateTag.Click += new System.EventHandler(this.btnCreateTag_Click);
             // 
-            // button2
+            // btnAddTag
             // 
-            this.button2.Location = new System.Drawing.Point(308, 414);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(68, 30);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "Add Tag";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnAddTag.Location = new System.Drawing.Point(302, 338);
+            this.btnAddTag.Name = "btnAddTag";
+            this.btnAddTag.Size = new System.Drawing.Size(68, 30);
+            this.btnAddTag.TabIndex = 10;
+            this.btnAddTag.Text = "Add Tag";
+            this.btnAddTag.UseVisualStyleBackColor = true;
+            this.btnAddTag.Click += new System.EventHandler(this.btnAddTag_Click);
+            // 
+            // cmbTypeTask
+            // 
+            this.cmbTypeTask.FormattingEnabled = true;
+            this.cmbTypeTask.Location = new System.Drawing.Point(276, 120);
+            this.cmbTypeTask.Name = "cmbTypeTask";
+            this.cmbTypeTask.Size = new System.Drawing.Size(121, 21);
+            this.cmbTypeTask.TabIndex = 11;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(437, 123);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(66, 13);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "Type of task";
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(581, 420);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(77, 32);
+            this.button3.TabIndex = 13;
+            this.button3.Text = "Create Task";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(266, 175);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(109, 13);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Percentage Complete";
             // 
             // CreateTask
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(676, 464);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.cmbTypeTask);
+            this.Controls.Add(this.btnAddTag);
+            this.Controls.Add(this.btnCreateTag);
+            this.Controls.Add(this.txtNewTag);
+            this.Controls.Add(this.cmbAddTags);
             this.Controls.Add(this.lstTags);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmbPriority);
@@ -164,9 +209,13 @@
         private System.Windows.Forms.ComboBox cmbPriority;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox lstTags;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ComboBox cmbAddTags;
+        private System.Windows.Forms.TextBox txtNewTag;
+        private System.Windows.Forms.Button btnCreateTag;
+        private System.Windows.Forms.Button btnAddTag;
+        private System.Windows.Forms.ComboBox cmbTypeTask;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label3;
     }
 }

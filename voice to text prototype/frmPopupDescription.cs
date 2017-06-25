@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace voice_to_text_prototype
 {
-    public partial class ManageTasks : Form
+    public partial class frmPopupDescription : Form
     {
-        public ManageTasks()
+        cEvent eve = new cEvent();
+
+        public frmPopupDescription(cEvent e)
         {
             InitializeComponent();
+
+
         }
+
     }
 }

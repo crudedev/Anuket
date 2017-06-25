@@ -9,7 +9,7 @@ namespace voice_to_text_prototype
 {
 
     [Serializable()]
-    public class Task : ISerializable
+    public class cTask : ISerializable
     {
         public string taskName;
         public string description;
@@ -23,15 +23,15 @@ namespace voice_to_text_prototype
 
         public int typeOfTask;
 
-        enum tasktype
+        public enum tasktype
         {
             Goal=0,
             Action=1,
-            Plan=2
+            Project=2
         };
 
 
-        public Task(SerializationInfo info, StreamingContext ctxt)
+        public cTask(SerializationInfo info, StreamingContext ctxt)
         {
             taskName = (string)info.GetValue("taskName", typeof(string));
             description = (string)info.GetValue("description", typeof(string));

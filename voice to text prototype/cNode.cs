@@ -8,18 +8,18 @@ using System.Threading.Tasks;
 namespace voice_to_text_prototype
 {
     [Serializable()]
-   public class  Node : ISerializable
+   public class  cNode : ISerializable
     {
 
-        public List<Event> events;
-        public List<Description> descriptions;
+        public List<cEvent> events;
+        public List<cDescription> descriptions;
         public string name;
         public DateTime createdDate;
 
-        public Node(SerializationInfo info, StreamingContext ctxt)
+        public cNode(SerializationInfo info, StreamingContext ctxt)
         {
-            events = (List<Event>)info.GetValue("events", typeof(List<Event>));
-            descriptions = (List<Description>)info.GetValue("descriptions", typeof(List<Description>));
+            events = (List<cEvent>)info.GetValue("events", typeof(List<cEvent>));
+            descriptions = (List<cDescription>)info.GetValue("descriptions", typeof(List<cDescription>));
             name = (string)info.GetValue("name", typeof(string));
             createdDate = (DateTime)info.GetValue("createdDate", typeof(DateTime));
         }

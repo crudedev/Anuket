@@ -1,6 +1,6 @@
 ﻿namespace voice_to_text_prototype
 {
-    partial class ManageTasks
+    partial class frmManageTasks
     {
         /// <summary>
         /// Required designer variable.

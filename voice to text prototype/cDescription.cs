@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace voice_to_text_prototype
 {
     [Serializable()]
-    public class Description : ISerializable
+    public class cDescription : ISerializable
     {
 
         DateTime descriptionCreated;
@@ -26,7 +26,7 @@ namespace voice_to_text_prototype
         public List<string> transcriptions;
         public List<string> attachments;
 
-        public Description()
+        public cDescription()
         {
             notes = new List<string>();
             AudioPaths = new List<string>();
@@ -35,7 +35,7 @@ namespace voice_to_text_prototype
 
         }
 
-        public Description(SerializationInfo info, StreamingContext ctxt)
+        public cDescription(SerializationInfo info, StreamingContext ctxt)
         {
             descriptionCreated = (DateTime)info.GetValue("descriptionCreated", typeof(DateTime));
             label = (string)info.GetValue("label", typeof(string));

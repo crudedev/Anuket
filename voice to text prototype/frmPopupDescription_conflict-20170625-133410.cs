@@ -10,16 +10,16 @@ using System.Windows.Forms;
 
 namespace voice_to_text_prototype
 {
-    public partial class CreateTask : Form
+    public partial class frmPopupDescription : Form
     {
-        public CreateTask()
+        cEvent eve = new cEvent();
+
+        public frmPopupDescription(cEvent e)
         {
             InitializeComponent();
+
+
         }
 
-        private void PercentComplete_Click(object sender, EventArgs e)
-        {
-            //adjust % complete here 
-        }
     }
 }

@@ -11,10 +11,10 @@ namespace voice_to_text_prototype
     [Serializable()]
     public class CoreData : ISerializable
     {
-        public List<Description> descriptions;
-        public List<Event> events;
-        public List<Node> nodes;
-        public List<Task> tasks;
+        public List<cDescription> descriptions;
+        public List<cEvent> events;
+        public List<cNode> nodes;
+        public List<cTask> tasks;
 
         public List<string> foldersToWatch;
         public List<string> fileExtensionsToWatch;
@@ -29,13 +29,13 @@ namespace voice_to_text_prototype
 
         public CoreData(SerializationInfo info, StreamingContext ctxt)
         {
-            descriptions = (List<Description>)info.GetValue("descriptions", typeof(List<Description>));
-            events = (List<Event>)info.GetValue("event", typeof(List<Event>));
-            nodes = (List<Node>)info.GetValue("node", typeof(List<Node>));
+            descriptions = (List<cDescription>)info.GetValue("descriptions", typeof(List<cDescription>));
+            events = (List<cEvent>)info.GetValue("event", typeof(List<cEvent>));
+            nodes = (List<cNode>)info.GetValue("node", typeof(List<cNode>));
             foldersToWatch = (List<string>)info.GetValue("folderstowatch", typeof(List<string>));
             fileExtensionsToWatch = (List<string>)info.GetValue("fileExtensionsToWatch", typeof(List<string>));
             exclusionList = (List<string>)info.GetValue("exclusionList", typeof(List<string>));
-            tasks = (List<Task>)info.GetValue("tasks", typeof(List<Task>));
+            tasks = (List<cTask>)info.GetValue("tasks", typeof(List<cTask>));
             tags = (Dictionary<string, string>)info.GetValue("tags", typeof(Dictionary<string, string>));
 
         }

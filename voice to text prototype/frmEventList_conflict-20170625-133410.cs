@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace voice_to_text_prototype
 {
-    public partial class EventList : Form
+    public partial class frmEventList : Form
     {
-        List<Event> _events;
-        List<Node> _nodes;
-        public EventList(List<Event> events,List<Node> nodes)
+        List<cEvent> _events;
+        List<cNode> _nodes;
+        public frmEventList(List<cEvent> events,List<cNode> nodes)
         {
             InitializeComponent();
             _events = events;
@@ -23,12 +23,12 @@ namespace voice_to_text_prototype
 
         private void EventList_Load(object sender, EventArgs e)
         {
-            foreach (Event item in _events)
+            foreach (cEvent item in _events)
             {
                 lstEvents.Items.Add(item.datetimeOfEvent.ToString() + item.fileName);
             }
 
-            foreach (Node item in _nodes)
+            foreach (cNode item in _nodes)
             {
                 lstNodes.Items.Add(item.name);
             }
@@ -46,7 +46,7 @@ namespace voice_to_text_prototype
             Font font = new Font("Arial", 8);
             SolidBrush brush = new SolidBrush(Color.Black);
 
-            foreach (Event ev in _events)
+            foreach (cEvent ev in _events)
             {
                 if(start == new DateTime())
                 {
