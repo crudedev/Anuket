@@ -1,6 +1,6 @@
 ﻿namespace voice_to_text_prototype
 {
-    partial class frmCreateTask
+    partial class frmTask
     {
         /// <summary>
         /// Required designer variable.
@@ -41,8 +41,9 @@
             this.btnAddTag = new System.Windows.Forms.Button();
             this.cmbTypeTask = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnCreateTask = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtName
@@ -72,7 +73,7 @@
             // 
             // targetDate
             // 
-            this.targetDate.Location = new System.Drawing.Point(276, 50);
+            this.targetDate.Location = new System.Drawing.Point(276, 47);
             this.targetDate.Name = "targetDate";
             this.targetDate.Size = new System.Drawing.Size(200, 20);
             this.targetDate.TabIndex = 3;
@@ -155,14 +156,15 @@
             this.label2.TabIndex = 12;
             this.label2.Text = "Type of task";
             // 
-            // button3
+            // btnCreateTask
             // 
-            this.button3.Location = new System.Drawing.Point(581, 420);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(77, 32);
-            this.button3.TabIndex = 13;
-            this.button3.Text = "Create Task";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnCreateTask.Location = new System.Drawing.Point(581, 420);
+            this.btnCreateTask.Name = "btnCreateTask";
+            this.btnCreateTask.Size = new System.Drawing.Size(77, 32);
+            this.btnCreateTask.TabIndex = 13;
+            this.btnCreateTask.Text = "Create Task";
+            this.btnCreateTask.UseVisualStyleBackColor = true;
+            this.btnCreateTask.Click += new System.EventHandler(this.btnCreateTask_Click);
             // 
             // label3
             // 
@@ -173,13 +175,23 @@
             this.label3.TabIndex = 14;
             this.label3.Text = "Percentage Complete";
             // 
-            // CreateTask
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(496, 50);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(62, 13);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "Target date";
+            // 
+            // frmCreateTask
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(676, 464);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btnCreateTask);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cmbTypeTask);
             this.Controls.Add(this.btnAddTag);
@@ -193,7 +205,7 @@
             this.Controls.Add(this.PercentComplete);
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.txtName);
-            this.Name = "CreateTask";
+            this.Name = "frmCreateTask";
             this.Text = "CreateTask";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -215,7 +227,8 @@
         private System.Windows.Forms.Button btnAddTag;
         private System.Windows.Forms.ComboBox cmbTypeTask;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnCreateTask;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }

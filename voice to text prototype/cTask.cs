@@ -16,12 +16,16 @@ namespace voice_to_text_prototype
         public DateTime created;
         public DateTime finsihed;
         public DateTime target;
+        public bool Show;
 
         public int priority;
-        public List<string> tags;
+        public Dictionary<string,string> tags;
         public int percentComplete;
 
         public int typeOfTask;
+
+        public Dictionary<string, int> ttype;
+
 
         public enum tasktype
         {
@@ -30,11 +34,18 @@ namespace voice_to_text_prototype
             Project=2
         };
 
-        public cTask()
+        public override string ToString()
         {
-
+            return taskName;
         }
 
+        public cTask()
+        {
+            ttype = new Dictionary<string, int>();
+            ttype.Add("Goal", 0);
+            ttype.Add("ACtion", 1);
+            ttype.Add("Project", 2);
+        }
 
         public cTask(SerializationInfo info, StreamingContext ctxt)
         {
@@ -44,9 +55,10 @@ namespace voice_to_text_prototype
             finsihed = (DateTime)info.GetValue("finsihed", typeof(DateTime));
             target = (DateTime)info.GetValue("target", typeof(DateTime));
             priority = (int)info.GetValue("priority", typeof(int));
-            tags = (List<string>)info.GetValue("tags", typeof(List<string>));
+            tags = (Dictionary<string,string>)info.GetValue("tags", typeof(Dictionary<string, string>));
             percentComplete = (int)info.GetValue("percentcomplete", typeof(int));
             typeOfTask = (int)info.GetValue("typeOfTask", typeof(int));
+            Show = (bool)info.GetValue("show", typeof(bool));
         }
 
         public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
@@ -60,6 +72,7 @@ namespace voice_to_text_prototype
             info.AddValue("tagas", tags);
             info.AddValue("percantagecomplete",percentComplete);
             info.AddValue("typeOfTask", typeOfTask);
+            info.AddValue("show", Show);
         }
 
     }

@@ -11,10 +11,10 @@ namespace voice_to_text_prototype
     [Serializable()]
     public class CoreData : ISerializable
     {
-        public List<cDescription> descriptions;
-        public List<cEvent> events;
-        public List<cNode> nodes;
-        public List<cTask> tasks;
+        public Dictionary<Guid, cDescription> descriptions;
+        public Dictionary<Guid, cEvent> events;
+        public Dictionary<Guid, cNode> nodes;
+        public Dictionary<Guid, cTask> tasks;
 
         public List<string> foldersToWatch;
         public List<string> fileExtensionsToWatch;
@@ -24,18 +24,25 @@ namespace voice_to_text_prototype
 
         public CoreData()
         {
-
+            descriptions = new Dictionary<Guid, cDescription>();
+            events = new Dictionary<Guid, cEvent>();
+            nodes = new Dictionary<Guid, cNode>();
+            tasks = new Dictionary<Guid, cTask>();
+            foldersToWatch = new List<string>();
+            fileExtensionsToWatch = new List<string>();
+            exclusionList = new List<string>();
+            tags = new Dictionary<string, string>();
         }
 
         public CoreData(SerializationInfo info, StreamingContext ctxt)
         {
-            descriptions = (List<cDescription>)info.GetValue("descriptions", typeof(List<cDescription>));
-            events = (List<cEvent>)info.GetValue("event", typeof(List<cEvent>));
-            nodes = (List<cNode>)info.GetValue("node", typeof(List<cNode>));
+            descriptions = (Dictionary<Guid, cDescription>)info.GetValue("descriptions", typeof(Dictionary<Guid, cDescription>));
+            events = (Dictionary<Guid, cEvent>)info.GetValue("event", typeof(Dictionary<Guid, cEvent>));
+            nodes = (Dictionary<Guid, cNode>)info.GetValue("node", typeof(Dictionary<Guid, cNode>));
             foldersToWatch = (List<string>)info.GetValue("folderstowatch", typeof(List<string>));
             fileExtensionsToWatch = (List<string>)info.GetValue("fileExtensionsToWatch", typeof(List<string>));
             exclusionList = (List<string>)info.GetValue("exclusionList", typeof(List<string>));
-            tasks = (List<cTask>)info.GetValue("tasks", typeof(List<cTask>));
+            tasks = (Dictionary<Guid, cTask>)info.GetValue("tasks", typeof(Dictionary<Guid, cTask>));
             tags = (Dictionary<string, string>)info.GetValue("tags", typeof(Dictionary<string, string>));
 
         }

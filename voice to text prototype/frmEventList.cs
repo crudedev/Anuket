@@ -12,9 +12,9 @@ namespace voice_to_text_prototype
 {
     public partial class EventList : Form
     {
-        List<cEvent> _events;
-        List<cNode> _nodes;
-        public EventList(List<cEvent> events,List<cNode> nodes)
+        Dictionary<Guid, cEvent> _events;
+        Dictionary<Guid, cNode> _nodes;
+        public EventList(Dictionary<Guid, cEvent> events, Dictionary<Guid, cNode> nodes)
         {
             InitializeComponent();
             _events = events;
@@ -23,14 +23,14 @@ namespace voice_to_text_prototype
 
         private void EventList_Load(object sender, EventArgs e)
         {
-            foreach (cEvent item in _events)
+            foreach (var item in _events)
             {
-                lstEvents.Items.Add(item.datetimeOfEvent.ToString() + item.fileName);
+                lstEvents.Items.Add(item.Value.datetimeOfEvent.ToString() + item.Value.fileName);
             }
 
-            foreach (cNode item in _nodes)
+            foreach (var item in _nodes)
             {
-                lstNodes.Items.Add(item.name);
+                lstNodes.Items.Add(item.Value.name);
             }
         }
 
@@ -46,22 +46,22 @@ namespace voice_to_text_prototype
             Font font = new Font("Arial", 8);
             SolidBrush brush = new SolidBrush(Color.Black);
 
-            foreach (cEvent ev in _events)
+            foreach (var ev in _events)
             {
                 if(start == new DateTime())
                 {
-                    start = ev.datetimeOfEvent;
-                    end = ev.datetimeOfEvent;
+                    start = ev.Value.datetimeOfEvent;
+                    end = ev.Value.datetimeOfEvent;
                 }
 
-                if (ev.datetimeOfEvent < start)
+                if (ev.Value.datetimeOfEvent < start)
                 {
-                    start = ev.datetimeOfEvent;
+                    start = ev.Value.datetimeOfEvent;
                 }
 
-                if(ev.datetimeOfEvent > end)
+                if(ev.Value.datetimeOfEvent > end)
                 {
-                    end = ev.datetimeOfEvent;
+                    end = ev.Value.datetimeOfEvent;
                 }
             }
 
@@ -79,7 +79,7 @@ namespace voice_to_text_prototype
             {
                 index++;
                 double width = 700;
-                TimeSpan ts = ev.datetimeOfEvent.Subtract(start);
+                TimeSpan ts = ev.Value.datetimeOfEvent.Subtract(start);
                 double seconds = ts.TotalSeconds;
 
                 double pixelpersecond = width / deltaSeconds;

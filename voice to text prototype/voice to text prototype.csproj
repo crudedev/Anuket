@@ -55,11 +55,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmCreateTask.cs">
+    <Compile Include="frmTask.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmCreateTask.Designer.cs">
-      <DependentUpon>frmCreateTask.cs</DependentUpon>
+    <Compile Include="frmTask.Designer.cs">
+      <DependentUpon>frmTask.cs</DependentUpon>
     </Compile>
     <Compile Include="cDescription.cs" />
     <Compile Include="cEvent.cs" />
@@ -100,8 +100,8 @@
     <Compile Include="cCoreData.cs" />
     <Compile Include="cSerialiser.cs" />
     <Compile Include="cTask.cs" />
-    <EmbeddedResource Include="frmCreateTask.resx">
-      <DependentUpon>frmCreateTask.cs</DependentUpon>
+    <EmbeddedResource Include="frmTask.resx">
+      <DependentUpon>frmTask.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmEventList.resx">
       <DependentUpon>frmEventList.cs</DependentUpon>
