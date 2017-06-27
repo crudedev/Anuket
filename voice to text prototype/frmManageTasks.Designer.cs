@@ -82,6 +82,7 @@
             this.btnEditTask.TabIndex = 4;
             this.btnEditTask.Text = "Edit Task";
             this.btnEditTask.UseVisualStyleBackColor = true;
+            this.btnEditTask.Click += new System.EventHandler(this.btnEditTask_Click);
             // 
             // frmManageTasks
             // 

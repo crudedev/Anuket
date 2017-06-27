@@ -64,7 +64,7 @@ namespace voice_to_text_prototype
             {
                 _f.c.tasks.Remove(item);
             }
-            updateList()
+            updateList();
         }
 
         private void btnCompleteTask_Click(object sender, EventArgs e)
@@ -77,7 +77,13 @@ namespace voice_to_text_prototype
         private void btnHideTask_Click(object sender, EventArgs e)
         {
             SelectedTask.Show = false;
-            updateList()
+            updateList();
+        }
+
+        private void btnEditTask_Click(object sender, EventArgs e)
+        {
+            frmTask ft = new frmTask(_f, SelectedTask,true);
+            ft.Show();
         }
     }
 }

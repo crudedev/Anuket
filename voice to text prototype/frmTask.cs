@@ -16,19 +16,53 @@ namespace voice_to_text_prototype
 
         cTask _t;
 
-        public frmTask(frmForm1 f )
+        bool _extant = false;
+
+        public frmTask(frmForm1 f, cTask t, bool extant)
         {
             _f = f;
-            _t = new cTask();
+            _t = t;
+            if (_t == null)
+            {
+                _t = new cTask();
+            }
+
+            _extant = extant;
+
+
             InitializeComponent();
             updateTags();
+
+
 
 
             foreach (var item in _t.ttype)
             {
                 cmbTypeTask.Items.Add(item.Key);
             }
-            
+
+
+            txtName.Text = _t.taskName;
+            txtDescription.Text = _t.description;
+            foreach (var item in _t.tags)
+            {
+                lstTags.Items.Add(item);
+            }
+
+            try
+            {
+                targetDate.Value = _t.target;
+            }
+            catch (Exception)
+            {
+
+            }
+
+
+            cmbPriority.Text = _t.priority.ToString();
+            cmbTypeTask.SelectedValue = _t.typeOfTask;
+            PercentComplete.Value = _t.percentComplete;
+
 
         }
 
@@ -47,7 +81,7 @@ namespace voice_to_text_prototype
 
         private void btnCreateTag_Click(object sender, EventArgs e)
         {
-            if(_f.c.tags == null)
+            if (_f.c.tags == null)
             {
                 _f.c.tags = new Dictionary<string, string>();
             }
@@ -77,7 +111,7 @@ namespace voice_to_text_prototype
                 cmbAddTags.Items.Add(item.Value);
             }
 
-            if(_t.tags == null)
+            if (_t.tags == null)
             {
                 _t.tags = new Dictionary<string, string>();
             }
@@ -93,7 +127,7 @@ namespace voice_to_text_prototype
 
         private void btnAddTag_Click(object sender, EventArgs e)
         {
-            if(_t.tags == null)
+            if (_t.tags == null)
             {
                 _t.tags = new Dictionary<string, string>();
             }
@@ -117,16 +151,20 @@ namespace voice_to_text_prototype
             _t.priority = Convert.ToInt32(cmbPriority.Text);
             _t.target = targetDate.Value.Date;
             _t.taskName = txtName.Text;
-            _t.typeOfTask = _t.ttype[cmbTypeTask.Text];
+            if (cmbTypeTask.Text != "")
+            {
+                _t.typeOfTask = _t.ttype[cmbTypeTask.Text];
+            }
             _t.Show = true;
 
-            if(_f.c.tasks == null)
+            if (_f.c.tasks == null)
             {
                 _f.c.tasks = new Dictionary<Guid, cTask>();
             }
-
-            _f.c.tasks.Add(Guid.NewGuid(), _t);
-
+            if (!_extant)
+            {
+                _f.c.tasks.Add(Guid.NewGuid(), _t);
+            }
             _f.UpdateTasks();
 
             this.Close();

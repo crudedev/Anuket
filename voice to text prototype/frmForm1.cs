@@ -526,7 +526,8 @@ namespace voice_to_text_prototype
 
         private void button12_Click(object sender, EventArgs e)
         {
-            frmTask ct = new frmTask(this);
+            
+            frmTask ct = new frmTask(this ,new cTask(),false);
             ct.Show();
         }
     }
