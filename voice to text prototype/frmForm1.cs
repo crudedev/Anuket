@@ -39,7 +39,6 @@ namespace voice_to_text_prototype
 
             popupEvents = new List<frmPopupEvent>();
             c.events = new Dictionary<Guid, cEvent>();
-            c.nodes = new Dictionary<Guid, cNode>();
 
             try
             {
@@ -487,7 +486,7 @@ namespace voice_to_text_prototype
 
         private void button10_Click(object sender, EventArgs e)
         {
-            EventList ex = new EventList(c.events, c.nodes);
+            EventList ex = new EventList(this);
             ex.Show();
         }
 

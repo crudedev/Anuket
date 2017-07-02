@@ -59,6 +59,8 @@ namespace voice_to_text_prototype
             descriptions = (List<cDescription>)info.GetValue("descriptions", typeof(List<cDescription>));
             datetimeOfEvent = (DateTime)info.GetValue("datetimeOfEvent", typeof(DateTime));
             popupDisplayed = (bool)info.GetValue("popupDisplayed", typeof(bool));
+
+            ID = (Guid)info.GetValue("guid", typeof(Guid));
         }
 
         public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
@@ -69,6 +71,7 @@ namespace voice_to_text_prototype
             info.AddValue("descriptions", descriptions);
             info.AddValue("datetimeOfEvent", datetimeOfEvent);
             info.AddValue("popupDisplayed", popupDisplayed);
+            info.AddValue("guid", ID);
 
         }
 

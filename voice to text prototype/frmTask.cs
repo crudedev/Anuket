@@ -33,9 +33,6 @@ namespace voice_to_text_prototype
             InitializeComponent();
             updateTags();
 
-
-
-
             foreach (var item in _t.ttype)
             {
                 cmbTypeTask.Items.Add(item.Key);
@@ -58,6 +55,14 @@ namespace voice_to_text_prototype
 
             }
 
+            cmbParent.Items.Clear();
+            if (_f.c.tasks != null)
+            {
+                foreach (var item in _f.c.tasks)
+                {
+                    cmbParent.Items.Add(item.Value.taskName);
+                }
+            }
 
             cmbPriority.Text = _t.priority.ToString();
             cmbTypeTask.SelectedValue = _t.typeOfTask;
@@ -165,6 +170,24 @@ namespace voice_to_text_prototype
             {
                 _f.c.tasks.Add(Guid.NewGuid(), _t);
             }
+
+
+            if (_t.parents == null)
+            {
+                _t.parents = new List<cTask>();
+            }
+
+            if (cmbParent.Text != "")
+            {
+                foreach (var item in _f.c.tasks)
+                {
+                    if (item.Value.taskName == cmbParent.Text)
+                    {
+                        _t.parents.Add(item.Value);
+                    }
+                }
+            }
+
             _f.UpdateTasks();
 
             this.Close();

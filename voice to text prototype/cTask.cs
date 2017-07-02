@@ -26,6 +26,10 @@ namespace voice_to_text_prototype
 
         public Dictionary<string, int> ttype;
 
+        public  List<cTask> parents;
+
+        public List<cEvent> events;
+
 
         public enum tasktype
         {
@@ -59,6 +63,8 @@ namespace voice_to_text_prototype
             percentComplete = (int)info.GetValue("percentcomplete", typeof(int));
             typeOfTask = (int)info.GetValue("typeOfTask", typeof(int));
             Show = (bool)info.GetValue("show", typeof(bool));
+            parents = (List<cTask>)info.GetValue("parents", typeof(List<cTask>));
+            events = (List<cEvent>)info.GetValue("events", typeof(List<cEvent>));
         }
 
         public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
@@ -73,6 +79,8 @@ namespace voice_to_text_prototype
             info.AddValue("percantagecomplete",percentComplete);
             info.AddValue("typeOfTask", typeOfTask);
             info.AddValue("show", Show);
+            info.AddValue("parents", parents);
+            info.AddValue("events", events);
         }
 
     }

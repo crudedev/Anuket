@@ -81,7 +81,6 @@
     <Compile Include="frmManageTasks.Designer.cs">
       <DependentUpon>frmManageTasks.cs</DependentUpon>
     </Compile>
-    <Compile Include="cNode.cs" />
     <Compile Include="frmPopupEvent.cs">
       <SubType>Form</SubType>
     </Compile>

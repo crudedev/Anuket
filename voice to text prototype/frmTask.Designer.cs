@@ -44,6 +44,8 @@
             this.btnCreateTask = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.Parent = new System.Windows.Forms.Label();
+            this.cmbParent = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // txtName
@@ -65,7 +67,7 @@
             // 
             // PercentComplete
             // 
-            this.PercentComplete.Location = new System.Drawing.Point(266, 191);
+            this.PercentComplete.Location = new System.Drawing.Point(272, 228);
             this.PercentComplete.Name = "PercentComplete";
             this.PercentComplete.Size = new System.Drawing.Size(388, 23);
             this.PercentComplete.TabIndex = 2;
@@ -73,7 +75,7 @@
             // 
             // targetDate
             // 
-            this.targetDate.Location = new System.Drawing.Point(276, 47);
+            this.targetDate.Location = new System.Drawing.Point(282, 84);
             this.targetDate.Name = "targetDate";
             this.targetDate.Size = new System.Drawing.Size(200, 20);
             this.targetDate.TabIndex = 3;
@@ -81,7 +83,7 @@
             // cmbPriority
             // 
             this.cmbPriority.FormattingEnabled = true;
-            this.cmbPriority.Location = new System.Drawing.Point(276, 78);
+            this.cmbPriority.Location = new System.Drawing.Point(282, 115);
             this.cmbPriority.Name = "cmbPriority";
             this.cmbPriority.Size = new System.Drawing.Size(121, 21);
             this.cmbPriority.TabIndex = 4;
@@ -89,7 +91,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(437, 78);
+            this.label1.Location = new System.Drawing.Point(443, 115);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(97, 13);
             this.label1.TabIndex = 5;
@@ -142,7 +144,7 @@
             // cmbTypeTask
             // 
             this.cmbTypeTask.FormattingEnabled = true;
-            this.cmbTypeTask.Location = new System.Drawing.Point(276, 120);
+            this.cmbTypeTask.Location = new System.Drawing.Point(282, 157);
             this.cmbTypeTask.Name = "cmbTypeTask";
             this.cmbTypeTask.Size = new System.Drawing.Size(121, 21);
             this.cmbTypeTask.TabIndex = 11;
@@ -150,7 +152,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(437, 123);
+            this.label2.Location = new System.Drawing.Point(443, 160);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 13);
             this.label2.TabIndex = 12;
@@ -169,7 +171,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(266, 175);
+            this.label3.Location = new System.Drawing.Point(272, 212);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(109, 13);
             this.label3.TabIndex = 14;
@@ -178,17 +180,36 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(496, 50);
+            this.label4.Location = new System.Drawing.Point(502, 87);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(62, 13);
             this.label4.TabIndex = 15;
             this.label4.Text = "Target date";
             // 
-            // frmCreateTask
+            // Parent
+            // 
+            this.Parent.AutoSize = true;
+            this.Parent.Location = new System.Drawing.Point(443, 53);
+            this.Parent.Name = "Parent";
+            this.Parent.Size = new System.Drawing.Size(38, 13);
+            this.Parent.TabIndex = 17;
+            this.Parent.Text = "Parent";
+            // 
+            // cmbParent
+            // 
+            this.cmbParent.FormattingEnabled = true;
+            this.cmbParent.Location = new System.Drawing.Point(282, 50);
+            this.cmbParent.Name = "cmbParent";
+            this.cmbParent.Size = new System.Drawing.Size(121, 21);
+            this.cmbParent.TabIndex = 16;
+            // 
+            // frmTask
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(676, 464);
+            this.Controls.Add(this.Parent);
+            this.Controls.Add(this.cmbParent);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnCreateTask);
@@ -205,7 +226,7 @@
             this.Controls.Add(this.PercentComplete);
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.txtName);
-            this.Name = "frmCreateTask";
+            this.Name = "frmTask";
             this.Text = "CreateTask";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -230,5 +251,7 @@
         private System.Windows.Forms.Button btnCreateTask;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label Parent;
+        private System.Windows.Forms.ComboBox cmbParent;
     }
 }

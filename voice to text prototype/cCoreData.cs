@@ -13,7 +13,6 @@ namespace voice_to_text_prototype
     {
         public Dictionary<Guid, cDescription> descriptions;
         public Dictionary<Guid, cEvent> events;
-        public Dictionary<Guid, cNode> nodes;
         public Dictionary<Guid, cTask> tasks;
 
         public List<string> foldersToWatch;
@@ -26,7 +25,6 @@ namespace voice_to_text_prototype
         {
             descriptions = new Dictionary<Guid, cDescription>();
             events = new Dictionary<Guid, cEvent>();
-            nodes = new Dictionary<Guid, cNode>();
             tasks = new Dictionary<Guid, cTask>();
             foldersToWatch = new List<string>();
             fileExtensionsToWatch = new List<string>();
@@ -38,7 +36,6 @@ namespace voice_to_text_prototype
         {
             descriptions = (Dictionary<Guid, cDescription>)info.GetValue("descriptions", typeof(Dictionary<Guid, cDescription>));
             events = (Dictionary<Guid, cEvent>)info.GetValue("event", typeof(Dictionary<Guid, cEvent>));
-            nodes = (Dictionary<Guid, cNode>)info.GetValue("node", typeof(Dictionary<Guid, cNode>));
             foldersToWatch = (List<string>)info.GetValue("folderstowatch", typeof(List<string>));
             fileExtensionsToWatch = (List<string>)info.GetValue("fileExtensionsToWatch", typeof(List<string>));
             exclusionList = (List<string>)info.GetValue("exclusionList", typeof(List<string>));
@@ -51,7 +48,6 @@ namespace voice_to_text_prototype
         {
             info.AddValue("descriptions", descriptions);
             info.AddValue("event", events);
-            info.AddValue("node", nodes);
             info.AddValue("folderstowatch", foldersToWatch);
             info.AddValue("fileExtensionsToWatch", fileExtensionsToWatch);
             info.AddValue("exclusionList", exclusionList);
