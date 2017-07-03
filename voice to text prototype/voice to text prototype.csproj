@@ -81,11 +81,11 @@
     <Compile Include="frmManageTasks.Designer.cs">
       <DependentUpon>frmManageTasks.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPopupEvent.cs">
+    <Compile Include="frmDescribeEvent.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPopupEvent.Designer.cs">
-      <DependentUpon>frmPopupEvent.cs</DependentUpon>
+    <Compile Include="frmDescribeEvent.Designer.cs">
+      <DependentUpon>frmDescribeEvent.cs</DependentUpon>
     </Compile>
     <Compile Include="frmPopupDescription.cs">
       <SubType>Form</SubType>
@@ -111,8 +111,8 @@
     <EmbeddedResource Include="frmManageTasks.resx">
       <DependentUpon>frmManageTasks.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPopupEvent.resx">
-      <DependentUpon>frmPopupEvent.cs</DependentUpon>
+    <EmbeddedResource Include="frmDescribeEvent.resx">
+      <DependentUpon>frmDescribeEvent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPopupDescription.resx">
       <DependentUpon>frmPopupDescription.cs</DependentUpon>

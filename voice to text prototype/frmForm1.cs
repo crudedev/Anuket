@@ -20,10 +20,13 @@ namespace voice_to_text_prototype
 
         private FolderBrowserDialog folderBrowserDialog1;
 
-        List<frmPopupEvent> popupEvents;
+        List<frmDescribeEvent> popupEvents;
 
         public CoreData c = new CoreData();
 
+        frmPopupDescription _pd;
+
+        int eventNumer = 0;
 
         public frmForm1()
         {
@@ -37,7 +40,7 @@ namespace voice_to_text_prototype
 
             loadCoreData();
 
-            popupEvents = new List<frmPopupEvent>();
+            popupEvents = new List<frmDescribeEvent>();
             c.events = new Dictionary<Guid, cEvent>();
 
             try
@@ -476,8 +479,13 @@ namespace voice_to_text_prototype
                 {
                     if (!ev.Value.popupDisplayed)
                     {
-                        frmPopupEvent pe = new frmPopupEvent(ev.Value);
-                        pe.Show();
+                        _pd.Close();
+                        _pd.Dispose();
+                        _pd = null;
+                        eventNumer++;
+                        _pd = new frmPopupDescription(eventNumer,ev.Value);
+                        _pd.Show();
+
                         ev.Value.popupDisplayed = true;
                     }
                 }
@@ -525,8 +533,8 @@ namespace voice_to_text_prototype
 
         private void button12_Click(object sender, EventArgs e)
         {
-            
-            frmTask ct = new frmTask(this ,new cTask(),false);
+
+            frmTask ct = new frmTask(this, new cTask(), false);
             ct.Show();
         }
     }

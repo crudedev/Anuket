@@ -20,9 +20,12 @@ namespace voice_to_text_prototype
         public DateTime datetimeOfEvent;
 
         public bool popupDisplayed = false;
+        public bool described = false;
+        public bool assaignedToTask = false;
 
         public Guid ID;
-        
+
+               
 
         public cEvent(string FileName, string Location, Dictionary<string,String> FilesEffected)
         {
@@ -59,6 +62,8 @@ namespace voice_to_text_prototype
             descriptions = (List<cDescription>)info.GetValue("descriptions", typeof(List<cDescription>));
             datetimeOfEvent = (DateTime)info.GetValue("datetimeOfEvent", typeof(DateTime));
             popupDisplayed = (bool)info.GetValue("popupDisplayed", typeof(bool));
+            assaignedToTask = (bool)info.GetValue("assaignedToTask", typeof(bool));
+            described = (bool)info.GetValue("described", typeof(bool));
 
             ID = (Guid)info.GetValue("guid", typeof(Guid));
         }
@@ -72,6 +77,8 @@ namespace voice_to_text_prototype
             info.AddValue("datetimeOfEvent", datetimeOfEvent);
             info.AddValue("popupDisplayed", popupDisplayed);
             info.AddValue("guid", ID);
+            info.AddValue("assaignedToTask", assaignedToTask);
+            info.AddValue("described", described);
 
         }
 

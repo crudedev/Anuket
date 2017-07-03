@@ -6,9 +6,9 @@ using System.Windows.Forms;
 
 namespace voice_to_text_prototype
 {
-    public partial class frmPopupEvent : Form
+    public partial class frmDescribeEvent : Form
     {
-        cEvent eve = new cEvent();
+        cTask _task = new cTask();
         cRecorder r;
         string pathToEXE;
         cDescription d;
@@ -17,11 +17,12 @@ namespace voice_to_text_prototype
 
         bool recordingInProgress = false;
 
-        public frmPopupEvent(cEvent e)
+        public frmDescribeEvent(cTask t)
         {
             InitializeComponent();
             pathToEXE = Directory.GetCurrentDirectory();
             d = new cDescription();
+            _task = t;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -77,5 +78,11 @@ namespace voice_to_text_prototype
         {
 
         }
+
+        private void frmPopupEvent_Load(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

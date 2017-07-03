@@ -60,7 +60,7 @@
             this.BtnCreateDescription.Text = "CreateDescription";
             this.BtnCreateDescription.UseVisualStyleBackColor = true;
             // 
-            // PopupDescription
+            // frmPopupDescription
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -68,8 +68,9 @@
             this.Controls.Add(this.BtnCreateDescription);
             this.Controls.Add(this.lblDescription);
             this.Controls.Add(this.lblEventDescription);
-            this.Name = "PopupDescription";
+            this.Name = "frmPopupDescription";
             this.Text = "Popup";
+            this.Load += new System.EventHandler(this.frmPopupDescription_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

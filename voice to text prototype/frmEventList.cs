@@ -9,7 +9,7 @@ namespace voice_to_text_prototype
     {
         frmForm1 _f;
 
-        string _selectedNode;
+        cTask _selectedTask;
 
         public EventList(frmForm1 f)
         {
@@ -19,12 +19,23 @@ namespace voice_to_text_prototype
 
         private void EventList_Load(object sender, EventArgs e)
         {
+            updateEventsAndTasks();
+
+
+        }
+
+        private void updateEventsAndTasks()
+        {
+            lstEvents.Items.Clear();
             foreach (var item in _f.c.events)
             {
-                //datetimeOfEvent.ToString() + item.Value.fileName
-                lstEvents.Items.Add(item.Value);
+                if (item.Value.assaignedToTask == false)
+                {
+                    lstEvents.Items.Add(item.Value);
+                }
             }
 
+            treeTasks.Nodes.Clear();
             foreach (var item in _f.c.tasks)
             {
                 if (item.Value.parents.Count == 0)
@@ -33,6 +44,11 @@ namespace voice_to_text_prototype
                     AddTreeNode(t, 0);
                 }
 
+            }
+
+            if (_selectedTask != null)
+            {
+                updateEventsUnderTask(_selectedTask);
             }
         }
 
@@ -51,7 +67,7 @@ namespace voice_to_text_prototype
                 {
                     if (parent.taskName == t.Text)
                     {
-                        TreeNode n= t.Nodes.Add(subitem.Value.taskName);
+                        TreeNode n = t.Nodes.Add(subitem.Value.taskName);
                         AddTreeNode(n, depth++);
                     }
                 }
@@ -121,30 +137,67 @@ namespace voice_to_text_prototype
 
         private void treeTasks_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            _selectedNode = e.Node.Text;
-        }
-
-        private void BtnAddToNewTask_Click(object sender, EventArgs e)
-        {
-            if(_selectedNode != "")
+            foreach (var item in _f.c.tasks)
             {
-                foreach (var item in _f.c.tasks)
+                if (item.Value.taskName == e.Node.Text)
                 {
-                    if(item.Value.taskName == _selectedNode)
-                    {
-                        if(item.Value.events == null)
-                        {
-                            item.Value.events = new List<cEvent>();
-                        }
-                        item.Value.events.Add((cEvent)lstEvents.SelectedItem);
-                    }
+                    _selectedTask = item.Value;
+                    updateEventsUnderTask(item.Value);
                 }
             }
         }
 
+        private void updateEventsUnderTask(cTask value)
+        {
+            int undescribed = 0;
+            lstEventsInTask.Items.Clear();
+            if (value.events != null)
+
+            {
+                foreach (var item in value.events)
+                {
+                    lstEventsInTask.Items.Add(item);
+                    if (item.described == false)
+                    {
+                        undescribed++;
+                    }
+                }
+            }
+            lblEventsInTask.Text = "Events (" + undescribed.ToString() + ") Undescribed";
+        }
+
+        private void BtnAddToNewTask_Click(object sender, EventArgs e)
+        {
+            if (_selectedTask != null)
+            {
+                foreach (var item in _f.c.tasks)
+                {
+                    if (item.Value.taskName == _selectedTask.taskName)
+                    {
+                        if (item.Value.events == null)
+                        {
+                            item.Value.events = new List<cEvent>();
+                        }
+                        cEvent ev = (cEvent)lstEvents.SelectedItem;
+                        item.Value.events.Add(ev);
+                        ev.assaignedToTask = true;
+                    }
+                }
+            }
+            updateEventsAndTasks();
+        }
+
         private void btnCreateTask_Click(object sender, EventArgs e)
         {
-            frmTask f = new frmTask(_f,new cTask(),false);
+            frmTask f = new frmTask(_f, new cTask(), false);
+        }
+
+        private void btnDescrineChanges_Click(object sender, EventArgs e)
+        {
+            if (_selectedTask == null)
+            {
+                frmDescribeEvent fde = new frmDescribeEvent(_selectedTask);
+            }
         }
     }
 }

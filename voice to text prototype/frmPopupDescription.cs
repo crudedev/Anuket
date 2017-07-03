@@ -12,14 +12,18 @@ namespace voice_to_text_prototype
 {
     public partial class frmPopupDescription : Form
     {
-        cEvent eve = new cEvent();
-
-        public frmPopupDescription(cEvent e)
+        
+        public frmPopupDescription(int EventNumber, cEvent ev)
         {
             InitializeComponent();
-
+            lblEventDescription.Text = "Event: " + EventNumber.ToString() + " # " + ev.fileName;
+            lblDescription.Text = "File Updated";
 
         }
 
+        private void frmPopupDescription_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
