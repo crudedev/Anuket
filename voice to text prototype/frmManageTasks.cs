@@ -31,9 +31,9 @@ namespace voice_to_text_prototype
 
             foreach (var item in _f.c.tasks)
             {
-                if (item.Value.Show == true)
+                if (item.Show == true)
                 {
-                    lstTasks.Items.Add(item.Value);
+                    lstTasks.Items.Add(item);
                 }
             }
         }
@@ -50,13 +50,13 @@ namespace voice_to_text_prototype
 
         private void btnDeleteTask_Click(object sender, EventArgs e)
         {
-            List<Guid> todelete = new List<Guid>();
+            List<cTask> todelete = new List<cTask>();
 
             foreach (var item in _f.c.tasks)
             {
-                if (item.Value == SelectedTask)
+                if (item == SelectedTask)
                 {
-                    todelete.Add(item.Key);
+                    todelete.Add(item);
                 }
             }
 

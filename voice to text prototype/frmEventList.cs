@@ -29,18 +29,18 @@ namespace voice_to_text_prototype
             lstEvents.Items.Clear();
             foreach (var item in _f.c.events)
             {
-                if (item.Value.assaignedToTask == false)
+                if (item.assaignedToTask == false)
                 {
-                    lstEvents.Items.Add(item.Value);
+                    lstEvents.Items.Add(item);
                 }
             }
 
             treeTasks.Nodes.Clear();
             foreach (var item in _f.c.tasks)
             {
-                if (item.Value.parents.Count == 0)
+                if (item.parents.Count == 0)
                 {
-                    TreeNode t = treeTasks.Nodes.Add(item.Value.taskName);
+                    TreeNode t = treeTasks.Nodes.Add(item.taskName);
                     AddTreeNode(t, 0);
                 }
 
@@ -63,11 +63,11 @@ namespace voice_to_text_prototype
 
             foreach (var subitem in _f.c.tasks)
             {
-                foreach (var parent in subitem.Value.parents)
+                foreach (var parent in subitem.parents)
                 {
                     if (parent.taskName == t.Text)
                     {
-                        TreeNode n = t.Nodes.Add(subitem.Value.taskName);
+                        TreeNode n = t.Nodes.Add(subitem.taskName);
                         AddTreeNode(n, depth++);
                     }
                 }
@@ -91,18 +91,18 @@ namespace voice_to_text_prototype
             {
                 if (start == new DateTime())
                 {
-                    start = ev.Value.datetimeOfEvent;
-                    end = ev.Value.datetimeOfEvent;
+                    start = ev.datetimeOfEvent;
+                    end = ev.datetimeOfEvent;
                 }
 
-                if (ev.Value.datetimeOfEvent < start)
+                if (ev.datetimeOfEvent < start)
                 {
-                    start = ev.Value.datetimeOfEvent;
+                    start = ev.datetimeOfEvent;
                 }
 
-                if (ev.Value.datetimeOfEvent > end)
+                if (ev.datetimeOfEvent > end)
                 {
-                    end = ev.Value.datetimeOfEvent;
+                    end = ev.datetimeOfEvent;
                 }
             }
 
@@ -120,7 +120,7 @@ namespace voice_to_text_prototype
             {
                 index++;
                 double width = 700;
-                TimeSpan ts = ev.Value.datetimeOfEvent.Subtract(start);
+                TimeSpan ts = ev.datetimeOfEvent.Subtract(start);
                 double seconds = ts.TotalSeconds;
 
                 double pixelpersecond = width / deltaSeconds;
@@ -139,10 +139,10 @@ namespace voice_to_text_prototype
         {
             foreach (var item in _f.c.tasks)
             {
-                if (item.Value.taskName == e.Node.Text)
+                if (item.taskName == e.Node.Text)
                 {
-                    _selectedTask = item.Value;
-                    updateEventsUnderTask(item.Value);
+                    _selectedTask = item;
+                    updateEventsUnderTask(item);
                 }
             }
         }
@@ -172,14 +172,14 @@ namespace voice_to_text_prototype
             {
                 foreach (var item in _f.c.tasks)
                 {
-                    if (item.Value.taskName == _selectedTask.taskName)
+                    if (item.taskName == _selectedTask.taskName)
                     {
-                        if (item.Value.events == null)
+                        if (item.events == null)
                         {
-                            item.Value.events = new List<cEvent>();
+                            item.events = new List<cEvent>();
                         }
                         cEvent ev = (cEvent)lstEvents.SelectedItem;
-                        item.Value.events.Add(ev);
+                        item.events.Add(ev);
                         ev.assaignedToTask = true;
                     }
                 }
@@ -194,9 +194,10 @@ namespace voice_to_text_prototype
 
         private void btnDescrineChanges_Click(object sender, EventArgs e)
         {
-            if (_selectedTask == null)
+            if (_selectedTask != null)
             {
                 frmDescribeEvent fde = new frmDescribeEvent(_selectedTask);
+                fde.Show();
             }
         }
     }

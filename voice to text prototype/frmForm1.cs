@@ -41,7 +41,7 @@ namespace voice_to_text_prototype
             loadCoreData();
 
             popupEvents = new List<frmDescribeEvent>();
-            c.events = new Dictionary<Guid, cEvent>();
+            c.events = new List<cEvent>();
 
             try
             {
@@ -122,12 +122,12 @@ namespace voice_to_text_prototype
         {
             if (c.tasks == null)
             {
-                c.tasks = new Dictionary<Guid, cTask>();
+                c.tasks = new  List<cTask>();
             }
             lstTask.Items.Clear();
             foreach (var item in c.tasks)
             {
-                lstTask.Items.Add(item.Value.taskName);
+                lstTask.Items.Add(item.taskName);
             }
         }
 
@@ -459,9 +459,9 @@ namespace voice_to_text_prototype
             cEvent e = new cEvent(filename, Location, asd);
             if (c.events == null)
             {
-                c.events = new Dictionary<Guid, cEvent>();
+                c.events = new List<cEvent>();
             }
-            c.events.Add(Guid.NewGuid(), e);
+            c.events.Add(e);
 
 
         }
@@ -475,18 +475,23 @@ namespace voice_to_text_prototype
         {
             if (c.events != null)
             {
-                foreach (var ev in c.events)
+                for (int i = 0; i < c.events.Count; i++)
                 {
-                    if (!ev.Value.popupDisplayed)
+
+                    if (!c.events[i].popupDisplayed)
                     {
+                        if(_pd!=null)
+                        {
                         _pd.Close();
                         _pd.Dispose();
                         _pd = null;
+                        }
+ 
                         eventNumer++;
-                        _pd = new frmPopupDescription(eventNumer,ev.Value);
+                        _pd = new frmPopupDescription(eventNumer, c.events[i]);
                         _pd.Show();
 
-                        ev.Value.popupDisplayed = true;
+                        c.events[i].popupDisplayed = true;
                     }
                 }
             }
@@ -501,7 +506,7 @@ namespace voice_to_text_prototype
         private void button11_Click(object sender, EventArgs e)
         {
 
-            c.events = new Dictionary<Guid, cEvent>();
+            c.events = new List<cEvent>();
             Random r = new Random();
             for (int i = 0; i < 10; i++)
             {
@@ -519,7 +524,7 @@ namespace voice_to_text_prototype
                 d.notes = new List<string>();
                 d.notes.Add("this is a note + " + Guid.NewGuid().ToString());
 
-                c.events.Add(Guid.NewGuid(), ev);
+                c.events.Add(ev);
             }
 
 

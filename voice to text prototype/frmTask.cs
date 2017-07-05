@@ -60,7 +60,7 @@ namespace voice_to_text_prototype
             {
                 foreach (var item in _f.c.tasks)
                 {
-                    cmbParent.Items.Add(item.Value.taskName);
+                    cmbParent.Items.Add(item.taskName);
                 }
             }
 
@@ -164,11 +164,11 @@ namespace voice_to_text_prototype
 
             if (_f.c.tasks == null)
             {
-                _f.c.tasks = new Dictionary<Guid, cTask>();
+                _f.c.tasks = new List<cTask>();
             }
             if (!_extant)
             {
-                _f.c.tasks.Add(Guid.NewGuid(), _t);
+                _f.c.tasks.Add(_t);
             }
 
 
@@ -181,9 +181,9 @@ namespace voice_to_text_prototype
             {
                 foreach (var item in _f.c.tasks)
                 {
-                    if (item.Value.taskName == cmbParent.Text)
+                    if (item.taskName == cmbParent.Text)
                     {
-                        _t.parents.Add(item.Value);
+                        _t.parents.Add(item);
                     }
                 }
             }
