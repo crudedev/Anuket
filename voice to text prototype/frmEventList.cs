@@ -196,7 +196,7 @@ namespace voice_to_text_prototype
         {
             if (_selectedTask != null)
             {
-                frmDescribeEvent fde = new frmDescribeEvent(_selectedTask);
+                frmDescribeEvent fde = new frmDescribeEvent(_selectedTask,_f.c);
                 fde.Show();
             }
         }

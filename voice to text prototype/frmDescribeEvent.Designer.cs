@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnSaveDescription = new System.Windows.Forms.Button();
+            this.btnStartAudio = new System.Windows.Forms.Button();
+            this.btnStopAudio = new System.Windows.Forms.Button();
             this.lblTaskName = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnTranscribe = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.lstEvents = new System.Windows.Forms.ListBox();
@@ -48,34 +48,35 @@
             this.textBox1.Size = new System.Drawing.Size(521, 79);
             this.textBox1.TabIndex = 0;
             // 
-            // button1
+            // btnSaveDescription
             // 
-            this.button1.Location = new System.Drawing.Point(947, 253);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Save Text";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnSaveDescription.Location = new System.Drawing.Point(947, 253);
+            this.btnSaveDescription.Name = "btnSaveDescription";
+            this.btnSaveDescription.Size = new System.Drawing.Size(75, 23);
+            this.btnSaveDescription.TabIndex = 1;
+            this.btnSaveDescription.Text = "Save Text";
+            this.btnSaveDescription.UseVisualStyleBackColor = true;
+            this.btnSaveDescription.Click += new System.EventHandler(this.btnSaveDescription_Click);
             // 
-            // button2
+            // btnStartAudio
             // 
-            this.button2.Location = new System.Drawing.Point(420, 51);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Start Audio";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnStartAudio.Location = new System.Drawing.Point(420, 51);
+            this.btnStartAudio.Name = "btnStartAudio";
+            this.btnStartAudio.Size = new System.Drawing.Size(75, 23);
+            this.btnStartAudio.TabIndex = 2;
+            this.btnStartAudio.Text = "Start Audio";
+            this.btnStartAudio.UseVisualStyleBackColor = true;
+            this.btnStartAudio.Click += new System.EventHandler(this.btnStartAudio_Click);
             // 
-            // button3
+            // btnStopAudio
             // 
-            this.button3.Location = new System.Drawing.Point(519, 51);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Stop Audio";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnStopAudio.Location = new System.Drawing.Point(519, 51);
+            this.btnStopAudio.Name = "btnStopAudio";
+            this.btnStopAudio.Size = new System.Drawing.Size(75, 23);
+            this.btnStopAudio.TabIndex = 3;
+            this.btnStopAudio.Text = "Stop Audio";
+            this.btnStopAudio.UseVisualStyleBackColor = true;
+            this.btnStopAudio.Click += new System.EventHandler(this.btnStopAudio_Click);
             // 
             // lblTaskName
             // 
@@ -86,15 +87,15 @@
             this.lblTaskName.TabIndex = 4;
             this.lblTaskName.Text = "Task Name:";
             // 
-            // button4
+            // btnTranscribe
             // 
-            this.button4.Location = new System.Drawing.Point(700, 51);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 5;
-            this.button4.Text = "Transcribe";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.btnTranscribe.Location = new System.Drawing.Point(700, 51);
+            this.btnTranscribe.Name = "btnTranscribe";
+            this.btnTranscribe.Size = new System.Drawing.Size(75, 23);
+            this.btnTranscribe.TabIndex = 5;
+            this.btnTranscribe.Text = "Transcribe";
+            this.btnTranscribe.UseVisualStyleBackColor = true;
+            this.btnTranscribe.Click += new System.EventHandler(this.btnTranscribe_Click);
             // 
             // textBox2
             // 
@@ -121,7 +122,7 @@
             this.lstEvents.Size = new System.Drawing.Size(386, 264);
             this.lstEvents.TabIndex = 8;
             // 
-            // frmPopupEvent
+            // frmDescribeEvent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -129,13 +130,13 @@
             this.Controls.Add(this.lstEvents);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.btnTranscribe);
             this.Controls.Add(this.lblTaskName);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnStopAudio);
+            this.Controls.Add(this.btnStartAudio);
+            this.Controls.Add(this.btnSaveDescription);
             this.Controls.Add(this.textBox1);
-            this.Name = "frmPopupEvent";
+            this.Name = "frmDescribeEvent";
             this.Text = "Popup";
             this.Load += new System.EventHandler(this.frmPopupEvent_Load);
             this.ResumeLayout(false);
@@ -146,11 +147,11 @@
         #endregion
 
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnSaveDescription;
+        private System.Windows.Forms.Button btnStartAudio;
+        private System.Windows.Forms.Button btnStopAudio;
         private System.Windows.Forms.Label lblTaskName;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnTranscribe;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListBox lstEvents;

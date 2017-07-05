@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
@@ -21,6 +22,13 @@ namespace voice_to_text_prototype
 
         public Dictionary<string, string> tags;
 
+        public readonly string stCredentials;
+        public readonly string tsCredentials;
+
+        public readonly string pathToEXE;
+
+        cRecorder r;
+
         public CoreData()
         {
             descriptions = new List<cDescription>();
@@ -30,6 +38,15 @@ namespace voice_to_text_prototype
             fileExtensionsToWatch = new List<string>();
             exclusionList = new List<string>();
             tags = new Dictionary<string, string>();
+
+
+            pathToEXE = Directory.GetCurrentDirectory();
+
+            r = new cRecorder(0, pathToEXE + @"\WavStore\", Guid.NewGuid() + "test.wav");
+
+            stCredentials = File.ReadAllText(pathToEXE + @"\stcredentials.txt");
+            tsCredentials = File.ReadAllText(pathToEXE + @"\tscredentials.txt");
+
         }
 
         public CoreData(SerializationInfo info, StreamingContext ctxt)
