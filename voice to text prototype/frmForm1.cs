@@ -172,15 +172,31 @@ namespace voice_to_text_prototype
             {
                 if (path != "")
                 {
+                    List<string> toremove = new List<string>();
                     foreach (var extension in c.fileExtensionsToWatch)
                     {
+                        try
+                        {
+                            FileSystemWatcher watcher = new FileSystemWatcher();
+                            watcher.Path = path;
+                            watcher.NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName | NotifyFilters.DirectoryName | NotifyFilters.CreationTime;
+                            watcher.Changed += new FileSystemEventHandler(OnChanged);
+                            watcher.EnableRaisingEvents = true;
+                        }
+                        catch (Exception)
+                        {
+                            
+                        }
 
-                        FileSystemWatcher watcher = new FileSystemWatcher();
-                        watcher.Path = path;
-                        watcher.NotifyFilter = NotifyFilters.LastWrite | NotifyFilters.FileName | NotifyFilters.DirectoryName | NotifyFilters.CreationTime;
-                        watcher.Changed += new FileSystemEventHandler(OnChanged);
-                        watcher.EnableRaisingEvents = true;
+                        
+                    }
 
+                    if (toremove != null)
+                    {
+                        foreach (var item in toremove)
+                        {
+                            c.foldersToWatch.Remove(item);
+                        }
                     }
                 }
                 lstWatchPath.Items.Add(path);
