@@ -35,7 +35,7 @@ C:\Users\Derp\ownCloud\Anuket\voice to text prototype\bin\Debug\System.Managemen
 C:\Users\Derp\ownCloud\Anuket\voice to text prototype\bin\Debug\NAudio.xml
 C:\Users\Derp\ownCloud\Anuket\voice to text prototype\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Derp\ownCloud\Anuket\voice to text prototype\obj\Debug\voice_to_text_prototype.frmTask.resources
-C:\Users\Derp\ownCloud\Anuket\voice to text prototype\obj\Debug\voice_to_text_prototype.EventList.resources
+C:\Users\Derp\ownCloud\Anuket\voice to text prototype\obj\Debug\voice_to_text_prototype.frmEventList.resources
 C:\Users\Derp\ownCloud\Anuket\voice to text prototype\obj\Debug\voice_to_text_prototype.frmForm1.resources
 C:\Users\Derp\ownCloud\Anuket\voice to text prototype\obj\Debug\voice_to_text_prototype.frmManageTasks.resources
 C:\Users\Derp\ownCloud\Anuket\voice to text prototype\obj\Debug\voice_to_text_prototype.frmDescribeEvent.resources

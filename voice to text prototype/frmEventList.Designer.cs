@@ -1,6 +1,6 @@
 ﻿namespace voice_to_text_prototype
 {
-    partial class EventList
+    partial class frmEventList
     {
         /// <summary>
         /// Required designer variable.

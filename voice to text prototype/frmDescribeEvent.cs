@@ -14,9 +14,12 @@ namespace voice_to_text_prototype
         cDescription d;
 
         List<string> _guid;
+        List<string> _transcriptions;
 
         bool recordingInProgress = false;
         CoreData _c;
+
+        List<string> _filePaths;
 
         public frmDescribeEvent(cTask t, CoreData c)
         {
@@ -47,7 +50,7 @@ namespace voice_to_text_prototype
 
                 recordingInProgress = true;
                 _guid.Add(Guid.NewGuid().ToString());
-                d.AudioPaths.Add(_guid[_guid.Count-1]);
+                d.AudioPaths.Add(_guid[_guid.Count - 1]);
 
                 r = new cRecorder(0, _c.pathToEXE + @"\WavStore\", _guid + @".wav");
                 r.StartRecording();
@@ -129,11 +132,52 @@ namespace voice_to_text_prototype
                 throw;
             }
 
-           
+            txtTransciption.Text = ret;
+
+            if (_transcriptions == null)
+            {
+                _transcriptions = new List<string>();
+            }
+            _transcriptions.Add(ret);
+
         }
 
         private void btnSaveDescription_Click(object sender, EventArgs e)
         {
+            d.AudioPaths = _guid;
+
+            if (txtNotes.Text != "")
+            {
+                d.notes = new List<string>();
+                d.notes.Add(txtNotes.Text);
+            }
+
+            d.transcriptions = _transcriptions;
+
+
+        }
+
+        private void btnAttachFile_Click(object sender, EventArgs e)
+        {
+
+            OpenFileDialog d = new OpenFileDialog();
+            if (d.ShowDialog() == DialogResult.OK)
+            {
+                Stream file = d.OpenFile();
+
+                string[] fileNameParts = d.FileName.Split('.');
+                FileStream fileStream = File.Create(_c.pathToEXE + @"\DataStore\" + Guid.NewGuid() + "." + fileNameParts[fileNameParts.Length - 1], (int)file.Length);
+                byte[] bytesInStream = new byte[file.Length];
+                file.Read(bytesInStream, 0, bytesInStream.Length);
+                fileStream.Write(bytesInStream, 0, bytesInStream.Length);
+                fileStream.Flush();
+                fileStream.Close();
+            }
+
+
+            //show a list of attached files
+
+
 
         }
     }

@@ -5,13 +5,13 @@ using System.Windows.Forms;
 
 namespace voice_to_text_prototype
 {
-    public partial class EventList : Form
+    public partial class frmEventList : Form
     {
         frmForm1 _f;
 
         cTask _selectedTask;
 
-        public EventList(frmForm1 f)
+        public frmEventList(frmForm1 f)
         {
             InitializeComponent();
             _f = f;
@@ -20,8 +20,6 @@ namespace voice_to_text_prototype
         private void EventList_Load(object sender, EventArgs e)
         {
             updateEventsAndTasks();
-
-
         }
 
         private void updateEventsAndTasks()
@@ -43,7 +41,6 @@ namespace voice_to_text_prototype
                     TreeNode t = treeTasks.Nodes.Add(item.taskName);
                     AddTreeNode(t, 0);
                 }
-
             }
 
             if (_selectedTask != null)

@@ -24,14 +24,15 @@ namespace voice_to_text_prototype
         public List<string> notes;
         public List<string> AudioPaths;
         public List<string> transcriptions;
-        public List<string> attachments;
+        public Dictionary<string,string> attachments;
 
         public cDescription()
         {
             notes = new List<string>();
             AudioPaths = new List<string>();
             transcriptions = new List<string>();
-            attachments = new List<string>();
+            attachments = new Dictionary<string, string>();
+            descriptionCreated = DateTime.Now;
 
         }
 
@@ -45,7 +46,7 @@ namespace voice_to_text_prototype
             notes = (List<string>)info.GetValue("notes", typeof(List<string>));
             AudioPaths = (List<string>)info.GetValue("AudioPaths", typeof(List<string>));
             transcriptions = (List<string>)info.GetValue("transcriptions", typeof(List<string>));
-            attachments = (List<string>)info.GetValue("attachments", typeof(List<string>));
+            attachments = (Dictionary<string,string>)info.GetValue("attachments", typeof(Dictionary<string, string>));
         }
 
         public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
@@ -59,7 +60,7 @@ namespace voice_to_text_prototype
             info.AddValue("attachments", attachments);
 
         }
-
+        
     }
 }
 

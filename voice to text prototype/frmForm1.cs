@@ -488,8 +488,8 @@ namespace voice_to_text_prototype
                         }
  
                         eventNumer++;
-                        _pd = new frmPopupDescription(eventNumer, c.events[i]);
-                        _pd.Show();
+                        _pd = new frmPopupDescription(this, eventNumer, c.events[i]);
+                        _pd.Show(); 
 
                         c.events[i].popupDisplayed = true;
                     }
@@ -499,7 +499,7 @@ namespace voice_to_text_prototype
 
         private void button10_Click(object sender, EventArgs e)
         {
-            EventList ex = new EventList(this);
+            frmEventList ex = new frmEventList(this);
             ex.Show();
         }
 

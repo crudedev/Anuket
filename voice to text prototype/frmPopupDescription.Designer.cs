@@ -57,8 +57,9 @@
             this.BtnCreateDescription.Name = "BtnCreateDescription";
             this.BtnCreateDescription.Size = new System.Drawing.Size(106, 39);
             this.BtnCreateDescription.TabIndex = 2;
-            this.BtnCreateDescription.Text = "CreateDescription";
+            this.BtnCreateDescription.Text = "View Events";
             this.BtnCreateDescription.UseVisualStyleBackColor = true;
+            this.BtnCreateDescription.Click += new System.EventHandler(this.BtnCreateDescription_Click);
             // 
             // frmPopupDescription
             // 
