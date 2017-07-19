@@ -12,11 +12,13 @@ namespace voice_to_text_prototype
     public class cTask : ISerializable
     {
         public string taskName;
-        public string description;
+        //public string description;
         public DateTime created;
         public DateTime finsihed;
         public DateTime target;
         public bool Show;
+
+        public List<cDescription> descriptions;
 
         public int priority;
         public Dictionary<string,string> tags;
@@ -54,7 +56,7 @@ namespace voice_to_text_prototype
         public cTask(SerializationInfo info, StreamingContext ctxt)
         {
             taskName = (string)info.GetValue("taskName", typeof(string));
-            description = (string)info.GetValue("description", typeof(string));
+          //  description = (string)info.GetValue("description", typeof(string));
             created = (DateTime)info.GetValue("filesEffected", typeof(DateTime));
             finsihed = (DateTime)info.GetValue("finsihed", typeof(DateTime));
             target = (DateTime)info.GetValue("target", typeof(DateTime));
@@ -70,7 +72,7 @@ namespace voice_to_text_prototype
         public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
         {
             info.AddValue("taskName", taskName);
-            info.AddValue("description", description);
+         //   info.AddValue("description", description);
             info.AddValue("created", created);
             info.AddValue("finsihed", finsihed);
             info.AddValue("target", target);

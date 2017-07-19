@@ -88,7 +88,6 @@ namespace voice_to_text_prototype
             recordingInProgress = false;
         }
 
-
         private void frmPopupEvent_Load(object sender, EventArgs e)
         {
             lblTaskName.Text = "Task: " + _task.taskName;
@@ -154,7 +153,13 @@ namespace voice_to_text_prototype
 
             d.transcriptions = _transcriptions;
 
+            if(_task.descriptions == null)
+            {
+                _task.descriptions = new List<cDescription>();
+            }
+            _task.descriptions.Add(d);
 
+            this.Close();
         }
 
         private void btnAttachFile_Click(object sender, EventArgs e)

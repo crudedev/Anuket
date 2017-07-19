@@ -187,6 +187,7 @@ namespace voice_to_text_prototype
         private void btnCreateTask_Click(object sender, EventArgs e)
         {
             frmTask f = new frmTask(_f, new cTask(), false);
+            f.Show();
         }
 
         private void btnDescrineChanges_Click(object sender, EventArgs e)
