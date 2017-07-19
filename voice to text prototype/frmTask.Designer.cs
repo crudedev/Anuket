@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.txtName = new System.Windows.Forms.TextBox();
-            this.txtDescription = new System.Windows.Forms.TextBox();
+            this.txtNotes = new System.Windows.Forms.TextBox();
             this.PercentComplete = new System.Windows.Forms.ProgressBar();
             this.targetDate = new System.Windows.Forms.DateTimePicker();
             this.cmbPriority = new System.Windows.Forms.ComboBox();
@@ -56,14 +56,14 @@
             this.txtName.TabIndex = 0;
             this.txtName.Text = "Task Name:";
             // 
-            // txtDescription
+            // txtNotes
             // 
-            this.txtDescription.Location = new System.Drawing.Point(25, 50);
-            this.txtDescription.Multiline = true;
-            this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(235, 202);
-            this.txtDescription.TabIndex = 1;
-            this.txtDescription.Text = "Task Description:";
+            this.txtNotes.Location = new System.Drawing.Point(25, 50);
+            this.txtNotes.Multiline = true;
+            this.txtNotes.Name = "txtNotes";
+            this.txtNotes.Size = new System.Drawing.Size(235, 202);
+            this.txtNotes.TabIndex = 1;
+            this.txtNotes.Text = "task Notes";
             // 
             // PercentComplete
             // 
@@ -224,7 +224,7 @@
             this.Controls.Add(this.cmbPriority);
             this.Controls.Add(this.targetDate);
             this.Controls.Add(this.PercentComplete);
-            this.Controls.Add(this.txtDescription);
+            this.Controls.Add(this.txtNotes);
             this.Controls.Add(this.txtName);
             this.Name = "frmTask";
             this.Text = "CreateTask";
@@ -236,7 +236,7 @@
         #endregion
 
         private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.TextBox txtDescription;
+        private System.Windows.Forms.TextBox txtNotes;
         private System.Windows.Forms.ProgressBar PercentComplete;
         private System.Windows.Forms.DateTimePicker targetDate;
         private System.Windows.Forms.ComboBox cmbPriority;

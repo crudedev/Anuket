@@ -12,7 +12,7 @@ namespace voice_to_text_prototype
     public class cTask : ISerializable
     {
         public string taskName;
-        //public string description;
+        public string notes;
         public DateTime created;
         public DateTime finsihed;
         public DateTime target;
@@ -56,10 +56,11 @@ namespace voice_to_text_prototype
         public cTask(SerializationInfo info, StreamingContext ctxt)
         {
             taskName = (string)info.GetValue("taskName", typeof(string));
-          //  description = (string)info.GetValue("description", typeof(string));
+            notes = (string)info.GetValue("notes", typeof(string));
             created = (DateTime)info.GetValue("filesEffected", typeof(DateTime));
             finsihed = (DateTime)info.GetValue("finsihed", typeof(DateTime));
             target = (DateTime)info.GetValue("target", typeof(DateTime));
+            descriptions = (List<cDescription>)info.GetValue("descriptions", typeof(cDescription));
             priority = (int)info.GetValue("priority", typeof(int));
             tags = (Dictionary<string,string>)info.GetValue("tags", typeof(Dictionary<string, string>));
             percentComplete = (int)info.GetValue("percentcomplete", typeof(int));
@@ -72,10 +73,11 @@ namespace voice_to_text_prototype
         public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
         {
             info.AddValue("taskName", taskName);
-         //   info.AddValue("description", description);
+            info.AddValue("notes", notes);
             info.AddValue("created", created);
             info.AddValue("finsihed", finsihed);
             info.AddValue("target", target);
+            info.AddValue("descriptions", descriptions);
             info.AddValue("priority", priority);
             info.AddValue("tagas", tags);
             info.AddValue("percantagecomplete",percentComplete);

@@ -40,7 +40,7 @@ namespace voice_to_text_prototype
 
 
             txtName.Text = _t.taskName;
-            txtDescription.Text = _t.description;
+            txtNotes.Text = _t.notes;
             foreach (var item in _t.tags)
             {
                 lstTags.Items.Add(item);
@@ -151,7 +151,7 @@ namespace voice_to_text_prototype
         private void btnCreateTask_Click(object sender, EventArgs e)
         {
             _t.created = DateTime.Now;
-            _t.description = txtDescription.Text;
+            _t.notes = txtNotes.Text;
             _t.percentComplete = PercentComplete.Value;
             _t.priority = Convert.ToInt32(cmbPriority.Text);
             _t.target = targetDate.Value.Date;
