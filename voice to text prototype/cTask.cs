@@ -51,6 +51,11 @@ namespace voice_to_text_prototype
             ttype.Add("Goal", 0);
             ttype.Add("ACtion", 1);
             ttype.Add("Project", 2);
+
+            parents = new List<cTask>();
+            events = new List<cEvent>();
+            tags = new Dictionary<string, string>();
+            descriptions = new List<cDescription>();
         }
 
         public cTask(SerializationInfo info, StreamingContext ctxt)

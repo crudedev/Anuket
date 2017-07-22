@@ -543,6 +543,23 @@ namespace voice_to_text_prototype
                 c.events.Add(ev);
             }
 
+            c.tasks = new List<cTask>();
+
+            for (int i = 0; i < 10; i++)
+            {
+                cTask tt = new cTask();
+                tt.created = DateTime.Now - TimeSpan.FromSeconds(r.NextDouble() * 500);
+                tt.descriptions = new List<cDescription>();
+                tt.notes = "asdf;lkjhasdflkjasdflkjasdlkfjasldkjl;askjdfl;kjasdfkljhasdklfhaskdlfhkljfhsgasljhd";
+                tt.percentComplete = r.Next(99);
+                tt.priority = r.Next(99);
+                tt.target = DateTime.Now + TimeSpan.FromHours(r.NextDouble() * 500);
+                tt.taskName = "asd;lfjasdl;kjal;skdf" + r.Next(10000).ToString();
+                tt.typeOfTask = Convert.ToInt32(cTask.tasktype.Goal);
+
+                c.tasks.Add(tt);
+            }
+
 
         }
 
@@ -557,6 +574,13 @@ namespace voice_to_text_prototype
 
             frmTask ct = new frmTask(this, new cTask(), false);
             ct.Show();
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            frmTaskOverview f = new frmTaskOverview(c, this);
+            f.Show();
+            
         }
     }
 }

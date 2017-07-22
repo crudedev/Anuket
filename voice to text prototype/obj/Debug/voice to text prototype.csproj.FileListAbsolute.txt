@@ -52,16 +52,14 @@ C:\Users\Dank\ownCloud\Anuket\voice to text prototype\bin\Debug\Newtonsoft.Json.
 C:\Users\Dank\ownCloud\Anuket\voice to text prototype\bin\Debug\System.Management.Automation.dll
 C:\Users\Dank\ownCloud\Anuket\voice to text prototype\bin\Debug\NAudio.xml
 C:\Users\Dank\ownCloud\Anuket\voice to text prototype\bin\Debug\Newtonsoft.Json.xml
-C:\Users\Dank\ownCloud\Anuket\voice to text prototype\obj\Debug\voice to text prototype.csprojResolveAssemblyReference.cache
 C:\Users\Dank\ownCloud\Anuket\voice to text prototype\obj\Debug\voice_to_text_prototype.frmTask.resources
 C:\Users\Dank\ownCloud\Anuket\voice to text prototype\obj\Debug\voice_to_text_prototype.frmEventList.resources
 C:\Users\Dank\ownCloud\Anuket\voice to text prototype\obj\Debug\voice_to_text_prototype.frmForm1.resources
 C:\Users\Dank\ownCloud\Anuket\voice to text prototype\obj\Debug\voice_to_text_prototype.frmManageTasks.resources
 C:\Users\Dank\ownCloud\Anuket\voice to text prototype\obj\Debug\voice_to_text_prototype.frmDescribeEvent.resources
 C:\Users\Dank\ownCloud\Anuket\voice to text prototype\obj\Debug\voice_to_text_prototype.frmPopupDescription.resources
+C:\Users\Dank\ownCloud\Anuket\voice to text prototype\obj\Debug\voice_to_text_prototype.frmTaskOverview.resources
 C:\Users\Dank\ownCloud\Anuket\voice to text prototype\obj\Debug\voice_to_text_prototype.Properties.Resources.resources
 C:\Users\Dank\ownCloud\Anuket\voice to text prototype\obj\Debug\voice to text prototype.csproj.GenerateResource.Cache
 C:\Users\Dank\ownCloud\Anuket\voice to text prototype\obj\Debug\voice to text prototype.exe
 C:\Users\Dank\ownCloud\Anuket\voice to text prototype\obj\Debug\voice to text prototype.pdb
-C:\Users\Dank\ownCloud\Anuket\voice to text prototype\bin\Debug\voice to text prototype.exe.CodeAnalysisLog.xml
-C:\Users\Dank\ownCloud\Anuket\voice to text prototype\bin\Debug\voice to text prototype.exe.lastcodeanalysissucceeded

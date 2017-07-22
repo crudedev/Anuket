@@ -53,6 +53,7 @@
             this.lstTask = new System.Windows.Forms.ListBox();
             this.button14 = new System.Windows.Forms.Button();
             this.cmbPriority = new System.Windows.Forms.ComboBox();
+            this.button15 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -276,11 +277,22 @@
             this.cmbPriority.Size = new System.Drawing.Size(121, 21);
             this.cmbPriority.TabIndex = 25;
             // 
-            // Form1
+            // button15
+            // 
+            this.button15.Location = new System.Drawing.Point(222, 180);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(92, 19);
+            this.button15.TabIndex = 26;
+            this.button15.Text = "Goal Overview";
+            this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
+            // 
+            // frmForm1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1141, 443);
+            this.Controls.Add(this.button15);
             this.Controls.Add(this.cmbPriority);
             this.Controls.Add(this.button14);
             this.Controls.Add(this.lstTask);
@@ -304,7 +316,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
-            this.Name = "Form1";
+            this.Name = "frmForm1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
@@ -338,6 +350,7 @@
         private System.Windows.Forms.ListBox lstTask;
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.ComboBox cmbPriority;
+        private System.Windows.Forms.Button button15;
     }
 }
 
