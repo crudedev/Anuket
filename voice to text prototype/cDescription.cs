@@ -22,14 +22,14 @@ namespace voice_to_text_prototype
         //2 attachmnet 
 
         public List<string> notes;
-        public List<string> AudioPaths;
+        public List<string> audioPaths;
         public List<string> transcriptions;
         public Dictionary<string,string> attachments;
 
         public cDescription()
         {
             notes = new List<string>();
-            AudioPaths = new List<string>();
+            audioPaths = new List<string>();
             transcriptions = new List<string>();
             attachments = new Dictionary<string, string>();
             descriptionCreated = DateTime.Now;
@@ -44,7 +44,7 @@ namespace voice_to_text_prototype
 
 
             notes = (List<string>)info.GetValue("notes", typeof(List<string>));
-            AudioPaths = (List<string>)info.GetValue("AudioPaths", typeof(List<string>));
+            audioPaths = (List<string>)info.GetValue("AudioPaths", typeof(List<string>));
             transcriptions = (List<string>)info.GetValue("transcriptions", typeof(List<string>));
             attachments = (Dictionary<string,string>)info.GetValue("attachments", typeof(Dictionary<string, string>));
         }
@@ -55,12 +55,36 @@ namespace voice_to_text_prototype
             info.AddValue("label", label);
             info.AddValue("descriptionType", descriptionType);
             info.AddValue("notes", notes);
-            info.AddValue("AudioPaths", AudioPaths);
+            info.AddValue("AudioPaths", audioPaths);
             info.AddValue("transcriptions", transcriptions);
             info.AddValue("attachments", attachments);
 
         }
-        
+
+        public override string ToString()
+        {
+            string name = "";
+
+            name += descriptionCreated.ToString() + "  " + label;
+
+            if (notes.Count > 0)
+            {
+                name += " Notes:" + notes.Count.ToString();
+            }
+
+            if(audioPaths.Count >0)
+            {
+                name += " Audio:" + audioPaths.Count.ToString();
+            }
+
+            if(attachments.Count >0)
+            {
+                name += " Attachd:" + attachments.Count.ToString();
+            }
+
+            return name;
+        }
+
     }
 }
 

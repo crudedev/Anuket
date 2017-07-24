@@ -46,6 +46,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.Parent = new System.Windows.Forms.Label();
             this.cmbParent = new System.Windows.Forms.ComboBox();
+            this.lstDescriptions = new System.Windows.Forms.ListBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnAddDescription = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtName
@@ -160,7 +163,7 @@
             // 
             // btnCreateTask
             // 
-            this.btnCreateTask.Location = new System.Drawing.Point(581, 420);
+            this.btnCreateTask.Location = new System.Drawing.Point(938, 420);
             this.btnCreateTask.Name = "btnCreateTask";
             this.btnCreateTask.Size = new System.Drawing.Size(77, 32);
             this.btnCreateTask.TabIndex = 13;
@@ -203,11 +206,42 @@
             this.cmbParent.Size = new System.Drawing.Size(121, 21);
             this.cmbParent.TabIndex = 16;
             // 
+            // lstDescriptions
+            // 
+            this.lstDescriptions.FormattingEnabled = true;
+            this.lstDescriptions.Location = new System.Drawing.Point(705, 45);
+            this.lstDescriptions.Name = "lstDescriptions";
+            this.lstDescriptions.Size = new System.Drawing.Size(310, 342);
+            this.lstDescriptions.TabIndex = 18;
+            this.lstDescriptions.SelectedIndexChanged += new System.EventHandler(this.lstDescriptions_SelectedIndexChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(702, 24);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(65, 13);
+            this.label5.TabIndex = 19;
+            this.label5.Text = "Descriptions";
+            // 
+            // btnAddDescription
+            // 
+            this.btnAddDescription.Location = new System.Drawing.Point(705, 420);
+            this.btnAddDescription.Name = "btnAddDescription";
+            this.btnAddDescription.Size = new System.Drawing.Size(95, 32);
+            this.btnAddDescription.TabIndex = 20;
+            this.btnAddDescription.Text = "Add Descriptions";
+            this.btnAddDescription.UseVisualStyleBackColor = true;
+            this.btnAddDescription.Click += new System.EventHandler(this.btnAddDescription_Click);
+            // 
             // frmTask
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(676, 464);
+            this.ClientSize = new System.Drawing.Size(1035, 464);
+            this.Controls.Add(this.btnAddDescription);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.lstDescriptions);
             this.Controls.Add(this.Parent);
             this.Controls.Add(this.cmbParent);
             this.Controls.Add(this.label4);
@@ -253,5 +287,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label Parent;
         private System.Windows.Forms.ComboBox cmbParent;
+        private System.Windows.Forms.ListBox lstDescriptions;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnAddDescription;
     }
 }

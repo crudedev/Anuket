@@ -50,7 +50,7 @@ namespace voice_to_text_prototype
 
                 recordingInProgress = true;
                 _guid.Add(Guid.NewGuid().ToString());
-                d.AudioPaths.Add(_guid[_guid.Count - 1]);
+                d.audioPaths.Add(_guid[_guid.Count - 1]);
 
                 r = new cRecorder(0, _c.pathToEXE + @"\WavStore\", _guid + @".wav");
                 r.StartRecording();
@@ -143,7 +143,7 @@ namespace voice_to_text_prototype
 
         private void btnSaveDescription_Click(object sender, EventArgs e)
         {
-            d.AudioPaths = _guid;
+            d.audioPaths = _guid;
 
             if (txtNotes.Text != "")
             {

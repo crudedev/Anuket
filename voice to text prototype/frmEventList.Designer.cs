@@ -39,6 +39,7 @@
             this.btnDescrineChanges = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.lblEventsInTask = new System.Windows.Forms.Label();
+            this.btnEditTask = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lstEvents
@@ -87,7 +88,7 @@
             // 
             // btnCreateTask
             // 
-            this.btnCreateTask.Location = new System.Drawing.Point(478, 140);
+            this.btnCreateTask.Location = new System.Drawing.Point(428, 136);
             this.btnCreateTask.Name = "btnCreateTask";
             this.btnCreateTask.Size = new System.Drawing.Size(85, 43);
             this.btnCreateTask.TabIndex = 5;
@@ -140,11 +141,22 @@
             this.lblEventsInTask.TabIndex = 10;
             this.lblEventsInTask.Text = "Events () Undescribed";
             // 
-            // EventList
+            // btnEditTask
+            // 
+            this.btnEditTask.Location = new System.Drawing.Point(569, 136);
+            this.btnEditTask.Name = "btnEditTask";
+            this.btnEditTask.Size = new System.Drawing.Size(85, 43);
+            this.btnEditTask.TabIndex = 11;
+            this.btnEditTask.Text = "Edit Task";
+            this.btnEditTask.UseVisualStyleBackColor = true;
+            this.btnEditTask.Click += new System.EventHandler(this.btnEditTask_Click);
+            // 
+            // frmEventList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(998, 644);
+            this.Controls.Add(this.btnEditTask);
             this.Controls.Add(this.lblEventsInTask);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnDescrineChanges);
@@ -156,7 +168,7 @@
             this.Controls.Add(this.lblnow);
             this.Controls.Add(this.lblstart);
             this.Controls.Add(this.lstEvents);
-            this.Name = "EventList";
+            this.Name = "frmEventList";
             this.Text = "UnTagged Events";
             this.Load += new System.EventHandler(this.EventList_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.EventList_Paint);
@@ -178,5 +190,6 @@
         private System.Windows.Forms.Button btnDescrineChanges;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblEventsInTask;
+        private System.Windows.Forms.Button btnEditTask;
     }
 }

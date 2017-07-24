@@ -62,25 +62,6 @@ namespace voice_to_text_prototype
                 }
             }
 
-
-
-            foreach (cTask item in _c.tasks)
-            {
-
-
-
-
-                // here I need to draw out what I'll be doign with those goals
-                /*
-                 * Name 
-                 * progress bar 
-                 * link to open
-                 * oldest 3 tasks? -> link to them
-                 * open goal with descriptions
-                 * 
-                 */
-            }
-
         }
 
         private void frmTaskOverview_Load(object sender, EventArgs e)

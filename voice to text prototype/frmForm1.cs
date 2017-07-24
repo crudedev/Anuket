@@ -535,8 +535,8 @@ namespace voice_to_text_prototype
                 ev.descriptions = new List<cDescription>();
 
                 cDescription d = new cDescription();
-                d.AudioPaths = new List<string>();
-                d.AudioPaths.Add(pathToEXE + Guid.NewGuid().ToString());
+                d.audioPaths = new List<string>();
+                d.audioPaths.Add(pathToEXE + Guid.NewGuid().ToString());
                 d.notes = new List<string>();
                 d.notes.Add("this is a note + " + Guid.NewGuid().ToString());
 

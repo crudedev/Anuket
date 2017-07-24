@@ -68,6 +68,10 @@ namespace voice_to_text_prototype
             cmbTypeTask.SelectedValue = _t.typeOfTask;
             PercentComplete.Value = _t.percentComplete;
 
+            foreach (var item in _t.descriptions)
+            {
+                lstDescriptions.Items.Add(item);
+            }
 
         }
 
@@ -192,6 +196,21 @@ namespace voice_to_text_prototype
 
             this.Close();
 
+        }
+
+        private void btnAddDescription_Click(object sender, EventArgs e)
+        {
+            frmDescribeEvent fd = new frmDescribeEvent(_t, _f.c);
+            fd.Show();
+        }
+
+        private void lstDescriptions_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lstDescriptions.SelectedItem != null)
+            {
+                FrmReviewDescriptions frd = new FrmReviewDescriptions((cDescription)lstDescriptions.SelectedItem);
+                frd.Show();
+            }
         }
     }
 }

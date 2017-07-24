@@ -198,5 +198,11 @@ namespace voice_to_text_prototype
                 fde.Show();
             }
         }
+
+        private void btnEditTask_Click(object sender, EventArgs e)
+        {
+            frmTask f = new frmTask(_f, _selectedTask, true);
+            f.Show();
+        }
     }
 }
