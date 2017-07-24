@@ -8,19 +8,11 @@ using System.Collections.Generic;
 
 namespace voice_to_text_prototype
 {
-    public partial class frmForm1 : Form
+    public partial class frmSettings1 : Form
     {
         cRecorder r;
 
-        readonly string stCredentials;
-        readonly string tsCredentials;
-
-        readonly string pathToEXE;
-
-
         private FolderBrowserDialog folderBrowserDialog1;
-
-        List<frmDescribeEvent> popupEvents;
 
         public CoreData c = new CoreData();
 
@@ -28,24 +20,22 @@ namespace voice_to_text_prototype
 
         int eventNumer = 0;
 
-        public frmForm1()
+        public frmSettings1()
         {
             InitializeComponent();
-            pathToEXE = Directory.GetCurrentDirectory();
 
-            r = new cRecorder(0, pathToEXE + @"\WavStore\", Guid.NewGuid() + "test.wav");
-
-            stCredentials = File.ReadAllText(pathToEXE + @"\stcredentials.txt");
-            tsCredentials = File.ReadAllText(pathToEXE + @"\tscredentials.txt");
+            r = new cRecorder(0, c.pathToEXE + @"\WavStore\", Guid.NewGuid() + "test.wav");
 
             loadCoreData();
 
-            popupEvents = new List<frmDescribeEvent>();
-            c.events = new List<cEvent>();
+            initialiseFolderWatch();
 
+        }
+        private void initialiseFolderWatch()
+        {
             try
             {
-                string[] folderarray = File.ReadAllText(pathToEXE + @"\foldersToWatch.txt").Split(',');
+                string[] folderarray = File.ReadAllText(c.pathToEXE + @"\foldersToWatch.txt").Split(',');
 
                 if (c.foldersToWatch == null)
                 {
@@ -70,7 +60,7 @@ namespace voice_to_text_prototype
                 try
                 {
 
-                    string[] extensionArray = File.ReadAllText(pathToEXE + @"\extensionsToWatch.txt").Split(',');
+                    string[] extensionArray = File.ReadAllText(c.pathToEXE + @"\extensionsToWatch.txt").Split(',');
 
                     if (c.fileExtensionsToWatch == null)
                     {
@@ -122,7 +112,7 @@ namespace voice_to_text_prototype
         {
             if (c.tasks == null)
             {
-                c.tasks = new  List<cTask>();
+                c.tasks = new List<cTask>();
             }
             lstTask.Items.Clear();
             foreach (var item in c.tasks)
@@ -135,7 +125,7 @@ namespace voice_to_text_prototype
         {
 
             Serialiser s = new Serialiser();
-            s.SerializeData(pathToEXE + @"\DataStore\test.store", c);
+            s.SerializeData(c.pathToEXE + @"\DataStore\test.store", c);
 
             UpdateFolderWatch();
         }
@@ -146,7 +136,7 @@ namespace voice_to_text_prototype
             Serialiser loader = new Serialiser();
             try
             {
-                loaded = loader.DeSerializeData(pathToEXE + @"\DataStore\test.store");
+                loaded = loader.DeSerializeData(c.pathToEXE + @"\DataStore\test.store");
             }
             catch (Exception)
             {
@@ -185,10 +175,10 @@ namespace voice_to_text_prototype
                         }
                         catch (Exception)
                         {
-                            
+
                         }
 
-                        
+
                     }
 
                     if (toremove != null)
@@ -246,7 +236,7 @@ namespace voice_to_text_prototype
 
                 using (PowerShell PowerShellInstance = PowerShell.Create())
                 {
-                    string curlstring = @"$curl='" + pathToEXE + @"\curl'" + Environment.NewLine + @"& $curl -X POST -u  " + stCredentials + @" --header 'Content-Type: audio/ogg;codecs=opus' --header 'Transfer-Encoding: chunked' --data-binary '@" + pathToEXE + @"\OpusStore\" + fileName + @"' 'https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?continuous=true' --insecure";
+                    string curlstring = @"$curl='" + c.pathToEXE + @"\curl'" + Environment.NewLine + @"& $curl -X POST -u  " + c.stCredentials + @" --header 'Content-Type: audio/ogg;codecs=opus' --header 'Transfer-Encoding: chunked' --data-binary '@" + c.pathToEXE + @"\OpusStore\" + fileName + @"' 'https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?continuous=true' --insecure";
 
                     PowerShellInstance.AddScript(curlstring);
 
@@ -293,7 +283,7 @@ namespace voice_to_text_prototype
 
         private void button3_Click(object sender, EventArgs e)
         {
-            playsound(pathToEXE + @"\WavStore\lol.wav");
+            playsound(c.pathToEXE + @"\WavStore\lol.wav");
 
         }
 
@@ -305,7 +295,7 @@ namespace voice_to_text_prototype
 
         private void button6_Click(object sender, EventArgs e)
         {
-            string lol = decopus("'" + pathToEXE + @"\Hello_World.opus'");
+            string lol = decopus("'" + c.pathToEXE + @"\Hello_World.opus'");
             playsound(lol);
         }
 
@@ -317,7 +307,7 @@ namespace voice_to_text_prototype
 
             using (PowerShell PowerShellInstance = PowerShell.Create())
             {
-                PowerShellInstance.AddScript(@"$opusdec=' " + pathToEXE + @" \opusdec'" + Environment.NewLine + " & $opusdec " + filename + " " + outputName);
+                PowerShellInstance.AddScript(@"$opusdec=' " + c.pathToEXE + @" \opusdec'" + Environment.NewLine + " & $opusdec " + filename + " " + outputName);
 
                 try
                 {
@@ -351,7 +341,7 @@ namespace voice_to_text_prototype
 
             using (PowerShell PowerShellInstance = PowerShell.Create())
             {
-                PowerShellInstance.AddScript(@"$opusenc='" + pathToEXE + @"\opusenc'" + Environment.NewLine + @" & $opusenc --bitrate 64 '" + pathToEXE + @"\WavStore\lol.wav' '" + pathToEXE + @"\OpusStore\lol.opus'");
+                PowerShellInstance.AddScript(@"$opusenc='" + c.pathToEXE + @"\opusenc'" + Environment.NewLine + @" & $opusenc --bitrate 64 '" + c.pathToEXE + @"\WavStore\lol.wav' '" + c.pathToEXE + @"\OpusStore\lol.opus'");
 
                 try
                 {
@@ -385,9 +375,6 @@ namespace voice_to_text_prototype
         private void button9_Click(object sender, EventArgs e)
         {
 
-
-
-
             string ret = "";
             try
             {
@@ -400,9 +387,9 @@ namespace voice_to_text_prototype
     text = "" " + txtSend.Text + @" ""
 }";
 
-                    string curlstring = @"$curl='" + pathToEXE + @"\curl'" + Environment.NewLine + data + Environment.NewLine +
+                    string curlstring = @"$curl='" + c.pathToEXE + @"\curl'" + Environment.NewLine + data + Environment.NewLine +
 
-                        @"& ConvertTo-Json $data  -Compress | &$curl -X POST -u " + tsCredentials + @" --header 'Content-Type: application/json' --header 'Accept: audio/ogg;codecs=opus' --data '@-'  --output '" + pathToEXE + @"\hello_world.opus' 'https://stream.watsonplatform.net/text-to-speech/api/v1/synthesize?voice=en-GB_KateVoice' --insecure";
+                        @"& ConvertTo-Json $data  -Compress | &$curl -X POST -u " + c.tsCredentials + @" --header 'Content-Type: application/json' --header 'Accept: audio/ogg;codecs=opus' --data '@-'  --output '" + c.pathToEXE + @"\hello_world.opus' 'https://stream.watsonplatform.net/text-to-speech/api/v1/synthesize?voice=en-GB_KateVoice' --insecure";
 
 
                     PowerShellInstance.AddScript(curlstring);
@@ -465,7 +452,7 @@ namespace voice_to_text_prototype
                 writeToFile += item + ",";
             }
 
-            File.WriteAllText(pathToEXE + @"\extensionsToWatch.txt", writeToFile);
+            File.WriteAllText(c.pathToEXE + @"\extensionsToWatch.txt", writeToFile);
 
             UpdateFolderWatch();
         }
@@ -496,16 +483,16 @@ namespace voice_to_text_prototype
 
                     if (!c.events[i].popupDisplayed)
                     {
-                        if(_pd!=null)
+                        if (_pd != null)
                         {
-                        _pd.Close();
-                        _pd.Dispose();
-                        _pd = null;
+                            _pd.Close();
+                            _pd.Dispose();
+                            _pd = null;
                         }
- 
+
                         eventNumer++;
-                        _pd = new frmPopupDescription(this, eventNumer, c.events[i]);
-                        _pd.Show(); 
+                        _pd = new frmPopupDescription(c, eventNumer, c.events[i]);
+                        _pd.Show();
 
                         c.events[i].popupDisplayed = true;
                     }
@@ -515,7 +502,7 @@ namespace voice_to_text_prototype
 
         private void button10_Click(object sender, EventArgs e)
         {
-            frmEventList ex = new frmEventList(this);
+            frmEventList ex = new frmEventList(c);
             ex.Show();
         }
 
@@ -536,7 +523,7 @@ namespace voice_to_text_prototype
 
                 cDescription d = new cDescription();
                 d.audioPaths = new List<string>();
-                d.audioPaths.Add(pathToEXE + Guid.NewGuid().ToString());
+                d.audioPaths.Add(c.pathToEXE + Guid.NewGuid().ToString());
                 d.notes = new List<string>();
                 d.notes.Add("this is a note + " + Guid.NewGuid().ToString());
 
@@ -572,7 +559,7 @@ namespace voice_to_text_prototype
         private void button12_Click(object sender, EventArgs e)
         {
 
-            frmTask ct = new frmTask(this, new cTask(), false);
+            frmTask ct = new frmTask(c, new cTask(), false);
             ct.Show();
         }
 
@@ -580,7 +567,7 @@ namespace voice_to_text_prototype
         {
             frmTaskOverview f = new frmTaskOverview(c, this);
             f.Show();
-            
+
         }
     }
 }

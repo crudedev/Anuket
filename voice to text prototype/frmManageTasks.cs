@@ -12,13 +12,13 @@ namespace voice_to_text_prototype
 {
     public partial class frmManageTasks : Form
     {
-        frmForm1 _f;
+        CoreData _c;
 
         cTask SelectedTask;
 
-        public frmManageTasks(frmForm1 f)
+        public frmManageTasks(CoreData c)
         {
-            _f = f;
+            _c = c;
             InitializeComponent();
             updateList();
 
@@ -29,12 +29,12 @@ namespace voice_to_text_prototype
             lstTasks.Items.Clear();
 
 
-            foreach (var item in _f.c.tasks)
+            foreach (var item in _c.tasks)
             {
-                if (item.Show == true)
-                {
+                //if (item.Show == true)
+                //{
                     lstTasks.Items.Add(item);
-                }
+                //}
             }
         }
 
@@ -52,7 +52,7 @@ namespace voice_to_text_prototype
         {
             List<cTask> todelete = new List<cTask>();
 
-            foreach (var item in _f.c.tasks)
+            foreach (var item in _c.tasks)
             {
                 if (item == SelectedTask)
                 {
@@ -62,7 +62,7 @@ namespace voice_to_text_prototype
 
             foreach (var item in todelete)
             {
-                _f.c.tasks.Remove(item);
+                _c.tasks.Remove(item);
             }
             updateList();
         }
@@ -82,7 +82,7 @@ namespace voice_to_text_prototype
 
         private void btnEditTask_Click(object sender, EventArgs e)
         {
-            frmTask ft = new frmTask(_f, SelectedTask,true);
+            frmTask ft = new frmTask(_c, SelectedTask,true);
             ft.Show();
         }
     }

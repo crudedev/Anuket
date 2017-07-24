@@ -1,6 +1,6 @@
 ﻿namespace voice_to_text_prototype
 {
-    partial class NewNote
+    partial class FrmNewNote
     {
         /// <summary>
         /// Required designer variable.
@@ -50,15 +50,16 @@
             this.btnSaveNote.UseVisualStyleBackColor = true;
             this.btnSaveNote.Click += new System.EventHandler(this.btnSaveNote_Click);
             // 
-            // NewNote
+            // FrmNewNote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(463, 476);
             this.Controls.Add(this.btnSaveNote);
             this.Controls.Add(this.TxtNote);
-            this.Name = "NewNote";
+            this.Name = "FrmNewNote";
             this.Text = "NewNote";
+            this.Load += new System.EventHandler(this.FrmNewNote_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

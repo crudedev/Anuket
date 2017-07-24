@@ -12,11 +12,11 @@ namespace voice_to_text_prototype
 {
     public partial class frmPopupDescription : Form
     {
-        frmForm1 _f;
-        public frmPopupDescription(frmForm1 f, int EventNumber, cEvent ev)
+        CoreData _c;
+        public frmPopupDescription(CoreData c, int EventNumber, cEvent ev)
         {
             InitializeComponent();
-            _f = f;
+            _c = c;
             lblEventDescription.Text = "Event: " + EventNumber.ToString() + " # " + ev.fileName;
             lblDescription.Text = "File Updated";
     
@@ -29,7 +29,7 @@ namespace voice_to_text_prototype
 
         private void BtnCreateDescription_Click(object sender, EventArgs e)
         {
-            frmEventList fel = new frmEventList(_f);
+            frmEventList fel = new frmEventList(_c);
             fel.Show();
             this.Close();
         }

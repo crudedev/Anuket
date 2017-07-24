@@ -49,6 +49,11 @@
             this.lstDescriptions = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btnAddDescription = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtName
@@ -61,10 +66,10 @@
             // 
             // txtNotes
             // 
-            this.txtNotes.Location = new System.Drawing.Point(25, 50);
+            this.txtNotes.Location = new System.Drawing.Point(25, 74);
             this.txtNotes.Multiline = true;
             this.txtNotes.Name = "txtNotes";
-            this.txtNotes.Size = new System.Drawing.Size(235, 202);
+            this.txtNotes.Size = new System.Drawing.Size(235, 178);
             this.txtNotes.TabIndex = 1;
             this.txtNotes.Text = "task Notes";
             // 
@@ -86,6 +91,18 @@
             // cmbPriority
             // 
             this.cmbPriority.FormattingEnabled = true;
+            this.cmbPriority.Items.AddRange(new object[] {
+            "0",
+            "10",
+            "20",
+            "30",
+            "40",
+            "50",
+            "60",
+            "70",
+            "80",
+            "90",
+            "100"});
             this.cmbPriority.Location = new System.Drawing.Point(282, 115);
             this.cmbPriority.Name = "cmbPriority";
             this.cmbPriority.Size = new System.Drawing.Size(121, 21);
@@ -103,22 +120,22 @@
             // lstTags
             // 
             this.lstTags.FormattingEnabled = true;
-            this.lstTags.Location = new System.Drawing.Point(27, 261);
+            this.lstTags.Location = new System.Drawing.Point(27, 287);
             this.lstTags.Name = "lstTags";
-            this.lstTags.Size = new System.Drawing.Size(233, 186);
+            this.lstTags.Size = new System.Drawing.Size(233, 160);
             this.lstTags.TabIndex = 6;
             // 
             // cmbAddTags
             // 
             this.cmbAddTags.FormattingEnabled = true;
-            this.cmbAddTags.Location = new System.Drawing.Point(270, 311);
+            this.cmbAddTags.Location = new System.Drawing.Point(303, 312);
             this.cmbAddTags.Name = "cmbAddTags";
             this.cmbAddTags.Size = new System.Drawing.Size(150, 21);
             this.cmbAddTags.TabIndex = 7;
             // 
             // txtNewTag
             // 
-            this.txtNewTag.Location = new System.Drawing.Point(484, 311);
+            this.txtNewTag.Location = new System.Drawing.Point(505, 312);
             this.txtNewTag.Name = "txtNewTag";
             this.txtNewTag.Size = new System.Drawing.Size(174, 20);
             this.txtNewTag.TabIndex = 8;
@@ -136,7 +153,7 @@
             // 
             // btnAddTag
             // 
-            this.btnAddTag.Location = new System.Drawing.Point(302, 338);
+            this.btnAddTag.Location = new System.Drawing.Point(335, 339);
             this.btnAddTag.Name = "btnAddTag";
             this.btnAddTag.Size = new System.Drawing.Size(68, 30);
             this.btnAddTag.TabIndex = 10;
@@ -234,11 +251,61 @@
             this.btnAddDescription.UseVisualStyleBackColor = true;
             this.btnAddDescription.Click += new System.EventHandler(this.btnAddDescription_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(24, 8);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(62, 13);
+            this.label6.TabIndex = 21;
+            this.label6.Text = "Task Name";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(24, 58);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(87, 13);
+            this.label7.TabIndex = 22;
+            this.label7.Text = "Task Description";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(24, 271);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(31, 13);
+            this.label8.TabIndex = 23;
+            this.label8.Text = "Tags";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(300, 296);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(69, 13);
+            this.label9.TabIndex = 24;
+            this.label9.Text = "Select A Tag";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(511, 296);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(85, 13);
+            this.label10.TabIndex = 25;
+            this.label10.Text = "Name a new tag";
+            // 
             // frmTask
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1035, 464);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.btnAddDescription);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.lstDescriptions);
@@ -290,5 +357,10 @@
         private System.Windows.Forms.ListBox lstDescriptions;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnAddDescription;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
     }
 }

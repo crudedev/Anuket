@@ -13,16 +13,14 @@ namespace voice_to_text_prototype
     public partial class frmTaskOverview : Form
     {
         CoreData _c;
-        frmForm1 _f;
         List<cTask> goals;
 
         cTask selectedTask;
 
-        public frmTaskOverview(CoreData c, frmForm1 f)
+        public frmTaskOverview(CoreData c)
         {
             InitializeComponent();
             _c = c;
-            _f = f;
             UpdateGoalList(0);
 
         }
@@ -101,8 +99,14 @@ namespace voice_to_text_prototype
 
         private void btnCreateTask_Click(object sender, EventArgs e)
         {
-            frmTask ft = new frmTask(_f, selectedTask, true);
+            frmTask ft = new frmTask(_c, selectedTask, true);
             ft.Show(); 
+        }
+
+        private void btnNewTask_Click(object sender, EventArgs e)
+        {
+            frmTask ft = new frmTask(_c, new cTask(), false);
+            ft.Show();
         }
     }
 }

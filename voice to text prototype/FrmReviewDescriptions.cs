@@ -29,13 +29,13 @@ namespace voice_to_text_prototype
 
         }
 
-        private void UpdatePanels()
+        public void UpdatePanels()
         {
             lstNotes.Items.Clear();
             foreach (var item in _d.notes)
             {
                 string shortNote = "";
-                if(item.Length > 50)
+                if (item.Length > 50)
                 {
                     shortNote = item.Substring(0, 50) + ".....";
                 }
@@ -59,17 +59,21 @@ namespace voice_to_text_prototype
                 lstAttachments.Items.Add(item);
             }
 
-            if(_selectedNoteIndex !=-1)
+            if (_d.notes != null)
             {
-                txtNote.Text = _d.notes[_selectedNoteIndex];
+                if (_selectedNoteIndex != -1)
+                {
+                    txtNote.Text = _d.notes[_selectedNoteIndex];
+                }
+            }
+            if (_d.transcriptions != null)
+            {
+                if (_selectedAudioIndex != -1)
+                {
+                    txtTranscription.Text = _d.transcriptions[_selectedAudioIndex];
+                }
             }
 
-            if(_selectedAudioIndex != -1)
-            {
-                txtTranscription.Text = _d.transcriptions[_selectedAudioIndex];
-            }
-
-            
 
         }
 
@@ -98,7 +102,7 @@ namespace voice_to_text_prototype
 
         private void button2_Click(object sender, EventArgs e)
         {
-            FrmNewNote frn = new FrmNewNote(_d);
+            FrmNewNote frn = new FrmNewNote(_d,this);
             frn.Show();
         }
     }

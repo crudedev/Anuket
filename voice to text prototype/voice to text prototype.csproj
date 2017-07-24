@@ -55,6 +55,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="cSpeechManager.cs" />
+    <Compile Include="FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmReviewDescriptions.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,11 +82,11 @@
     <Compile Include="frmEventList.Designer.cs">
       <DependentUpon>frmEventList.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmForm1.cs">
+    <Compile Include="frmSettings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmForm1.Designer.cs">
-      <DependentUpon>frmForm1.cs</DependentUpon>
+    <Compile Include="frmSettings.Designer.cs">
+      <DependentUpon>frmSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="frmManageTasks.cs">
       <SubType>Form</SubType>
@@ -117,6 +124,9 @@
     <Compile Include="cCoreData.cs" />
     <Compile Include="cSerialiser.cs" />
     <Compile Include="cTask.cs" />
+    <EmbeddedResource Include="FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmReviewDescriptions.resx">
       <DependentUpon>FrmReviewDescriptions.cs</DependentUpon>
     </EmbeddedResource>
@@ -126,8 +136,8 @@
     <EmbeddedResource Include="frmEventList.resx">
       <DependentUpon>frmEventList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmForm1.resx">
-      <DependentUpon>frmForm1.cs</DependentUpon>
+    <EmbeddedResource Include="frmSettings.resx">
+      <DependentUpon>frmSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmManageTasks.resx">
       <DependentUpon>frmManageTasks.cs</DependentUpon>

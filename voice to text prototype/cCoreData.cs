@@ -47,6 +47,7 @@ namespace voice_to_text_prototype
             stCredentials = File.ReadAllText(pathToEXE + @"\stcredentials.txt");
             tsCredentials = File.ReadAllText(pathToEXE + @"\tscredentials.txt");
 
+
         }
 
         public CoreData(SerializationInfo info, StreamingContext ctxt)

@@ -7,14 +7,14 @@ namespace voice_to_text_prototype
 {
     public partial class frmEventList : Form
     {
-        frmForm1 _f;
+        CoreData _c;
 
         cTask _selectedTask;
 
-        public frmEventList(frmForm1 f)
+        public frmEventList(CoreData c)
         {
             InitializeComponent();
-            _f = f;
+            _c = c;
         }
 
         private void EventList_Load(object sender, EventArgs e)
@@ -25,7 +25,7 @@ namespace voice_to_text_prototype
         private void updateEventsAndTasks()
         {
             lstEvents.Items.Clear();
-            foreach (var item in _f.c.events)
+            foreach (var item in _c.events)
             {
                 if (item.assaignedToTask == false)
                 {
@@ -34,7 +34,7 @@ namespace voice_to_text_prototype
             }
 
             treeTasks.Nodes.Clear();
-            foreach (var item in _f.c.tasks)
+            foreach (var item in _c.tasks)
             {
                 if (item.parents.Count == 0)
                 {
@@ -58,7 +58,7 @@ namespace voice_to_text_prototype
                 return;
             }
 
-            foreach (var subitem in _f.c.tasks)
+            foreach (var subitem in _c.tasks)
             {
                 foreach (var parent in subitem.parents)
                 {
@@ -84,7 +84,7 @@ namespace voice_to_text_prototype
             Font font = new Font("Arial", 8);
             SolidBrush brush = new SolidBrush(Color.Black);
 
-            foreach (var ev in _f.c.events)
+            foreach (var ev in _c.events)
             {
                 if (start == new DateTime())
                 {
@@ -113,7 +113,7 @@ namespace voice_to_text_prototype
 
             int index = 0;
 
-            foreach (var ev in _f.c.events)
+            foreach (var ev in _c.events)
             {
                 index++;
                 double width = 700;
@@ -134,7 +134,7 @@ namespace voice_to_text_prototype
 
         private void treeTasks_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            foreach (var item in _f.c.tasks)
+            foreach (var item in _c.tasks)
             {
                 if (item.taskName == e.Node.Text)
                 {
@@ -167,7 +167,7 @@ namespace voice_to_text_prototype
         {
             if (_selectedTask != null)
             {
-                foreach (var item in _f.c.tasks)
+                foreach (var item in _c.tasks)
                 {
                     if (item.taskName == _selectedTask.taskName)
                     {
@@ -186,7 +186,7 @@ namespace voice_to_text_prototype
 
         private void btnCreateTask_Click(object sender, EventArgs e)
         {
-            frmTask f = new frmTask(_f, new cTask(), false);
+            frmTask f = new frmTask(_c, new cTask(), false);
             f.Show();
         }
 
@@ -194,14 +194,14 @@ namespace voice_to_text_prototype
         {
             if (_selectedTask != null)
             {
-                frmDescribeEvent fde = new frmDescribeEvent(_selectedTask,_f.c);
+                frmDescribeEvent fde = new frmDescribeEvent(_selectedTask,_c);
                 fde.Show();
             }
         }
 
         private void btnEditTask_Click(object sender, EventArgs e)
         {
-            frmTask f = new frmTask(_f, _selectedTask, true);
+            frmTask f = new frmTask(_c, _selectedTask, true);
             f.Show();
         }
     }

@@ -52,7 +52,7 @@ namespace voice_to_text_prototype
                 _guid.Add(Guid.NewGuid().ToString());
                 d.audioPaths.Add(_guid[_guid.Count - 1]);
 
-                r = new cRecorder(0, _c.pathToEXE + @"\WavStore\", _guid + @".wav");
+                r = new cRecorder(0, _c.pathToEXE + @"\WavStore\", _guid[_guid.Count - 1] + @".wav");
                 r.StartRecording();
 
             }
@@ -62,28 +62,7 @@ namespace voice_to_text_prototype
         {
             r.RecordEnd();
 
-
-            using (PowerShell PowerShellInstance = PowerShell.Create())
-            {
-                PowerShellInstance.AddScript(@"$opusenc='" + _c.pathToEXE + @"\opusenc'" + Environment.NewLine + @" & $opusenc --bitrate 64 '" + _c.pathToEXE + @"\WavStore\" + _guid + @".wav' '" + _c.pathToEXE + @"\OpusStore\" + _guid + @".opus'");
-
-                try
-                {
-
-                    Collection<PSObject> PSOutput = PowerShellInstance.Invoke();
-
-                    foreach (PSObject outputItem in PSOutput)
-                    {
-                        if (outputItem != null)
-                        {
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-
-                }
-            }
+            cRecorder.convert(_c, _guid[_guid.Count - 1]);
 
             recordingInProgress = false;
         }
@@ -96,39 +75,10 @@ namespace voice_to_text_prototype
         private void btnTranscribe_Click(object sender, EventArgs e)
         {
             string ret = "";
-            try
+
+            if (_guid.Count != 0)
             {
-
-                using (PowerShell PowerShellInstance = PowerShell.Create())
-                {
-                    string curlstring = @"$curl='" + _c.pathToEXE + @"\curl'" + Environment.NewLine + @"& $curl -X POST -u  " + _c.stCredentials + @" --header 'Content-Type: audio/ogg;codecs=opus' --header 'Transfer-Encoding: chunked' --data-binary '@" + _c.pathToEXE + @"\OpusStore\" + _guid + @"' 'https://stream.watsonplatform.net/speech-to-text/api/v1/recognize?continuous=true' --insecure";
-
-                    PowerShellInstance.AddScript(curlstring);
-
-                    try
-                    {
-
-                        Collection<PSObject> PSOutput = PowerShellInstance.Invoke();
-
-                        foreach (PSObject outputItem in PSOutput)
-                        {
-                            if (outputItem != null)
-                            {
-                                ret += outputItem;
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-
-                    }
-                }
-
-            }
-            catch (Exception exx)
-            {
-
-                throw;
+                cSpeechManager.transcribe(_c, _guid[_guid.Count - 1]);
             }
 
             txtTransciption.Text = ret;
@@ -153,7 +103,7 @@ namespace voice_to_text_prototype
 
             d.transcriptions = _transcriptions;
 
-            if(_task.descriptions == null)
+            if (_task.descriptions == null)
             {
                 _task.descriptions = new List<cDescription>();
             }
@@ -165,13 +115,20 @@ namespace voice_to_text_prototype
         private void btnAttachFile_Click(object sender, EventArgs e)
         {
 
-            OpenFileDialog d = new OpenFileDialog();
-            if (d.ShowDialog() == DialogResult.OK)
-            {
-                Stream file = d.OpenFile();
+            OpenFileDialog dia = new OpenFileDialog();
+             
+            string newFilename="";
+            string fileName = "";
 
-                string[] fileNameParts = d.FileName.Split('.');
-                FileStream fileStream = File.Create(_c.pathToEXE + @"\DataStore\" + Guid.NewGuid() + "." + fileNameParts[fileNameParts.Length - 1], (int)file.Length);
+            if (dia.ShowDialog() == DialogResult.OK)
+            {
+
+
+                Stream file = dia.OpenFile();
+
+                string[]  fileNameParts = dia.FileName.Split('.');
+                newFilename = Guid.NewGuid() + "." + fileNameParts[fileNameParts.Length - 1];
+                FileStream fileStream = File.Create(_c.pathToEXE + @"\DataStore\" + newFilename , (int)file.Length);
                 byte[] bytesInStream = new byte[file.Length];
                 file.Read(bytesInStream, 0, bytesInStream.Length);
                 fileStream.Write(bytesInStream, 0, bytesInStream.Length);
@@ -179,10 +136,7 @@ namespace voice_to_text_prototype
                 fileStream.Close();
             }
 
-
-            //show a list of attached files
-
-
+            d.attachments.Add(newFilename, fileName);
 
         }
     }

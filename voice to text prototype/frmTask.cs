@@ -12,15 +12,15 @@ namespace voice_to_text_prototype
 {
     public partial class frmTask : Form
     {
-        frmForm1 _f;
+        CoreData _c;
 
         cTask _t;
 
         bool _extant = false;
 
-        public frmTask(frmForm1 f, cTask t, bool extant)
+        public frmTask(CoreData c, cTask t, bool extant)
         {
-            _f = f;
+            _c = c;
             _t = t;
             if (_t == null)
             {
@@ -56,9 +56,9 @@ namespace voice_to_text_prototype
             }
 
             cmbParent.Items.Clear();
-            if (_f.c.tasks != null)
+            if (_c.tasks != null)
             {
-                foreach (var item in _f.c.tasks)
+                foreach (var item in _c.tasks)
                 {
                     cmbParent.Items.Add(item.taskName);
                 }
@@ -90,14 +90,14 @@ namespace voice_to_text_prototype
 
         private void btnCreateTag_Click(object sender, EventArgs e)
         {
-            if (_f.c.tags == null)
+            if (_c.tags == null)
             {
-                _f.c.tags = new Dictionary<string, string>();
+                _c.tags = new Dictionary<string, string>();
             }
 
             try
             {
-                _f.c.tags.Add(txtNewTag.Text, txtNewTag.Text);
+                _c.tags.Add(txtNewTag.Text, txtNewTag.Text);
             }
             catch (Exception)
             {
@@ -110,12 +110,12 @@ namespace voice_to_text_prototype
 
         private void updateTags()
         {
-            if (_f.c.tags == null)
+            if (_c.tags == null)
             {
-                _f.c.tags = new Dictionary<string, string>();
+                _c.tags = new Dictionary<string, string>();
             }
             cmbAddTags.Items.Clear();
-            foreach (var item in _f.c.tags)
+            foreach (var item in _c.tags)
             {
                 cmbAddTags.Items.Add(item.Value);
             }
@@ -142,7 +142,7 @@ namespace voice_to_text_prototype
             }
             try
             {
-                _t.tags.Add(_f.c.tags[cmbAddTags.Text], _f.c.tags[cmbAddTags.Text]);
+                _t.tags.Add(_c.tags[cmbAddTags.Text], _c.tags[cmbAddTags.Text]);
             }
             catch (Exception)
             {
@@ -166,13 +166,13 @@ namespace voice_to_text_prototype
             }
             _t.Show = true;
 
-            if (_f.c.tasks == null)
+            if (_c.tasks == null)
             {
-                _f.c.tasks = new List<cTask>();
+                _c.tasks = new List<cTask>();
             }
             if (!_extant)
             {
-                _f.c.tasks.Add(_t);
+                _c.tasks.Add(_t);
             }
 
 
@@ -183,7 +183,7 @@ namespace voice_to_text_prototype
 
             if (cmbParent.Text != "")
             {
-                foreach (var item in _f.c.tasks)
+                foreach (var item in _c.tasks)
                 {
                     if (item.taskName == cmbParent.Text)
                     {
@@ -192,15 +192,13 @@ namespace voice_to_text_prototype
                 }
             }
 
-            _f.UpdateTasks();
-
             this.Close();
 
         }
 
         private void btnAddDescription_Click(object sender, EventArgs e)
         {
-            frmDescribeEvent fd = new frmDescribeEvent(_t, _f.c);
+            frmDescribeEvent fd = new frmDescribeEvent(_t, _c);
             fd.Show();
         }
 

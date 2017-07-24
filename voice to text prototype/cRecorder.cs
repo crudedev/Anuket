@@ -1,6 +1,8 @@
 ﻿using NAudio.Wave;
 using System;
+using System.Collections.ObjectModel;
 using System.IO;
+using System.Management.Automation;
 
 namespace voice_to_text_prototype
 {
@@ -67,9 +69,29 @@ namespace voice_to_text_prototype
 
         }
 
-        public void convert()
+        public static void convert(CoreData _c, string _guid)
         {
+            using (PowerShell PowerShellInstance = PowerShell.Create())
+            {
+                PowerShellInstance.AddScript(@"$opusenc='" + _c.pathToEXE + @"\opusenc'" + Environment.NewLine + @" & $opusenc --bitrate 64 '" + _c.pathToEXE + @"\WavStore\" + _guid + @".wav' '" + _c.pathToEXE + @"\OpusStore\" + _guid + @".opus'");
 
+                try
+                {
+
+                    Collection<PSObject> PSOutput = PowerShellInstance.Invoke();
+
+                    foreach (PSObject outputItem in PSOutput)
+                    {
+                        if (outputItem != null)
+                        {
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                }
+            }
 
         }
         
