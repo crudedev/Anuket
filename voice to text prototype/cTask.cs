@@ -62,10 +62,10 @@ namespace voice_to_text_prototype
         {
             taskName = (string)info.GetValue("taskName", typeof(string));
             notes = (string)info.GetValue("notes", typeof(string));
-            created = (DateTime)info.GetValue("filesEffected", typeof(DateTime));
+            created = (DateTime)info.GetValue("created", typeof(DateTime));
             finsihed = (DateTime)info.GetValue("finsihed", typeof(DateTime));
             target = (DateTime)info.GetValue("target", typeof(DateTime));
-            descriptions = (List<cDescription>)info.GetValue("descriptions", typeof(cDescription));
+            descriptions = (List<cDescription>)info.GetValue("descriptionsA", typeof(List<cDescription>));
             priority = (int)info.GetValue("priority", typeof(int));
             tags = (Dictionary<string,string>)info.GetValue("tags", typeof(Dictionary<string, string>));
             percentComplete = (int)info.GetValue("percentcomplete", typeof(int));
@@ -82,10 +82,10 @@ namespace voice_to_text_prototype
             info.AddValue("created", created);
             info.AddValue("finsihed", finsihed);
             info.AddValue("target", target);
-            info.AddValue("descriptions", descriptions);
+            info.AddValue("descriptionsA", descriptions);
             info.AddValue("priority", priority);
-            info.AddValue("tagas", tags);
-            info.AddValue("percantagecomplete",percentComplete);
+            info.AddValue("tags", tags);
+            info.AddValue("percentcomplete", percentComplete);
             info.AddValue("typeOfTask", typeOfTask);
             info.AddValue("show", Show);
             info.AddValue("parents", parents);

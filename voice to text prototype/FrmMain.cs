@@ -21,13 +21,13 @@ namespace voice_to_text_prototype
 
         Timer checkEvent = new Timer();
 
-
+        int saveTimer = 0;
 
         public FrmMain()
         {
             InitializeComponent();
 
-            loadCoreData();
+            c = loadCoreData();
 
             initialiseFolderWatch();
 
@@ -61,6 +61,19 @@ namespace voice_to_text_prototype
                     }
                 }
             }
+
+            saveTimer++;
+
+            if (saveTimer > 100)
+            {
+                saveData();
+            }
+        }
+
+        private void saveData()
+        {
+            Serialiser s = new Serialiser();
+            s.SerializeData(c.pathToEXE + @"\DataStore\test.store", c);
         }
 
         private CoreData loadCoreData()
@@ -71,7 +84,7 @@ namespace voice_to_text_prototype
             {
                 loaded = loader.DeSerializeData(c.pathToEXE + @"\DataStore\test.store");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 MessageBox.Show("Data Not Loaded");
             }
@@ -228,6 +241,11 @@ namespace voice_to_text_prototype
         {
             frmTask ft = new frmTask(c, new cTask(), false);
             ft.Show();
+        }
+
+        private void btnSaveData_Click(object sender, EventArgs e)
+        {
+            saveData();
         }
     }
 }

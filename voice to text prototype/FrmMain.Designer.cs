@@ -33,6 +33,7 @@
             this.btnManageTasks = new System.Windows.Forms.Button();
             this.btnSettings = new System.Windows.Forms.Button();
             this.btnShowEventlist = new System.Windows.Forms.Button();
+            this.btnSaveData = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnTaskOverview
@@ -85,11 +86,22 @@
             this.btnShowEventlist.UseVisualStyleBackColor = true;
             this.btnShowEventlist.Click += new System.EventHandler(this.btnShowEventlist_Click);
             // 
+            // btnSaveData
+            // 
+            this.btnSaveData.Location = new System.Drawing.Point(123, 287);
+            this.btnSaveData.Name = "btnSaveData";
+            this.btnSaveData.Size = new System.Drawing.Size(100, 26);
+            this.btnSaveData.TabIndex = 33;
+            this.btnSaveData.Text = "Save Data";
+            this.btnSaveData.UseVisualStyleBackColor = true;
+            this.btnSaveData.Click += new System.EventHandler(this.btnSaveData_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(849, 586);
+            this.Controls.Add(this.btnSaveData);
             this.Controls.Add(this.btnShowEventlist);
             this.Controls.Add(this.btnSettings);
             this.Controls.Add(this.btnManageTasks);
@@ -108,5 +120,6 @@
         private System.Windows.Forms.Button btnManageTasks;
         private System.Windows.Forms.Button btnSettings;
         private System.Windows.Forms.Button btnShowEventlist;
+        private System.Windows.Forms.Button btnSaveData;
     }
 }
