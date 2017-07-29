@@ -78,7 +78,7 @@ namespace voice_to_text_prototype
 
             if (_guid.Count != 0)
             {
-                cSpeechManager.transcribe(_c, _guid[_guid.Count - 1]);
+                ret = cSpeechManager.transcribe(_c, _guid[_guid.Count - 1] + ".opus");
             }
 
             txtTransciption.Text = ret;

@@ -27,8 +27,6 @@ namespace voice_to_text_prototype
 
         public readonly string pathToEXE;
 
-        cRecorder r;
-
         public CoreData()
         {
             descriptions = new List<cDescription>();
@@ -41,8 +39,6 @@ namespace voice_to_text_prototype
 
 
             pathToEXE = Directory.GetCurrentDirectory();
-
-            r = new cRecorder(0, pathToEXE + @"\WavStore\", Guid.NewGuid() + "test.wav");
 
             stCredentials = File.ReadAllText(pathToEXE + @"\stcredentials.txt");
             tsCredentials = File.ReadAllText(pathToEXE + @"\tscredentials.txt");

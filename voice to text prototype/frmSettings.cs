@@ -14,7 +14,7 @@ namespace voice_to_text_prototype
 
         private FolderBrowserDialog folderBrowserDialog1;
 
-        public CoreData _c = new CoreData();
+        public CoreData _c;
 
         frmPopupDescription _pd;
 
@@ -138,13 +138,13 @@ namespace voice_to_text_prototype
 
         private void button5_Click(object sender, EventArgs e)
         {
-            textBox1.Text = sendSound("test.opus");
+            textBox1.Text = sendSound(r.FileName.Substring(0, r.FileName.Length - 4) + ".opus");
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            playsound(_c.pathToEXE + @"\WavStore\test.wav");
-
+            playsound(r.FilePath + r.FileName);
+            
         }
 
         private void button7_Click(object sender, EventArgs e)
@@ -193,7 +193,7 @@ namespace voice_to_text_prototype
         private void encopus()
         {
 
-            cRecorder.convert(_c, "test");
+            cRecorder.convert(_c, r.FileName.Substring(0,r.FileName.Length-4));
 
         }
 

@@ -25,8 +25,6 @@ namespace voice_to_text_prototype
 
         public Guid ID;
 
-               
-
         public cEvent(string FileName, string Location, Dictionary<string,String> FilesEffected)
         {
             fileName = FileName;
@@ -36,8 +34,10 @@ namespace voice_to_text_prototype
 
             descriptions = new List<cDescription>();
 
-            ID = new Guid();
-                        
+            ID = new Guid();  
+
+
+
         }
 
         public cEvent()
@@ -50,15 +50,11 @@ namespace voice_to_text_prototype
             descriptions.Add(d);
         }
 
-
-
         public cEvent(SerializationInfo info, StreamingContext ctxt)
         {
             fileName = (string)info.GetValue("fileName", typeof(string));
             locationPath = (string)info.GetValue("locationPath", typeof(string));
-            filesEffected = (Dictionary<string,string>)info.GetValue("filesEffected", typeof(Dictionary<string, string>));
-
-
+            filesEffected = (Dictionary<string, string>)info.GetValue("filesEffected", typeof(Dictionary<string, string>));
             descriptions = (List<cDescription>)info.GetValue("descriptions", typeof(List<cDescription>));
             datetimeOfEvent = (DateTime)info.GetValue("datetimeOfEvent", typeof(DateTime));
             popupDisplayed = (bool)info.GetValue("popupDisplayed", typeof(bool));

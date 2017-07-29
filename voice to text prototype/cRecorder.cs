@@ -12,8 +12,8 @@ namespace voice_to_text_prototype
         WaveIn sourceStream;
         WaveFileWriter waveWriter;
         
-        readonly String FilePath;
-        readonly String FileName;
+       public  readonly String FilePath;
+       public readonly String FileName;
         readonly int InputDeviceIndex;
         
 

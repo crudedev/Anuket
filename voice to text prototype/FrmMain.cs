@@ -206,10 +206,6 @@ namespace voice_to_text_prototype
         private void OnChanged(object source, FileSystemEventArgs e)
         {
             cEvent ev = new cEvent(e.Name, e.FullPath, new Dictionary<string, string>());
-            if (c.events == null)
-            {
-                c.events = new List<cEvent>();
-            }
             c.events.Add(ev);
         }
 
