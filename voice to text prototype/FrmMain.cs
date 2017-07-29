@@ -206,6 +206,22 @@ namespace voice_to_text_prototype
         private void OnChanged(object source, FileSystemEventArgs e)
         {
             cEvent ev = new cEvent(e.Name, e.FullPath, new Dictionary<string, string>());
+
+
+
+            // here make a copy of everything 
+            string adjpath = "";
+            adjpath = e.FullPath.Replace(':', '-');
+            adjpath = adjpath.Replace('\\', '-');
+
+            string destPath = c.pathToEXE + @"\DataStore\" + adjpath + @"\" + Guid.NewGuid();
+
+
+            Directory.CreateDirectory(e.FullPath.Replace(e.FullPath, destPath));
+
+            File.Copy(e.FullPath, e.FullPath.Replace(e.FullPath, destPath), true);
+
+
             c.events.Add(ev);
         }
 

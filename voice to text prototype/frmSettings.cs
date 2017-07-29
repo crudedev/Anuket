@@ -107,8 +107,34 @@ namespace voice_to_text_prototype
 
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
-                _c.foldersToWatch.Add(folderBrowserDialog1.SelectedPath);
+                string watchpath = folderBrowserDialog1.SelectedPath;
+
+                _c.foldersToWatch.Add(watchpath);
+
+
+
+                // here make a copy of everything 
+                string adjpath = "";
+                adjpath = watchpath.Replace(':', '-');
+                adjpath = adjpath.Replace('\\', '-');
+
+                string destPath = _c.pathToEXE + @"\DataStore\" + adjpath + @"\" + Guid.NewGuid();
+
+                //Now Create all of the directories
+                foreach (string dirPath in Directory.GetDirectories(watchpath, "*",
+                    SearchOption.AllDirectories))
+                    Directory.CreateDirectory(dirPath.Replace(watchpath, destPath));
+
+                //Copy all the files & Replaces any files with the same name
+                foreach (string newPath in Directory.GetFiles(watchpath, "*.*",
+                    SearchOption.AllDirectories))
+                    File.Copy(newPath, newPath.Replace(watchpath, destPath), true);
+
+
             }
+
+
+
 
             saveCoreData();
         }
