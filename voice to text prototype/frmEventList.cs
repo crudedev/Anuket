@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace voice_to_text_prototype
+namespace Anuket
 {
     public partial class frmEventList : Form
     {

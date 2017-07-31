@@ -6,7 +6,7 @@ using System.Collections.ObjectModel;
 using System.Media;
 using System.Collections.Generic;
 
-namespace voice_to_text_prototype
+namespace Anuket
 {
     public partial class frmSettings : Form
     {

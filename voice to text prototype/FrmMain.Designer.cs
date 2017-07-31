@@ -1,4 +1,4 @@
-﻿namespace voice_to_text_prototype
+﻿namespace Anuket
 {
     partial class FrmMain
     {

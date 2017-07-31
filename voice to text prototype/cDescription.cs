@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace voice_to_text_prototype
+namespace Anuket
 {
     [Serializable()]
     public class cDescription : ISerializable

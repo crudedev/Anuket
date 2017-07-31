@@ -6,7 +6,7 @@ using System.Management.Automation;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace voice_to_text_prototype
+namespace Anuket
 {
     class cSpeechManager
     {

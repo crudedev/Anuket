@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Management.Automation;
 
-namespace voice_to_text_prototype
+namespace Anuket
 {
     public class cRecorder
     {

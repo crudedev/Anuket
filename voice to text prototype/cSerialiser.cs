@@ -7,7 +7,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace voice_to_text_prototype
+namespace Anuket
 {
 
     class Serialiser

@@ -1,0 +1,15 @@
+C:\Users\Dank\ownCloud\Anuket\voice to text prototype\obj\Debug\Anuket.csprojResolveAssemblyReference.cache
+C:\Users\Dank\ownCloud\Anuket\voice to text prototype\obj\Debug\Anuket.FrmMain.resources
+C:\Users\Dank\ownCloud\Anuket\voice to text prototype\obj\Debug\Anuket.FrmReviewDescriptions.resources
+C:\Users\Dank\ownCloud\Anuket\voice to text prototype\obj\Debug\Anuket.frmTask.resources
+C:\Users\Dank\ownCloud\Anuket\voice to text prototype\obj\Debug\Anuket.frmEventList.resources
+C:\Users\Dank\ownCloud\Anuket\voice to text prototype\obj\Debug\Anuket.frmSettings.resources
+C:\Users\Dank\ownCloud\Anuket\voice to text prototype\obj\Debug\Anuket.frmManageTasks.resources
+C:\Users\Dank\ownCloud\Anuket\voice to text prototype\obj\Debug\Anuket.frmDescribeEvent.resources
+C:\Users\Dank\ownCloud\Anuket\voice to text prototype\obj\Debug\Anuket.frmPopupDescription.resources
+C:\Users\Dank\ownCloud\Anuket\voice to text prototype\obj\Debug\Anuket.frmTaskOverview.resources
+C:\Users\Dank\ownCloud\Anuket\voice to text prototype\obj\Debug\Anuket.FrmNewNote.resources
+C:\Users\Dank\ownCloud\Anuket\voice to text prototype\obj\Debug\voice_to_text_prototype.Properties.Resources.resources
+C:\Users\Dank\ownCloud\Anuket\voice to text prototype\obj\Debug\Anuket.csproj.GenerateResource.Cache
+C:\Users\Dank\ownCloud\Anuket\voice to text prototype\obj\Debug\voice to text prototype.exe
+C:\Users\Dank\ownCloud\Anuket\voice to text prototype\obj\Debug\voice to text prototype.pdb

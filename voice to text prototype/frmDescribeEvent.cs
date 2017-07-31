@@ -5,7 +5,7 @@ using System.IO;
 using System.Management.Automation;
 using System.Windows.Forms;
 
-namespace voice_to_text_prototype
+namespace Anuket
 {
     public partial class frmDescribeEvent : Form
     {
