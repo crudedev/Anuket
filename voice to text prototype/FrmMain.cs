@@ -27,8 +27,11 @@ namespace Anuket
         {
             InitializeComponent();
 
-            c = loadCoreData();
-
+            CoreData tcore = loadCoreData();
+            if (tcore != null)
+            {
+                c = tcore;
+            }
             initialiseFolderWatch();
 
             checkEvent.Tick += CheckEvent_Tick;

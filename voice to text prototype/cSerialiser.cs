@@ -25,9 +25,18 @@ namespace Anuket
             CoreData objectToSerialize;
             Stream stream = File.Open(filename, FileMode.Open);
             BinaryFormatter bFormatter = new BinaryFormatter();
-            objectToSerialize = (CoreData)bFormatter.Deserialize(stream);
-            stream.Close();
-            return objectToSerialize;
+
+            try
+            {
+                objectToSerialize = (CoreData)bFormatter.Deserialize(stream);
+                stream.Close();
+                return objectToSerialize;
+            }
+            catch (Exception)
+            {
+                stream.Close();
+            }
+            return null;
         }
 
         public Serialiser()

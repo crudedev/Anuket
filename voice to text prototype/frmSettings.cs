@@ -118,7 +118,7 @@ namespace Anuket
                 adjpath = watchpath.Replace(':', '-');
                 adjpath = adjpath.Replace('\\', '-');
 
-                string destPath = _c.pathToEXE + @"\DataStore\" + adjpath + @"\" + Guid.NewGuid();
+                string destPath = _c.pathToEXE + @"\DataStore\" + adjpath + @"\" + Guid.NewGuid().ToString().Substring(0,13);
 
                 //Now Create all of the directories
                 foreach (string dirPath in Directory.GetDirectories(watchpath, "*",

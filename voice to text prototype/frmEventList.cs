@@ -120,13 +120,16 @@ namespace Anuket
                 TimeSpan ts = ev.datetimeOfEvent.Subtract(start);
                 double seconds = ts.TotalSeconds;
 
-                double pixelpersecond = width / deltaSeconds;
+                if (seconds != 0)
+                {
+                    double pixelpersecond = width / deltaSeconds;
 
-                int xCord = Convert.ToInt32(pixelpersecond * seconds);
+                    int xCord = Convert.ToInt32(pixelpersecond * seconds);
 
-                e.Graphics.DrawLine(pen, xCord + 100, 80, xCord + 100, 120);
+                    e.Graphics.DrawLine(pen, xCord + 100, 80, xCord + 100, 120);
 
-                e.Graphics.DrawString("Event: " + index.ToString(), font, brush, xCord, 50 - index);
+                    e.Graphics.DrawString("Event: " + index.ToString(), font, brush, xCord, 50 - index);
+                }
 
             }
 
@@ -194,7 +197,7 @@ namespace Anuket
         {
             if (_selectedTask != null)
             {
-                frmDescribeEvent fde = new frmDescribeEvent(_selectedTask,_c);
+                frmDescribeEvent fde = new frmDescribeEvent(_selectedTask, _c);
                 fde.Show();
             }
         }

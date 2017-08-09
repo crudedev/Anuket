@@ -25,7 +25,7 @@ namespace Anuket
         public readonly string stCredentials;
         public readonly string tsCredentials;
 
-        public readonly string pathToEXE;
+        public string pathToEXE;
 
         public CoreData()
         {
@@ -55,7 +55,7 @@ namespace Anuket
             exclusionList = (List<string>)info.GetValue("exclusionList", typeof(List<string>));
             tasks = (List<cTask>)info.GetValue("tasks", typeof(List<cTask>));
             tags = (Dictionary<string, string>)info.GetValue("tags", typeof(Dictionary<string, string>));
-
+            pathToEXE = Directory.GetCurrentDirectory();
         }
 
         public void GetObjectData(SerializationInfo info, StreamingContext ctxt)
@@ -67,6 +67,7 @@ namespace Anuket
             info.AddValue("exclusionList", exclusionList);
             info.AddValue("tasks", tasks);
             info.AddValue("tags", tags);
+            pathToEXE = Directory.GetCurrentDirectory();
         }
     }
 }
