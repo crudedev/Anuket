@@ -176,9 +176,9 @@ namespace Anuket
                     {
                         if (item.events == null)
                         {
-                            item.events = new List<cEvent>();
+                            item.events = new List<cFileEvent>();
                         }
-                        cEvent ev = (cEvent)lstEvents.SelectedItem;
+                        cFileEvent ev = (cFileEvent)lstEvents.SelectedItem;
                         item.events.Add(ev);
                         ev.assaignedToTask = true;
                     }

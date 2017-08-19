@@ -208,7 +208,7 @@ namespace Anuket
 
         private void OnChanged(object source, FileSystemEventArgs e)
         {
-            cEvent ev = new cEvent(e.Name, e.FullPath, new Dictionary<string, string>());
+            cFileEvent ev = new cFileEvent(e.Name, e.FullPath, new Dictionary<string, string>());
 
 
 

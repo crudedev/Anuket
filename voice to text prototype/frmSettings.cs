@@ -274,10 +274,10 @@ namespace Anuket
 
         private void CreateEvent(string filename, string Location, Dictionary<string, string> asd)
         {
-            cEvent e = new cEvent(filename, Location, asd);
+            cFileEvent e = new cFileEvent(filename, Location, asd);
             if (_c.events == null)
             {
-                _c.events = new List<cEvent>();
+                _c.events = new List<cFileEvent>();
             }
             _c.events.Add(e);
 
@@ -324,12 +324,12 @@ namespace Anuket
         private void button11_Click(object sender, EventArgs e)
         {
 
-            _c.events = new List<cEvent>();
+            _c.events = new List<cFileEvent>();
             Random r = new Random();
             for (int i = 0; i < 10; i++)
             {
 
-                cEvent ev = new cEvent();
+                cFileEvent ev = new cFileEvent();
                 ev.datetimeOfEvent = DateTime.Now.AddMinutes(r.Next(10));
                 ev.datetimeOfEvent = ev.datetimeOfEvent.AddSeconds(r.Next(50));
                 ev.fileName = Guid.NewGuid().ToString();

@@ -9,7 +9,7 @@ namespace Anuket
 {
 
     [Serializable()]
-    public class cEvent : ISerializable
+    public class cFileEvent : ISerializable
     {
         public string fileName;
         public string locationPath;
@@ -25,7 +25,7 @@ namespace Anuket
 
         public Guid ID;
 
-        public cEvent(string FileName, string Location, Dictionary<string,String> FilesEffected)
+        public cFileEvent(string FileName, string Location, Dictionary<string,String> FilesEffected)
         {
             fileName = FileName;
             locationPath = Location;
@@ -40,7 +40,7 @@ namespace Anuket
 
         }
 
-        public cEvent()
+        public cFileEvent()
         {
             ID = new Guid();
         }
@@ -50,7 +50,7 @@ namespace Anuket
             descriptions.Add(d);
         }
 
-        public cEvent(SerializationInfo info, StreamingContext ctxt)
+        public cFileEvent(SerializationInfo info, StreamingContext ctxt)
         {
             fileName = (string)info.GetValue("fileName", typeof(string));
             locationPath = (string)info.GetValue("locationPath", typeof(string));

@@ -13,7 +13,7 @@ namespace Anuket
     public partial class frmPopupDescription : Form
     {
         CoreData _c;
-        public frmPopupDescription(CoreData c, int EventNumber, cEvent ev)
+        public frmPopupDescription(CoreData c, int EventNumber, cFileEvent ev)
         {
             InitializeComponent();
             _c = c;

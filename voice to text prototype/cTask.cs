@@ -30,7 +30,7 @@ namespace Anuket
 
         public  List<cTask> parents;
 
-        public List<cEvent> events;
+        public List<cFileEvent> events;
 
 
         public enum tasktype
@@ -53,7 +53,7 @@ namespace Anuket
             ttype.Add("Project", 2);
 
             parents = new List<cTask>();
-            events = new List<cEvent>();
+            events = new List<cFileEvent>();
             tags = new Dictionary<string, string>();
             descriptions = new List<cDescription>();
         }
@@ -72,7 +72,7 @@ namespace Anuket
             typeOfTask = (int)info.GetValue("typeOfTask", typeof(int));
             Show = (bool)info.GetValue("show", typeof(bool));
             parents = (List<cTask>)info.GetValue("parents", typeof(List<cTask>));
-            events = (List<cEvent>)info.GetValue("events", typeof(List<cEvent>));
+            events = (List<cFileEvent>)info.GetValue("events", typeof(List<cFileEvent>));
         }
 
         public void GetObjectData(SerializationInfo info, StreamingContext ctxt)

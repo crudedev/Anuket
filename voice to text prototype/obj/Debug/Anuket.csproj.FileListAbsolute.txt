@@ -21,3 +21,4 @@ C:\Users\Dank\ownCloud\Anuket\voice to text prototype\bin\Debug\Newtonsoft.Json.
 C:\Users\Dank\ownCloud\Anuket\voice to text prototype\bin\Debug\System.Management.Automation.dll
 C:\Users\Dank\ownCloud\Anuket\voice to text prototype\bin\Debug\NAudio.xml
 C:\Users\Dank\ownCloud\Anuket\voice to text prototype\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Dank\ownCloud\Anuket\voice to text prototype\obj\Debug\Anuket.csproj.CoreCompileInputs.cache

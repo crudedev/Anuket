@@ -13,7 +13,7 @@ namespace Anuket
     public class CoreData : ISerializable
     {
         public List<cDescription> descriptions;
-        public List<cEvent> events;
+        public List<cFileEvent> events;
         public List<cTask> tasks;
 
         public List<string> foldersToWatch;
@@ -30,7 +30,7 @@ namespace Anuket
         public CoreData()
         {
             descriptions = new List<cDescription>();
-            events = new List<cEvent>();
+            events = new List<cFileEvent>();
             tasks = new List<cTask>();
             foldersToWatch = new List<string>();
             fileExtensionsToWatch = new List<string>();
@@ -49,7 +49,7 @@ namespace Anuket
         public CoreData(SerializationInfo info, StreamingContext ctxt)
         {
             descriptions = (List<cDescription>)info.GetValue("descriptions", typeof(List<cDescription>));
-            events = (List<cEvent>)info.GetValue("event", typeof(List<cEvent>));
+            events = (List<cFileEvent>)info.GetValue("event", typeof(List<cFileEvent>));
             foldersToWatch = (List<string>)info.GetValue("folderstowatch", typeof(List<string>));
             fileExtensionsToWatch = (List<string>)info.GetValue("fileExtensionsToWatch", typeof(List<string>));
             exclusionList = (List<string>)info.GetValue("exclusionList", typeof(List<string>));

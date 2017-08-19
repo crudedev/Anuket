@@ -75,7 +75,7 @@
       <DependentUpon>frmTask.cs</DependentUpon>
     </Compile>
     <Compile Include="cDescription.cs" />
-    <Compile Include="cEvent.cs" />
+    <Compile Include="cFileEvent.cs" />
     <Compile Include="frmEventList.cs">
       <SubType>Form</SubType>
     </Compile>
